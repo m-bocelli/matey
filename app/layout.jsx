@@ -7,6 +7,7 @@ export default function RootLayout({ children }) {
                 <title>BUDGETEERS</title>
             </head>
             <body>
+                <h1>HELLO WORLD</h1>
                 {children}
             </body>
         </html>
