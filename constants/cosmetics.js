@@ -1,4 +1,4 @@
-const COSMETICS = [
+export const COSMETICS = [
     {
         name: 'Test',
         price: 45,
