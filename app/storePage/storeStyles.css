@@ -1,0 +1,12 @@
+.outsideBackground {
+   /* background: linear-gradient(0deg, rgba(34,195,88,1) 0%, rgba(71,203,241,1) 100%); */
+   background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(7,67,15,1) 10%, rgba(24,211,233,1) 40%, rgba(255,255,255,1) 100%);
+}
+
+
+.shopCard {
+    background-color: #D99F70;
+    width: "80rem";
+    height:"90vh";
+    margin:"auto";
+}
