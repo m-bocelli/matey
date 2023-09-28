@@ -3,17 +3,19 @@ import './storeStyles.css';
 
 export default function StorePageUI() {
     return (
-        <section className='outsideBackground'> 
-            <Card>
-                <CardHeader style={{height: "4rem", fontSize: "x-large"}}>All Pets</CardHeader>
-                <CardBody>
-                    <h5 className="card-title">Card title</h5>
-                    <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" className="card-link">Card link</a>
-                    <a href="#" className="card-link">Another link</a>
-                </CardBody>
-            </Card>
-        </section>
+        <div className='outsideBackground'> 
+            <div className='card shopCard'>
+                <div className='card card-header shopCardHeader'>All Pets {">>"} Mammals</div>
+                <div className='card card-body shopCard'>
+                    <div className='card itemCard'>
+                        <div className='card card-body itemCard'>
+                            <h5 className="card-title shopCardText">Dog $25</h5>
+                            <p className="card-text mb-2 text-mute">What the dog doing?</p>
+                            <a href="#" className="card-link btn btn-dark shopCardButton">Buy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }

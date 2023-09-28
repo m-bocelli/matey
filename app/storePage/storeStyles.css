@@ -1,12 +1,36 @@
 .outsideBackground {
-   /* background: linear-gradient(0deg, rgba(34,195,88,1) 0%, rgba(71,203,241,1) 100%); */
    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(7,67,15,1) 10%, rgba(24,211,233,1) 40%, rgba(255,255,255,1) 100%);
+   width: 100vw;
+   height: 100vh;
+}
+
+.shopCardHeader {
+    background-color: hsl(22, 28%, 50%) !important;
+    font-size: x-large !important;
+    outline: double;
+}
+
+.shopCard {
+    background-color: #A2755B !important;
+    width: 80rem !important;
+    height: 90vh !important;
+    margin: auto;
+    outline: double;
+}
+
+.shopCardText {
+
+    font-size: x-large !important;
+}
+
+.shopCardButton {
+
+    margin-left: 75vw;
+    text-align: center !important;
 }
 
 
-.shopCard {
-    background-color: #D99F70;
-    width: "80rem";
-    height:"90vh";
-    margin:"auto";
+.itemCard {
+    outline: double;
+    background-color: #D99F70 !important;
 }
