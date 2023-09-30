@@ -1,30 +1,45 @@
+:root {
+    --aquamarine: #b3fcda;
+    --myrtle-green: #297373;
+    --light-myrtle-green: #358a8a;
+    --space-cadet: #2b2d42;
+    --uranian-blue: #acd2ed;
+    --cherry-blossom: #fcb0b3;
+}
+
+
 .outsideBackground {
-   background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(7,67,15,1) 10%, rgba(24,211,233,1) 40%, rgba(255,255,255,1) 100%);
+   background-color: #efefef;
    width: 100vw;
    height: 100vh;
 }
 
 .shopCardHeader {
-    background-color: hsl(22, 28%, 50%) !important;
+    background-color: var(--uranian-blue)!important;
     font-size: x-large !important;
     outline: double;
+    outline-color: #efefef;
+    color: black;
 }
 
 .shopCard {
-    background-color: #A2755B !important;
+    background-color: #efefef !important;
     width: 80rem !important;
     height: 90vh !important;
     margin: auto;
     outline: double;
+    outline-color: #efefef;
 }
 
 .shopCardText {
-
+    color: var(--space-cadet);
     font-size: x-large !important;
 }
 
 .shopCardButton {
-
+    color: var(--cherry-blossom);
+    display: flex;
+    align-items: flex-end;
     margin-left: 75vw;
     text-align: center !important;
 }
@@ -32,5 +47,7 @@
 
 .itemCard {
     outline: double;
-    background-color: #D99F70 !important;
+    outline-color: #efefef;
+    color: var(--space-cadet);
+    background-color: var(--aquamarine) !important;
 }

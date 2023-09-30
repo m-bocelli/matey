@@ -3,7 +3,7 @@ import './storeStyles.css';
 
 export default function StorePageUI() {
     return (
-        <div className='outsideBackground'> 
+        <div className='backgroundArea'> 
             <div className='card shopCard'>
                 <div className='card card-header shopCardHeader'>All Pets {">>"} Mammals</div>
                 <div className='card card-body shopCard'>
