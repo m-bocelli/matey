@@ -1,4 +1,4 @@
-import {Card, CardBody, CardHeader} from 'react-bootstrap'
+import {Card, CardBody, CardHeader} from 'react-bootstrap';
 import './storeStyles.css';
 
 export default function StorePageUI() {
