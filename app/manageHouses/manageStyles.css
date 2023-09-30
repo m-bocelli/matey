@@ -1,0 +1,11 @@
+#newHouse {
+    width: 80%;
+    text-align: center;
+    background-color: #297373;
+    color: #2B2D42;
+}
+
+#newHouse:hover {
+    background-color: #2B2D42;
+    color: #297373;
+}
