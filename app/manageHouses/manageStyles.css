@@ -1,11 +1,14 @@
 #newHouse {
-    width: 80%;
+    display: block;
+    width: 100%;
+    padding: 14px 28px;
+    font-size: 20px;
     text-align: center;
-    background-color: #297373;
-    color: #2B2D42;
+    background-color: #2B2D42;
+    color: #ACD2ED;
 }
 
 #newHouse:hover {
-    background-color: #2B2D42;
-    color: #297373;
+    background-color: #ACD2ED;
+    color: #2B2D42;
 }
