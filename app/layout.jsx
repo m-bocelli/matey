@@ -1,3 +1,6 @@
+'use client'
+import Nav from '../components/Nav/Nav.jsx';
+
 export default function RootLayout({ children }) {
     return (            
         <html lang="en">
@@ -13,7 +16,7 @@ export default function RootLayout({ children }) {
                 />
             </head>
             <body>
-                <h1>HELLO WORLD</h1>
+                <Nav/>
                 {children}
             </body>
         </html>
