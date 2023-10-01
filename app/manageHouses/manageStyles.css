@@ -1,14 +1,23 @@
+:root {
+    --aquamarine: #85FFC7;
+    --myrtle-green: #297373;
+    --space-cadet: #2b2d42;
+    --uranian-blue: #acd2ed;
+    --cherry-blossom: #fcb0b3;
+}
+
+
 #newHouse {
     display: block;
     width: 100%;
     padding: 14px 28px;
     font-size: 20px;
     text-align: center;
-    background-color: #2B2D42;
-    color: #ACD2ED;
+    background-color: var(--space-cadet);
+    color: var(--uranian-blue);
 }
 
 #newHouse:hover {
-    background-color: #ACD2ED;
-    color: #2B2D42;
+    background-color: var(--uranian-blue);
+    color: var(--space-cadet);
 }
