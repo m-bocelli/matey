@@ -1,3 +1,13 @@
+export function createHouse(){
+    let key = "";
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+    for (let i = 0; i < 12; i++){
+        key += characters.charAt(Math.floor(Math.random() * characters.length))
+    }
+    console.log(key);
+    window.open("dashboard");
+}
+
 export default function CreateHouseUI() {
     return (
         <div>
@@ -10,14 +20,4 @@ export default function CreateHouseUI() {
             </form>
         </div>
     )
-}
-
-export function createHouse(){
-    let key = "";
-    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-    for (let i = 0; i < 12; i++){
-        key += characters.charAt(Math.floor(Math.random() * characters.length))
-    }
-    console.log(key);
-    window.open(dashbaord);
 }
