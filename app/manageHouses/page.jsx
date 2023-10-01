@@ -3,7 +3,8 @@ export default function ManageHousesUI() {
     return (
         <div>
             <h1> Manage Houses </h1>
-            <button id="newHouse">New House</button>
+            <button class="newHouse">Create House</button>
+            <button class="newHouse">Join House</button>
         </div>
     )
 }

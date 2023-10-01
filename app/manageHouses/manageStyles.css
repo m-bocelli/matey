@@ -1,4 +1,4 @@
-#newHouse {
+.newHouse {
     display: block;
     width: 100%;
     padding: 14px 28px;
@@ -8,7 +8,7 @@
     color: #ACD2ED;
 }
 
-#newHouse:hover {
+.newHouse:hover {
     background-color: #ACD2ED;
     color: #2B2D42;
 }

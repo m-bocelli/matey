@@ -5,9 +5,8 @@ export default function CreateHouseUI() {
             <form id="createHouse">
                 <label>House Name:</label>
                 <input type="text" name="houseName"></input><br></br>
-                <label>House Maties:</label>
-                <input type="text" name="houseMate1"></input><br></br>
                 <input type="submit" value="submit"></input>
+                {/*Submit button onclick will use a function to genrate a unique House Key*/}
             </form>
         </div>
     )
