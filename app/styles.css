@@ -5,3 +5,7 @@
     --uranian-blue: #acd2ed;
     --cherry-blossom: #fcb0b3;
 }
+
+body {
+    background-color: var(--aquamarine);
+}
