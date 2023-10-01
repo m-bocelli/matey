@@ -5,7 +5,7 @@ export default function JoinHouseUI() {
             <form id="joinHouse">
                 <label>House Key:</label>
                 <input type="text" name="houseKey"></input><br></br>
-                <input type="submit" value="submit"></input>
+                <input type="submit" value="submit" onclick = ""></input>
             </form>
         </div>
     )
