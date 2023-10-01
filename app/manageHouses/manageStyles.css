@@ -4,10 +4,10 @@
     --space-cadet: #2b2d42;
     --uranian-blue: #acd2ed;
     --cherry-blossom: #fcb0b3;
-}
 
 
-#newHouse {
+
+.newHouse {
     display: block;
     width: 100%;
     padding: 14px 28px;
@@ -17,7 +17,8 @@
     color: var(--uranian-blue);
 }
 
-#newHouse:hover {
+
+.newHouse:hover {
     background-color: var(--uranian-blue);
     color: var(--space-cadet);
 }
