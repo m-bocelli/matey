@@ -1,4 +1,5 @@
 import './globals.css';
+import Nav from './components/Nav/Nav.jsx';
 
 export const metadata = {
     charSet: 'UTF-8',
@@ -17,7 +18,10 @@ export default function RootLayout({ children }) {
                     crossOrigin='anonymous'
                 />
             </head>
-            <body>{children}</body>
+            <body>
+                <Nav></Nav>
+                {children}
+            </body>
         </html>
     );
 }

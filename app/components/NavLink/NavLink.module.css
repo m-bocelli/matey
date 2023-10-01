@@ -1,0 +1,15 @@
+.link_container {
+    margin: 1rem 2rem 1rem 2rem;
+    font-size: 1.5rem;
+}
+
+.link {
+    text-decoration: none;
+    color: #fff;
+}
+
+.link::after {
+   content: ""; 
+   position: absolute;
+   display: block;
+}
