@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import styles from './page.module.css';
 
 export default function Page() {
     const [greeting, setGreeting] = useState('morning');
@@ -17,7 +18,7 @@ export default function Page() {
     }, []);
 
     return (
-        <main>
+        <main className={styles.container}>
             <h1>Good {greeting}, USER</h1>
         </main>
     );
