@@ -1,10 +1,11 @@
+'use client';
 import './globals.css';
 import Nav from './components/Nav/Nav.jsx';
+import { AuthContextProvider } from './context/AuthContext';
 
-export const metadata = {
-    charSet: 'UTF-8',
+const metadata = {
     viewport: 'width=device-width, initial-scale=1.0',
-    title: 'Budgeteers',
+    title: 'Matey',
 };
 
 export default function RootLayout({ children }) {
@@ -17,10 +18,14 @@ export default function RootLayout({ children }) {
                     integrity='sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM'
                     crossOrigin='anonymous'
                 />
+                <meta name='viewport' content={metadata.viewport} />
+                <title>{metadata.title}</title>
             </head>
             <body>
-                <Nav></Nav>
-                {children}
+                <AuthContextProvider>
+                    <Nav></Nav>
+                    {children}
+                </AuthContextProvider>
             </body>
         </html>
     );
