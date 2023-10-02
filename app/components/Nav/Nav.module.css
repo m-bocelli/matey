@@ -1,5 +1,22 @@
+.title {
+    font-size: 2rem;
+    margin: 1rem 0 1rem 1rem;
+    font-weight: bolder;
+    color: var(--space-cadet);
+}
+
+.title::after {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 5px;
+    width: 75%;
+    background-color: var(--space-cadet);
+}
+
 .nav_container {
-    background-color: var(--aquamarine);
+    background-color: #ff8a8a4a;
+    fill-opacity: 20%;
     width: 12rem;
     height: 100vh;
     position: fixed;
@@ -8,13 +25,11 @@
     z-index: 100;
 }
 
-.nav_container:last-child {
-    margin-top: auto;
-}
-
 .nav_list {
     list-style: none;
     padding: 0;
-    margin: 0;
 }
 
+.auth {
+    margin-top: auto;
+}
