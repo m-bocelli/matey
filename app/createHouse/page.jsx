@@ -31,7 +31,7 @@ function createHouse(e) {
             localStorage.setItem('keyList', JSON.stringify(b));
         }
         alert('Your house key is ' + key);
-        location.href = '/';
+        location.href = '../';
     }
 }
 
