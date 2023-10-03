@@ -8,8 +8,17 @@ export default function Nav() {
 
     async function handleSignIn() {
         try {
-            console.log('signin');
+            console.log('sign-in');
             await googleSignIn();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async function handleSignOut() {
+        try {
+            console.log('sign-out');
+            await logOut();
         } catch (error) {
             console.log(error);
         }
@@ -25,24 +34,38 @@ export default function Nav() {
                 <NavLink href='storePage'>MARKETPLACE</NavLink>
             </ul>
             <ul className={styles.nav_list + ' ' + styles.auth}>
-                <li className={authStyles.link_container}>
-                    <a
-                        className={authStyles.link}
-                        style={{ cursor: 'pointer' }}
-                        onClick={handleSignIn}
-                    >
-                        LOGIN
-                    </a>
-                </li>
-                <li className={authStyles.link_container}>
-                    <a
-                        className={authStyles.link}
-                        style={{ cursor: 'pointer' }}
-                        onClick={handleSignIn}
-                    >
-                        LOGOUT
-                    </a>
-                </li>
+                {!user ? (
+                    <>
+                        <li className={authStyles.link_container}>
+                            <a
+                                className={authStyles.link}
+                                style={{ cursor: 'pointer' }}
+                                onClick={handleSignIn}
+                            >
+                                LOGIN
+                            </a>
+                        </li>
+                        <li className={authStyles.link_container}>
+                            <a
+                                className={authStyles.link}
+                                style={{ cursor: 'pointer' }}
+                                onClick={handleSignIn}
+                            >
+                                SIGN-UP
+                            </a>
+                        </li>
+                    </>
+                ) : (
+                    <li className={authStyles.link_container}>
+                        <a
+                            className={authStyles.link}
+                            style={{ cursor: 'pointer' }}
+                            onClick={handleSignOut}
+                        >
+                            LOGOUT
+                        </a>
+                    </li>
+                )}
             </ul>
         </nav>
     );

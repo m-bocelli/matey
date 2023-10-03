@@ -1,8 +1,10 @@
 'use client';
 import { useState, useEffect } from 'react';
 import styles from './page.module.css';
+import { UserAuth } from './js/AuthContext';
 
 export default function Page() {
+    const { user } = UserAuth();
     const [greeting, setGreeting] = useState('');
 
     useEffect(() => {
@@ -19,11 +21,17 @@ export default function Page() {
 
     return (
         <main className={styles.container}>
-            <h1>
-                Good <span className={styles.greeting}>{greeting}</span>, USER
-            </h1>
-
-            <div id='houseInfo'>{displayHouse()}</div>
+            {user ? (
+                <>
+                    <h1>
+                        Good <span className={styles.greeting}>{greeting}</span>
+                        , {user.displayName}
+                    </h1>
+                    <div id='houseInfo'>{displayHouse()}</div>
+                </>
+            ) : (
+                <h1>You are not signed-in ☹️</h1>
+            )}
         </main>
     );
 }
