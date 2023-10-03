@@ -1,3 +1,4 @@
+'use client';
 import './globals.css';
 import Nav from './components/Nav/Nav.jsx';
 import { Providers } from './providers';
@@ -5,6 +6,7 @@ import { Providers } from './providers';
 const metadata = {
     viewport: 'width=device-width, initial-scale=1.0',
     title: 'Matey',
+    icon: '/favicon.ico',
 };
 
 export default function RootLayout({ children }) {
@@ -18,8 +20,10 @@ export default function RootLayout({ children }) {
                     crossOrigin='anonymous'
                 />
                 <meta name='viewport' content={metadata.viewport} />
+                <link rel='icon' href={metadata.icon} />
                 <title>{metadata.title}</title>
             </head>
+
             <body>
                 <Providers>
                     <Nav />

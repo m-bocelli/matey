@@ -1,4 +1,3 @@
-'use client';
 import NavLink from '../NavLink/NavLink.jsx';
 import styles from './Nav.module.css';
 import authStyles from '../NavLink/NavLink.module.css';
@@ -9,6 +8,7 @@ export default function Nav() {
 
     async function handleSignIn() {
         try {
+            console.log('signin');
             await googleSignIn();
         } catch (error) {
             console.log(error);
