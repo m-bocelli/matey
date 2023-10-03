@@ -1,0 +1,8 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--cherry-blossom);
+    margin-left: 12rem;
+    padding: 1rem;
+}
