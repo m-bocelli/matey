@@ -1,7 +1,10 @@
 import NavLink from '../NavLink/NavLink.jsx';
 import styles from './Nav.module.css';
+import { UserAuth } from '@/app/context/AuthContext.js';
 
 export default function Nav() {
+    const user = UserAuth();
+
     return (
         <nav className={styles.nav_container}>
             <div className={styles.title}>MATEY 🏴‍☠️</div>
