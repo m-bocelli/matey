@@ -1,18 +1,25 @@
-.new_house button {
+.container {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--cherry-blossom);
+    margin-left: 12rem;
+    padding: 1rem;
+}
+
+.container button {
     padding: 14px 28px;
-    margin-left: 15rem;
     font-size: 20px;
     justify-content: center;
     background-color: var(--space-cadet);
     color: var(--uranian-blue);
 }
 
-.new_house button:hover {
+.container button:hover {
     background-color: var(--uranian-blue);
     color: var(--space-cadet);
 }
 
-.deleteText {
+.delete_text {
     text-align: center;
 }

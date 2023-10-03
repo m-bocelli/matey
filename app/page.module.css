@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--cherry-blossom);
+    margin-left: 12rem;
+    padding: 1rem;
+}
+
+.greeting {
+    animation: pop-in 1s;
+    position: relative;
+}
+
+@keyframes pop-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
