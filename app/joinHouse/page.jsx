@@ -26,9 +26,9 @@ export default function JoinHouseUI() {
             <h1> Join House </h1>
             <form id='joinHouse' onSubmit={joinHouse}>
                 <label>House Key:</label>
-                <input type='text' id='houseKey' name='houseKey'></input>
+                <input className={styles.textInput} type='text' id='houseKey' name='houseKey'></input>
                 <br></br>
-                <input type='submit' value='submit'></input>
+                <input className={styles.join} type='submit' value='Join House'></input>
             </form>
         </div>
     );

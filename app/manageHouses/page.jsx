@@ -24,7 +24,12 @@ function deleteHouse() {
         }
     }
     if (a == 1) {
-        localStorage.setItem('keyList', JSON.stringify(listOfKeys));
+        if(listOfKeys.length < 1){
+            localStorage.removeItem('keyList');
+        }
+        else {
+            localStorage.setItem('keyList', JSON.stringify(listOfKeys));
+        }
         localStorage.removeItem(keyEntered);
         alert('House Removed');
     } else {
