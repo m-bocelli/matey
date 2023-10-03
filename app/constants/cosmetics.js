@@ -1,7 +1,58 @@
 export const COSMETICS = [
     {
-        name: 'Test',
+        id: 0,
+        name: 'Avatar0',
+        desc: 'Description of item 0',
         price: 45,
-        image_url: 'https://static.wikia.nocookie.net/club-penguin-rewritten/images/6/69/Party_Hat.png/revision/latest?cb=20190106032616'
+        img: 'https://static.wikia.nocookie.net/club-penguin-rewritten/images/6/69/Party_Hat.png/revision/latest?cb=20190106032616',
     },
-]
+    {
+        id: 1,
+        name: 'Avatar1',
+        desc: 'Description of item 1',
+        price: 100,
+        img: 'https://static.wikia.nocookie.net/club-penguin-rewritten/images/6/69/Party_Hat.png/revision/latest?cb=20190106032616',
+    },
+    {
+        id: 2,
+        name: 'Avatar2',
+        desc: 'Description of item 2',
+        price: 56,
+        img: 'https://static.wikia.nocookie.net/club-penguin-rewritten/images/6/69/Party_Hat.png/revision/latest?cb=20190106032616',
+    },
+    {
+        id: 3,
+        name: 'Avatar3',
+        desc: 'Description of item 3',
+        price: 2,
+        img: 'https://static.wikia.nocookie.net/club-penguin-rewritten/images/6/69/Party_Hat.png/revision/latest?cb=20190106032616',
+    },
+    {
+        id: 4,
+        name: 'Avatar4',
+        desc: 'Description of item 4',
+        price: 99,
+        img: 'https://static.wikia.nocookie.net/club-penguin-rewritten/images/6/69/Party_Hat.png/revision/latest?cb=20190106032616',
+    },
+    {
+        id: 5,
+        name: 'Avatar5',
+        desc: 'Description of item 5',
+        price: 99,
+        img: 'https://static.wikia.nocookie.net/club-penguin-rewritten/images/6/69/Party_Hat.png/revision/latest?cb=20190106032616',
+    },
+    {
+        id: 6,
+        name: 'Avatar6',
+        desc: 'Description of item 6',
+        price: 368,
+        img: 'https://static.wikia.nocookie.net/club-penguin-rewritten/images/6/69/Party_Hat.png/revision/latest?cb=20190106032616',
+    },
+    {
+        id: 7,
+        name: 'Avatar7',
+        desc: 'Description of item 7',
+        price: 21,
+        img: 'https://static.wikia.nocookie.net/club-penguin-rewritten/images/6/69/Party_Hat.png/revision/latest?cb=20190106032616',
+    },
+];

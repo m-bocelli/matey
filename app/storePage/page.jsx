@@ -1,30 +1,29 @@
-import { Card, CardBody, CardHeader } from 'react-bootstrap';
-import './storeStyles.css';
+import { Card, Col, Row } from 'react-bootstrap';
+import { COSMETICS } from '../constants/cosmetics';
+import StoreItem from '../components/StoreItem/StoreItem';
+import styles from './page.module.css';
 
 export default function StorePageUI() {
     return (
-        <div className='outsideBackground'>
-            <div className='card shopCard'>
-                <div className='card card-header shopCardHeader'>
-                    All Pets {'>>'} Mammals
-                </div>
-                <div className='card card-body shopCard'>
-                    <div className='card itemCard'>
-                        <div className='card card-body itemCard'>
-                            <h5 className='card-title shopCardText'>Dog $25</h5>
-                            <p className='card-text mb-2 text-mute'>
-                                What the dog doing?
-                            </p>
-                            <a
-                                href='#'
-                                className='card-link btn btn-dark shopCardButton'
-                            >
-                                Buy
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <Col className={styles.container}>
+            <Row>
+                <h1>Marketplace</h1>
+            </Row>
+            <Row>
+                <Card>
+                    {COSMETICS.map((item) => {
+                        return (
+                            <StoreItem
+                                key={item.id}
+                                nanme={item.name}
+                                desc={item.desc}
+                                price={item.price}
+                                img={item.img}
+                            ></StoreItem>
+                        );
+                    })}
+                </Card>
+            </Row>
+        </Col>
     );
 }

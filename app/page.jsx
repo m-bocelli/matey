@@ -70,7 +70,7 @@ function displayHouse() {
         }
         return (
             <div>
-                <h2>House {houseName}</h2>
+                <h2>🏠 House {houseName}</h2>
                 <h3>Mates</h3>
                 {houseMembers}
             </div>
