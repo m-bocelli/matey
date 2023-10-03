@@ -1,7 +1,10 @@
 'use client';
 function displayHouse() {
-    let arrayOfKeys = JSON.parse(localStorage.getItem("keyList"));
-    if(arrayOfKeys != null){
+    if (typeof window == "undefined"){
+        return <div></div>;
+    }
+    else if(localStorage.getItem("keyList") != null){
+        let arrayOfKeys = JSON.parse(localStorage.getItem("keyList"));
         let house = JSON.parse(localStorage.getItem(arrayOfKeys[0]));
         let houseName = house.houseName;
         let houseMates = house.houseMates;
