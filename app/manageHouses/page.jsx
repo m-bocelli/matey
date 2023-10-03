@@ -1,4 +1,5 @@
 'use client';
+import Button from '../components/Button/Button';
 import styles from './page.module.css';
 function showKey() {
     let keyStuff = JSON.parse(localStorage.getItem('keyList'));
@@ -34,21 +35,21 @@ function displayButton() {
     if(typeof window == 'undefined') {
         return (
         <div>
-            <button onClick={goToCreate}>Create House</button>
+            <Button onClick={goToCreate}>Create House</Button>
         </div>
         );
     }
     else if(localStorage.getItem('keyList') == null){
         return (
             <div>
-                <button onClick={goToCreate}>Create House</button>
+                <Button onClick={goToCreate}>Create House</Button>
             </div>
         );
     }
     else if(JSON.parse(localStorage.getItem('keyList')).length < 1){
         return (
             <div>
-                <button onClick={goToCreate}>Create House</button>
+                <Button onClick={goToCreate}>Create House</Button>
             </div>
         );
     }
@@ -59,7 +60,7 @@ function displayButton() {
         let hName = house.houseName;
         return (
             <div>
-                <button onClick={showKey}>{hName}</button>
+                <Button onClick={showKey}>{hName}</Button>
             </div>
         );
     }
@@ -68,9 +69,9 @@ export default function ManageHousesUI() {
     return (
         <div className={styles.container}>
             <h1> Manage Houses </h1>
-            <div>{displayButton()}</div>
-            <button onClick={goToJoin}>Join House</button>
-            <button onClick={deleteHouse}>Delete House</button>
+            <div>{displayButton}</div>
+            <Button onClick={goToJoin}>Join House</Button>
+            <Button onClick={deleteHouse}>Delete House</Button>
             <input
                 className={styles.delete_text}
                 id='keyDelete'
