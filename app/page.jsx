@@ -1,9 +1,12 @@
 'use client';
 import { useState, useEffect } from 'react';
 import styles from './page.module.css';
+import { UserAuth } from './js/AuthContext';
 
 export default function Page() {
+    const { user } = UserAuth();
     const [greeting, setGreeting] = useState('');
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         let currTime = new Date().getHours();
@@ -17,13 +20,34 @@ export default function Page() {
         }
     }, []);
 
+    // forced loading to hide flash of signed-out state while still signed-in
+    useEffect(() => {
+        (async function () {
+            await new Promise((res) => setTimeout(res, 50));
+            setLoading(false);
+        })();
+    }, [user]);
+
     return (
         <main className={styles.container}>
-            <h1>
-                Good <span className={styles.greeting}>{greeting}</span>, USER
-            </h1>
+            {loading ? (
+                <p>Loading...</p>
+            ) : !user ? (
+                <h1>You are not signed-in ☹️</h1>
+            ) : (
+                <>
+                    <header className={styles.header}>
+                        <img src={user.photoURL} className={styles.user_icon} />
+                        <h1>
+                            Good{' '}
+                            <span className={styles.greeting}>{greeting}</span>,{' '}
+                            {user.displayName}{' '}
+                        </h1>
+                    </header>
 
-            <div id='houseInfo'>{displayHouse()}</div>
+                    <div id='houseInfo'>{displayHouse()}</div>
+                </>
+            )}
         </main>
     );
 }
@@ -46,7 +70,7 @@ function displayHouse() {
         }
         return (
             <div>
-                <h2>{houseName}</h2>
+                <h2>House {houseName}</h2>
                 <h3>Mates</h3>
                 {houseMembers}
             </div>

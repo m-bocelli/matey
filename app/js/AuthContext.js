@@ -29,7 +29,7 @@ export function AuthContextProvider({ children }) {
     }, [user]); // run whenever user is updated
 
     return (
-        <AuthContext.Provider value={(user, googleSignIn, logOut)}>
+        <AuthContext.Provider value={{ user, googleSignIn, logOut }}>
             {children}
         </AuthContext.Provider>
     ); // wrapper to use Auth state in all pages
