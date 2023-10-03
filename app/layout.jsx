@@ -1,7 +1,6 @@
-'use client';
 import './globals.css';
 import Nav from './components/Nav/Nav.jsx';
-import { AuthContextProvider } from './context/AuthContext';
+import { Providers } from './providers';
 
 const metadata = {
     viewport: 'width=device-width, initial-scale=1.0',
@@ -22,10 +21,10 @@ export default function RootLayout({ children }) {
                 <title>{metadata.title}</title>
             </head>
             <body>
-                <AuthContextProvider>
-                    <Nav></Nav>
+                <Providers>
+                    <Nav />
                     {children}
-                </AuthContextProvider>
+                </Providers>
             </body>
         </html>
     );

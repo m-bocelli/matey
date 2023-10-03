@@ -1,9 +1,19 @@
+'use client';
 import NavLink from '../NavLink/NavLink.jsx';
 import styles from './Nav.module.css';
-import { UserAuth } from '@/app/context/AuthContext.js';
+import authStyles from '../NavLink/NavLink.module.css';
+import { UserAuth } from '@/app/js/AuthContext.js';
 
 export default function Nav() {
-    const user = UserAuth();
+    const { user, googleSignIn, logOut } = UserAuth();
+
+    async function handleSignIn() {
+        try {
+            await googleSignIn();
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <nav className={styles.nav_container}>
@@ -15,8 +25,24 @@ export default function Nav() {
                 <NavLink href='storePage'>MARKETPLACE</NavLink>
             </ul>
             <ul className={styles.nav_list + ' ' + styles.auth}>
-                <NavLink href='/'>LOGIN</NavLink>
-                <NavLink href='/'>LOGOUT</NavLink>
+                <li className={authStyles.link_container}>
+                    <a
+                        className={authStyles.link}
+                        style={{ cursor: 'pointer' }}
+                        onClick={handleSignIn}
+                    >
+                        LOGIN
+                    </a>
+                </li>
+                <li className={authStyles.link_container}>
+                    <a
+                        className={authStyles.link}
+                        style={{ cursor: 'pointer' }}
+                        onClick={handleSignIn}
+                    >
+                        LOGOUT
+                    </a>
+                </li>
             </ul>
         </nav>
     );
