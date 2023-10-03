@@ -19,5 +19,9 @@
 }
 
 .delete_text {
-    text-align: center;
+    border-radius: 10px;
+    height: 3rem;
+    min-width: 7rem;
+    width: 50vw;
+    margin: 2rem;
 }
