@@ -1,5 +1,5 @@
 import styles from './StoreItem.module.css';
-import { Button } from 'react-bootstrap';
+import Button from '../Button/Button';
 
 export default function StoreItem({ name, desc, price, img }) {
     return (
@@ -10,7 +10,8 @@ export default function StoreItem({ name, desc, price, img }) {
                 <p>{desc}</p>
             </div>
             <div className={styles.item_buy_sect}>
-                <Button>PURCHASE for {price} POINTS</Button>
+                {price}
+                <Button>BUY</Button>
             </div>
         </div>
     );

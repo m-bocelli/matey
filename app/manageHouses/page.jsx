@@ -1,4 +1,5 @@
 'use client';
+import Button from '../components/Button/Button';
 import styles from './page.module.css';
 function goToCreate() {
     location.href = '../createHouse';
@@ -29,9 +30,11 @@ export default function ManageHousesUI() {
     return (
         <div className={styles.container}>
             <h1> Manage Houses </h1>
-            <button onClick={goToCreate}>Create House</button>
-            <button onClick={goToJoin}>Join House</button>
-            <button onClick={deleteHouse}>Delete House</button>
+            <div className={styles.button_group}>
+                <Button onClick={goToCreate}>Create House</Button>
+                <Button onClick={goToJoin}>Join House</Button>
+                <Button onClick={deleteHouse}>Delete House</Button>
+            </div>
             <input
                 className={styles.delete_text}
                 id='keyDelete'
