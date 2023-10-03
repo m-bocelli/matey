@@ -1,10 +1,15 @@
 'use client';
 import styles from './page.module.css';
+function showKey() {
+    let keyStuff = JSON.parse(localStorage.getItem('keyList'));
+    let key = keyStuff[0];
+    alert("Your key is " + key);
+}
 function goToCreate() {
-    location.href = '../createHouse';
+    location.href = './createHouse';
 }
 function goToJoin() {
-    location.href = '../joinHouse';
+    location.href = './joinHouse';
 }
 function deleteHouse() {
     let keyEntered = document.getElementById('keyDelete').value;
@@ -25,11 +30,45 @@ function deleteHouse() {
         alert('House Not Found');
     }
 }
+function displayButton() {
+    if(typeof window == 'undefined') {
+        return (
+        <div>
+            <button onClick={goToCreate}>Create House</button>
+        </div>
+        );
+    }
+    else if(localStorage.getItem('keyList') == null){
+        return (
+            <div>
+                <button onClick={goToCreate}>Create House</button>
+            </div>
+        );
+    }
+    else if(JSON.parse(localStorage.getItem('keyList')).length < 1){
+        return (
+            <div>
+                <button onClick={goToCreate}>Create House</button>
+            </div>
+        );
+    }
+    else {
+        let listKey = JSON.parse(localStorage.getItem('keyList'));
+        let key = listKey[0];
+        let house = JSON.parse(localStorage.getItem(key));
+        let hName = house.houseName;
+        return (
+            <div>
+                <button onClick={showKey}>{hName}</button>
+            </div>
+        );
+    }
+}
 export default function ManageHousesUI() {
     return (
         <div className={styles.container}>
             <h1> Manage Houses </h1>
-            <button onClick={goToCreate}>Create House</button>
+            <div>{displayButton()}</div>
             <button onClick={goToJoin}>Join House</button>
             <button onClick={deleteHouse}>Delete House</button>
             <input
