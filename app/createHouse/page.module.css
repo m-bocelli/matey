@@ -6,3 +6,24 @@
     margin-left: 12rem;
     padding: 1rem;
 }
+
+.textInput{
+    display: block;
+    width: 100%;
+}
+
+.create {
+    border-radius: 10px;
+    height: 3rem;
+    min-width: 7rem;
+    background-color: var(--space-cadet);
+    box-shadow: 2px 2px 2px black;
+    font-weight: bold;
+    color: white;
+    transition: font-size 0.3s;
+    width: 100%;
+}
+
+.create:hover {
+    font-size: larger;
+}
