@@ -1,10 +1,10 @@
 'use client';
 import styles from './page.module.css';
 function goToCreate() {
-    location.href = 'createHouse';
+    location.href = '../createHouse';
 }
 function goToJoin() {
-    location.href = 'joinHouse';
+    location.href = '../joinHouse';
 }
 function deleteHouse() {
     let keyEntered = document.getElementById('keyDelete').value;

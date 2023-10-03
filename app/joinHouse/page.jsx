@@ -15,7 +15,7 @@ function joinHouse(e) {
             let uL = JSON.stringify(currHouse);
             localStorage.setItem(joinKey, uL);
             alert('Worked');
-            location.href = '/';
+            location.href = '../';
         }
     }
 }
