@@ -22,3 +22,8 @@
     background-color: var(--uranian-blue);
     color: var(--space-cadet);
 }
+
+.deleteText {
+    text-align: center;
+    width: 100%;
+}
