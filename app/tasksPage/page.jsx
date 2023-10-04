@@ -1,5 +1,10 @@
+import TaskForm from "../components/TaskForm/TaskForm";
+
 export default function TasksPageUI() {
     return (
-        <h1>This is the tasks page</h1>
-    );
+        <>
+        <h1>Create Task</h1>
+           <TaskForm></TaskForm>
+        </>
+        );
 }
