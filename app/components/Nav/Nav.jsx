@@ -42,6 +42,7 @@ export default function Nav() {
                 <NavLink href='createHouse'>CREATE HOUSE</NavLink>
                 <NavLink href='manageHouses'>MANAGE</NavLink>
                 <NavLink href='storePage'>MARKETPLACE</NavLink>
+                <NavLink href='aquarium'>AQUARIUM</NavLink>
             </ul>
             <ul className={styles.nav_list + ' ' + styles.auth}>
                 {loading ? null : !user ? (

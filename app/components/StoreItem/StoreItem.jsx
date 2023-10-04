@@ -1,6 +1,7 @@
 import styles from './StoreItem.module.css';
 import Button from '../Button/Button';
 
+
 export default function StoreItem({ name, desc, price, img }) {
     return (
         <div className={styles.item_container}>
