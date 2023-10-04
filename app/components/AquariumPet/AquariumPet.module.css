@@ -4,7 +4,6 @@
 }
 
 .left {
-    border: 3px solid black;
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
     margin: 0 auto; /*No margin on the top and bottom, auto margins on left and right */
