@@ -20,14 +20,19 @@
 }
 
 .rendered_task { 
-    margin-left: 30rem;
+    margin-left: 20rem;
     margin-right: 10rem;
+    font-size: x-large;
+    font-weight: bold;
+    text-decoration: underline;
+    color: var(--myrtle-green)
 }
 
 .to_do { 
     color: var(--space-cadet);
-    margin-left: 30rem;
+    margin-left: 20rem;
     margin-right: 10rem;
+    margin-top: 5rem;
 }
 
 .component-area { 
