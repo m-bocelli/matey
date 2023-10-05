@@ -1,21 +1,38 @@
 .item_container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin: 1rem;
     border: solid 3px var(--cherry-blossom);
     border-radius: 10px;
     background-color: var(--cherry-blossom);
     color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s;
 }
 
 .item_img {
-    height: 50px;
+    width: 10rem;
+    pointer-events: none;
 }
 
 .item_buy_sect {
-    display: flex;
-    flex-direction: column;
+    background-color: var(--space-cadet);
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.item_container:hover {
+    transform: scale(1.1);
+}
+
+.item_container:hover .name {
+    opacity: 1;
+}
+
+.name {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.2;
 }
