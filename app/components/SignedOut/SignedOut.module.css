@@ -1,0 +1,9 @@
+.container {
+    margin: auto;
+    display: block;
+    color: var(--cherry-blossom);
+}
+
+.auth_buttons {
+    text-align: center;
+}
