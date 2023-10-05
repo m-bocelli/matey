@@ -19,6 +19,16 @@
     font-size:xx-large;
 }
 
+.rendered_task { 
+    margin-left: 30rem;
+    margin-right: 10rem;
+}
+
+.to_do { 
+    color: var(--space-cadet);
+    margin-left: 30rem;
+    margin-right: 10rem;
+}
 
 .component-area { 
     display: flex;

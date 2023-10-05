@@ -1,8 +1,21 @@
 "use client";
 import { Form } from "react-bootstrap";
 import styles from "./TaskForm.module.css";
+import { useState } from "react";
 
-export default function TaskForm() {
+
+function TaskForm() {
+    const [taskName, setTaskName] = useState(''); // Add state for taskName
+    const [renderedTask, setRenderedTask] = useState('');
+
+    const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Use taskName directly from state
+    setRenderedTask(taskName);
+    setTaskName(''); // Optionally, you can clear the input field
+  };
+      
   return (
     <>
     <div className={styles.component_area}>
@@ -11,13 +24,15 @@ export default function TaskForm() {
       <Form>
         <Form.Group>
           <Form.Label>Task Name:</Form.Label>
-          <div className={styles.task_name}>
           <Form.Control
             className="control"
             type="input"
+            id = "task-name"
             placeholder="What needs to be completed?"
+            value={taskName} // Use the value from state
+            onChange={(e) => setTaskName(e.target.value)}
           />
-          </div>
+
           <Form.Text className="text-muted"></Form.Text>
         </Form.Group>
         <br></br>
@@ -43,9 +58,17 @@ export default function TaskForm() {
         </Form.Group>
       </Form>
     </div>
-    <button className={styles.pin_button}>PIN TASK TO BOARD</button>
+    <button className={styles.pin_button} onClick={handleSubmit}>PIN TASK TO BOARD</button>
     </div>
+    <h2 className={styles.to_do}>To Do:</h2>
+      {renderedTask && (
+        <div className={styles.rendered_task}>
+          <p>{renderedTask}</p>
+        </div>
+      )}
 
     </>
   );
 }
+
+export default TaskForm;
