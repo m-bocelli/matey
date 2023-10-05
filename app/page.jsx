@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import styles from './page.module.css';
 import { UserAuth } from './js/AuthContext';
 import SignedOut from './components/SignedOut/SignedOut';
+import Leaderboard from './components/Leaderboard/Leaderboard';
 
 export default function Page() {
     const { user } = UserAuth();
@@ -29,6 +30,10 @@ export default function Page() {
         })();
     }, [user]);
 
+    async function getUserPoints() {
+        // func that will grab all points of all users in house
+    }
+
     return (
         <main className={styles.container}>
             {loading ? (
@@ -46,14 +51,22 @@ export default function Page() {
                         </h1>
                     </header>
 
-                    <div id='houseInfo'>{displayHouse()}</div>
+                    <div id='houseInfo'>
+                        {displayHouse(user.displayName.split(' ')[0])}
+                    </div>
                 </>
             )}
         </main>
     );
 }
 
-function displayHouse() {
+function displayHouse(user) {
+    const DUMMY_POINTS = [
+        { name: user, points: 200 },
+        { name: 'Sebastien', points: 800 },
+        { name: 'Ariel', points: 600 },
+    ];
+
     if (typeof window == 'undefined') {
         return <button>CREATE HOUSE</button>;
     } else if (localStorage.getItem('keyList') != null) {
@@ -74,6 +87,8 @@ function displayHouse() {
                 <h2>🏠 House {houseName}</h2>
                 <h3>Mates</h3>
                 {houseMembers}
+                <br></br>
+                <Leaderboard data={DUMMY_POINTS} />
             </div>
         );
     } else {
