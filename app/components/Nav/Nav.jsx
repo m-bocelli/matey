@@ -3,8 +3,6 @@ import styles from './Nav.module.css';
 import authStyles from '../NavLink/NavLink.module.css';
 import { UserAuth } from '@/app/js/AuthContext.js';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router.js';
-import { redirect } from 'next/navigation.js';
 
 export default function Nav() {
     const { user, googleSignIn, logOut } = UserAuth();
@@ -21,7 +19,6 @@ export default function Nav() {
     async function handleSignIn() {
         try {
             console.log('sign-in');
-            router.push('/');
             await googleSignIn();
         } catch (error) {
             console.log(error);
@@ -42,11 +39,15 @@ export default function Nav() {
             <div className={styles.title}>MATEY 🏴‍☠️</div>
             <ul className={styles.nav_list}>
                 <NavLink href='/'>DASHBOARD</NavLink>
-                <NavLink href='createHouse'>CREATE HOUSE</NavLink>
-                <NavLink href='manageHouses'>MANAGE</NavLink>
-                <NavLink href='storePage'>MARKETPLACE</NavLink>
-                <NavLink href='tasksPage'>HOUSE TASKS</NavLink>
-                <NavLink href='aquarium'>AQUARIUM</NavLink>
+                {!user ? null : (
+                    <>
+                        <NavLink href='createHouse'>CREATE HOUSE</NavLink>
+                        <NavLink href='manageHouses'>MANAGE</NavLink>
+                        <NavLink href='storePage'>MARKETPLACE</NavLink>
+                        <NavLink href='tasksPage'>HOUSE TASKS</NavLink>
+                        <NavLink href='aquarium'>AQUARIUM</NavLink>
+                    </>
+                )}
             </ul>
             <ul className={styles.nav_list + ' ' + styles.auth}>
                 {loading ? null : !user ? (

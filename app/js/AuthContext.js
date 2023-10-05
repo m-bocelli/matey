@@ -19,6 +19,7 @@ export function AuthContextProvider({ children }) {
 
     function logOut() {
         signOut(auth);
+        location.href = './';
     }
 
     useEffect(() => {

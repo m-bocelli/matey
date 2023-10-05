@@ -42,7 +42,7 @@ export default function StorePageUI() {
             </Row>
             <Row className={styles.row}>
                 <div className={styles.cart_bar}>
-                    <h2>Selected:</h2>
+                    <h2>🛒</h2>
                     <p>Total: {total}</p>
                     <Button onClick={dummyBuy}>BUY</Button>
                 </div>

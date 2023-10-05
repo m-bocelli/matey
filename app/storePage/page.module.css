@@ -8,6 +8,8 @@
 .section {
     display: flex;
     flex-wrap: wrap;
+    background-color: #fdc7c7;
+    border-radius: 10px;
 }
 
 .cart_bar {
