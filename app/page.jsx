@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import styles from './page.module.css';
 import { UserAuth } from './js/AuthContext';
+import SignedOut from './components/SignedOut/SignedOut';
 
 export default function Page() {
     const { user } = UserAuth();
@@ -33,7 +34,7 @@ export default function Page() {
             {loading ? (
                 <p>Loading...</p>
             ) : !user ? (
-                <h1>You are not signed-in ☹️</h1>
+                <SignedOut />
             ) : (
                 <>
                     <header className={styles.header}>

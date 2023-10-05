@@ -1,5 +1,5 @@
 import { Card, Col, Row } from 'react-bootstrap';
-import { COSMETICS } from '../constants/cosmetics';
+import { SEACREATURES } from '../constants/seacreatures';
 import StoreItem from '../components/StoreItem/StoreItem';
 import styles from './page.module.css';
 
@@ -11,7 +11,7 @@ export default function StorePageUI() {
             </Row>
             <Row>
                 <Card>
-                    {COSMETICS.map((item) => {
+                    {SEACREATURES.map((item) => {
                         return (
                             <StoreItem
                                 key={item.id}

@@ -3,6 +3,8 @@ import styles from './Nav.module.css';
 import authStyles from '../NavLink/NavLink.module.css';
 import { UserAuth } from '@/app/js/AuthContext.js';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router.js';
+import { redirect } from 'next/navigation.js';
 
 export default function Nav() {
     const { user, googleSignIn, logOut } = UserAuth();
@@ -11,7 +13,7 @@ export default function Nav() {
     // forced loading to hide flash of signed-out state while still signed-in
     useEffect(() => {
         (async function () {
-            await new Promise((res) => setTimeout(res, 90));
+            await new Promise((res) => setTimeout(res, 50));
             setLoading(false);
         })();
     }, [user]);
@@ -19,6 +21,7 @@ export default function Nav() {
     async function handleSignIn() {
         try {
             console.log('sign-in');
+            router.push('/');
             await googleSignIn();
         } catch (error) {
             console.log(error);
@@ -43,6 +46,7 @@ export default function Nav() {
                 <NavLink href='manageHouses'>MANAGE</NavLink>
                 <NavLink href='storePage'>MARKETPLACE</NavLink>
                 <NavLink href='tasksPage'>HOUSE TASKS</NavLink>
+                <NavLink href='aquarium'>AQUARIUM</NavLink>
             </ul>
             <ul className={styles.nav_list + ' ' + styles.auth}>
                 {loading ? null : !user ? (
