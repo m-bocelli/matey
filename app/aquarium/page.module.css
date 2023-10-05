@@ -3,7 +3,6 @@
     flex-direction: column;
     color: var(--cherry-blossom);
     margin-left: 12rem;
-    padding: 1rem;
 
     background: linear-gradient(-45deg, #2e5ce3, #3c72e7, #23a6d5, #57c8ae);
 	background-size: 400% 400%;
@@ -42,6 +41,7 @@
 }
 
 .title {
+    padding: 1rem;
 }
 
 .fishTank {

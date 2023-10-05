@@ -41,9 +41,18 @@ export default function CreateHouseUI() {
             <h1> Create House </h1>
             <form id='createHouse' onSubmit={createHouse}>
                 <label>House Name:</label>
-                <input className={styles.textInput} type='text' id='houseName' name='houseName'></input>
+                <input
+                    className={styles.textInput}
+                    type='text'
+                    id='houseName'
+                    name='houseName'
+                ></input>
                 <br></br>
-                <input className={styles.create} type='submit' value='Create House'></input>
+                <input
+                    className={styles.create}
+                    type='submit'
+                    value='Create House'
+                ></input>
                 {/*Submit button onclick will use a function to genrate a unique House Key*/}
             </form>
         </div>
