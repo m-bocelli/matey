@@ -3,7 +3,7 @@
     height: 3rem;
     min-width: 7rem;
     background-color: var(--space-cadet);
-    box-shadow: 2px 2px 2px black;
+    box-shadow: 2px 2px 2px var(--cherry-blossom);
     font-weight: bold;
     color: white;
     transition: font-size 0.3s;

@@ -4,3 +4,17 @@
     padding-top: 1rem;
     color: var(--cherry-blossom);
 }
+
+.section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cart_bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.row {
+    margin-bottom: 1rem;
+}
