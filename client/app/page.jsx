@@ -6,7 +6,7 @@ import SignedOut from './components/SignedOut/SignedOut';
 import Leaderboard from './components/Leaderboard/Leaderboard';
 
 export default function Page() {
-    const { user } = UserAuth();
+    const { user, bearerToken } = UserAuth();
     const [greeting, setGreeting] = useState('');
     const [loading, setLoading] = useState(true);
 
