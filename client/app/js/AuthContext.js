@@ -11,7 +11,6 @@ export const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
     const [user, setUser] = useState(null);
-    const [bearerToken, setBearerToken] = useState(null);
 
     function googleSignIn() {
         const provider = new GoogleAuthProvider();
@@ -25,14 +24,8 @@ export function AuthContextProvider({ children }) {
 
     useEffect(() => {
         if (user) {
-            fetch('http://localhost:2001/createUser', {method: 'POST', body: user})
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.error('Error creating user object:', error);
-            });
+            fetch('http://localhost:2001/createUser', {method: 'POST', headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(user)});
         }
     }, [user]);
 
@@ -44,7 +37,7 @@ export function AuthContextProvider({ children }) {
     }, [user]); // run whenever user is updated
 
     return (
-        <AuthContext.Provider value={{ user, bearerToken, googleSignIn, logOut }}>
+        <AuthContext.Provider value={{ user, googleSignIn, logOut }}>
             {children}
         </AuthContext.Provider>
     ); // wrapper to use Auth state in all pages

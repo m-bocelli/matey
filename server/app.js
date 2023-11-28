@@ -10,17 +10,13 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.post('/createUser', async (req, res) => {
-    console.log(req.body);
-    res.send(req.body)
-    /*
     const { uid, displayName, photoURL, email } = req.body;
-    
     const userRef = db.ref(`users/${uid}`);
     const user = await userRef.once('value');
-
+    
     if (!user.exists()) {
         await userRef.set({
-            date_joined: `${Date.now()}`,
+            date_joined: Date.now(),
             email: email,
             fish: [],
             house: null,
@@ -28,9 +24,11 @@ app.post('/createUser', async (req, res) => {
             name: displayName,
             points: 0,
             icon: photoURL
-        })
+        });
+        res.status(200).send({Success: 'Created user'});
+    } else {
+        res.status(304).send({Nothing: 'User already exists'});
     }
-    */
 })
 
 app.get('/users', (req, res) => {
@@ -39,10 +37,10 @@ app.get('/users', (req, res) => {
     usersRef.once('value')
         .then((dataSnap) => {
             const users = dataSnap.val();
-            res.send(users);
+            res.status(200).send(users);
         })
         .catch(() => {
-            console.error('Error broh')
+            res.status(500).send({Error: 'cannot get users broh'});
         })
 })
 
@@ -55,7 +53,7 @@ app.get('/users/:id', validate, (req, res) => {
             const user = dataSnap.val();
 
             if (user) {
-                res.send(user);
+                res.status(200).send(user);
             } else {
                 res.status(404).send({Error: 'User not found'});
             }
