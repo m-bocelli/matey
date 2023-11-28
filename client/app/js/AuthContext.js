@@ -1,4 +1,4 @@
-import { useContext, createContext, useState, useEffect } from 'react';
+import { useContext, createContext, useState, useEffect, use } from 'react';
 import {
     signInWithPopup,
     signOut,
@@ -24,16 +24,21 @@ export function AuthContextProvider({ children }) {
     }
 
     useEffect(() => {
+        if (user) {
+            fetch('http://localhost:2001/createUser', {method: 'POST', body: user})
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error creating user object:', error);
+            });
+        }
+    }, [user]);
+
+    useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
-            if (currentUser) {
-                currentUser.getIdToken(true).then((token) => {
-                    setBearerToken(token);
-                })
-                .catch(() => console.error('No token'));
-            } else {
-                setBearerToken(null);
-            }
         });
         return () => unsubscribe;
     }, [user]); // run whenever user is updated
