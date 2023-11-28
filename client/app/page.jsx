@@ -6,9 +6,10 @@ import SignedOut from './components/SignedOut/SignedOut';
 import Leaderboard from './components/Leaderboard/Leaderboard';
 
 export default function Page() {
-    const { user, bearerToken } = UserAuth();
+    const { user } = UserAuth();
     const [greeting, setGreeting] = useState('');
     const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
         let currTime = new Date().getHours();
