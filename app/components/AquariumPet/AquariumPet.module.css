@@ -8,3 +8,26 @@
     transform: scaleX(-1);
     margin: 0 auto; /*No margin on the top and bottom, auto margins on left and right */
 }
+
+
+.right {
+    width: 100px;
+    height: 100px;
+    animation-name: moveRight;
+    animation-duration: 8s;
+    position:absolute;
+}
+
+@keyframes moveRigt {
+
+    0% 
+    {
+        left:0
+    }
+
+    100% 
+    {
+        left: 100em;
+    }
+}
+  

@@ -16,7 +16,7 @@ export default function AquariumUI() {
                         key={item.id}
                         name={item.name}
                         img={item.img}
-                        user={user ? user.displayName : 'Matthew Mauriello'}
+                        user={user ? user.displayName : '??? ???'}
                     ></AquariumPet>
                 );
             })}
