@@ -4,12 +4,24 @@ import { SEACREATURES } from '../constants/seacreatures';
 import StoreItem from '../components/StoreItem/StoreItem';
 import styles from './page.module.css';
 import Button from '../components/Button/Button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { UserAuth } from '../js/AuthContext';
 
 export default function StorePageUI() {
+    const {user, bearerToken} = UserAuth();
     const [selected, setSelected] = useState([]);
     const [shop, setShop] = useState(SEACREATURES);
     const [total, setTotal] = useState(0);
+
+    useEffect(() => {
+        if (user) {
+            user.getIdToken().then((token) => {
+                fetch(`http://localhost:2001/users/${user.uid}`, {headers: {Authorization : `Bearer ${token}`}})
+                .then((res) => res.json())
+                .then((data) => console.log(data));
+            })
+        }
+    }, [user])
 
     function select(_id) {
         const selectedItem = shop.find((item) => item.id === _id);
