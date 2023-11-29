@@ -10,6 +10,7 @@ export default function Page() {
     const [greeting, setGreeting] = useState('');
     const [loading, setLoading] = useState(true);
 
+
     useEffect(() => {
         let currTime = new Date().getHours();
 

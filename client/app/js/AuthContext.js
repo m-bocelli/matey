@@ -1,4 +1,4 @@
-import { useContext, createContext, useState, useEffect } from 'react';
+import { useContext, createContext, useState, useEffect, use } from 'react';
 import {
     signInWithPopup,
     signOut,
@@ -21,6 +21,13 @@ export function AuthContextProvider({ children }) {
         signOut(auth);
         location.href = './';
     }
+
+    useEffect(() => {
+        if (user) {
+            fetch('http://localhost:2001/createUser', {method: 'POST', headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(user)});
+        }
+    }, [user]);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
