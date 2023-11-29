@@ -5,19 +5,3 @@
     grid-template-columns: repeat(7, 1fr);
     gap: 0
 }
-
-.long_box { 
-    fill: none;
-    outline: bold;
-    outline-color: var(--space-cadet);
-    border-radius: 5px;
-    height: 8rem;
-}
-
-.long_boxes { 
-    margin-left: 30rem;
-    margin-right: 8rem;
-    display: grid;
-    grid-template-columns: auto;
-    gap: 0
-}
