@@ -17,6 +17,9 @@ export default function AquariumUI() {
                         name={item.name}
                         img={item.img}
                         user={user ? user.displayName : '??? ???'}
+                        size={item.size}
+                        speed={item.speed}
+                        dpeth={item.depth}
                     ></AquariumPet>
                 );
             })}

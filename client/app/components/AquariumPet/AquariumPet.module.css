@@ -6,28 +6,16 @@
 .left {
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
-    margin: 0 auto; /*No margin on the top and bottom, auto margins on left and right */
-}
 
-
-.right {
-    width: 100px;
-    height: 100px;
-    animation-name: moveRight;
-    animation-duration: 8s;
     position:absolute;
+    /*margin: 0 auto; /*No margin on the top and bottom, auto margins on left and right */
 }
 
-@keyframes moveRigt {
+.fishText {
+    display:none;
+}
 
-    0% 
-    {
-        left:0
-    }
-
-    100% 
-    {
-        left: 100em;
-    }
+.fishText:hover {
+    display: block;
 }
   
