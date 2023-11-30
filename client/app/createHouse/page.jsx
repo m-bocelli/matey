@@ -38,7 +38,7 @@ function createHouse(e) {
 export default function CreateHouseUI() {
     return (
         <div className={styles.container}>
-            <h1> Create House </h1>
+            <h1> Create House 🏠 </h1>
             <form id='createHouse' onSubmit={createHouse}>
                 <label>House Name:</label>
                 <input
