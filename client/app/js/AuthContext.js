@@ -1,4 +1,4 @@
-import { useContext, createContext, useState, useEffect, use } from 'react';
+import { useContext, createContext, useState, useEffect } from 'react';
 import {
     signInWithPopup,
     signOut,
@@ -11,6 +11,31 @@ export const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
     const [user, setUser] = useState(null);
+    const [userData, setUserData] = useState(null);
+    const [bearerToken, setBearerToken] = useState(null);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+        return () => unsubscribe;
+    }, [user]); // run whenever user is updated
+
+    useEffect(() => {
+        if (user) {
+            // create user in database if they are not already there
+            fetch('http://localhost:2001/createUser', {method: 'POST', headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(user)})
+            .then(() => user.getIdToken().then((token) => {
+                fetch(`http://localhost:2001/users/${user.uid}`, {headers: {Authorization : `Bearer ${token}`}})
+                .then((res) => res.json())
+                .then((data) => {
+                    setUserData(data);
+                    setBearerToken(token);
+                });
+            }));
+        }
+    }, [user]);
 
     function googleSignIn() {
         const provider = new GoogleAuthProvider();
@@ -22,27 +47,14 @@ export function AuthContextProvider({ children }) {
         location.href = './';
     }
 
-    useEffect(() => {
-        if (user) {
-            fetch('http://localhost:2001/createUser', {method: 'POST', headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(user)});
-        }
-    }, [user]);
-
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
-        });
-        return () => unsubscribe;
-    }, [user]); // run whenever user is updated
-
     return (
-        <AuthContext.Provider value={{ user, googleSignIn, logOut }}>
+        <AuthContext.Provider value={{ user, googleSignIn, logOut, userData, bearerToken }}>
             {children}
         </AuthContext.Provider>
     ); // wrapper to use Auth state in all pages
 }
 
+// wrapper to quickly grab context state (1 import vs 2 lol)
 export function UserAuth() {
     return useContext(AuthContext);
 }
