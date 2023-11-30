@@ -23,7 +23,7 @@ function joinHouse(e) {
 export default function JoinHouseUI() {
     return (
         <div className={styles.container}>
-            <h1> Join House </h1>
+            <h1> Join House 🏠 </h1>
             <form id='joinHouse' onSubmit={joinHouse}>
                 <label>House Key:</label>
                 <input className={styles.textInput} type='text' id='houseKey' name='houseKey'></input>
