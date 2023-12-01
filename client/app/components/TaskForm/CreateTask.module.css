@@ -14,6 +14,29 @@
     bottom: 10%;
 }
 
+.entire_form {
+    margin-left: 30rem;
+    margin-right: 10rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 40rem;
+    padding-right: 5rem;
+    border-radius: 20px;
+    border-color: var(--acd2ed);
+    background-color: var(--uranian-blue);
+    display: block;
+    bottom: 10%;
+}
+
+.entire_form label,
+.entire_form input {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+
 .task_header { 
     color: var(--cherry-blossom);
     font-size:xx-large;
