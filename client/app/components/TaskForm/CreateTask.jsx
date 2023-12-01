@@ -1,27 +1,43 @@
 "use client";
 import styles from "./CreateTask.module.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function CreateTask() {
   const [isFormVisible, setIsFormVisible] = useState(false);
+  const [dueDate, setDueDate] = useState('');
+  const [selectedFrequency, setSelectedFrequency] = useState('Daily');
+
 
   const toggleForm = () => {
     setIsFormVisible(!isFormVisible);
   };
 
+  const handleFrequencyChange  = (event) => {
+    setSelectedFrequency(event.target.value);
+  };
+
+  const handleDueDateChange = (event) => {
+    setDueDate(event.target.value);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+
     const taskName = document.getElementById('task_name').value;
     const taskDetails = document.getElementById('task_details').value;
-    const taskThing = document.getElementById('task_thing').value;
+    const dueDate = document.getElementById('task_due').value;
+    const frequency = document.getElementById('frequency').value;
 
     const formData = {
         taskName,
         taskDetails,
-        taskThing,
+        dueDate,
+        frequency
       };
 
+    // COMMENT: this chunk is where we'd put the api endpoint
+    //
     //   try {
     //     const response = await fetch('URL', {
     //       method: 'POST',
@@ -37,7 +53,7 @@ function CreateTask() {
     //   } catch (error) {
     //     console.error('Error:', error);
     //   }
-    // };
+     };
   
 
   return (
@@ -52,23 +68,24 @@ function CreateTask() {
             id="task_name"
             type="text"
             name="name_field1"
-            value="What needs to be completed?."
+            placeholder="What needs to be completed?."
           />
           <label htmlFor="Details">Details</label>
           <input
             id="task_details"
             type="text"
             name="name_field2"
-            value="What needs to be completed?."
+            placeholder="What needs to be completed?."
           /><label htmlFor="Details">Due Date</label>
           <input
             id="task_due"
-            type="text"
+            type="date"
             name="name_field2"
-            value={today}
+            value={dueDate}
+            onChange={handleDueDateChange}
           />
           <label htmlFor="Frequency">Frequency</label>
-          <select id="frequency" value={selectedPriority} onChange={handlePriorityChange}>
+          <select id="frequency" value={selectedFrequency} onChange={handleFrequencyChange}>
               <option value="weekly">Weekly</option>
               <option value="montly">Monthly</option>
               <option value="daily">Daily</option>
@@ -79,8 +96,7 @@ function CreateTask() {
         </form>
       </div>)}
       </>
-
-  );
-    
-}
+  
+    );
+    }
 export default CreateTask;
