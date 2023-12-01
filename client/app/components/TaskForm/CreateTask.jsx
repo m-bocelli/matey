@@ -26,12 +26,22 @@ function CreateTask() {
     const taskName = document.getElementById('task_name').value;
     const taskDetails = document.getElementById('task_details').value;
     const dueDate = document.getElementById('task_due').value;
+    
+    let pointsValue = 0;
+    if (frequency === "weekly") {
+      pointsValue = 15; 
+    } else if (frequency === "monthly") {
+      pointsValue = 25; 
+    } else if (frequency === "daily") {
+      pointsValue = 5; 
+    }
 
     const formData = {
         taskName,
         taskDetails,
         dueDate: dueDate,
         frequency: selectedFrequency,
+        pointsValue
       };
 
     // COMMENT: this chunk is where we'd put the api endpoint
@@ -66,7 +76,8 @@ function CreateTask() {
             id="task_name"
             type="text"
             name="name_field1"
-            placeholder="What needs to be completed?."
+            placeholder="Char limit: 30."
+            maxLength={30}
           />
           <label htmlFor="Details">Details</label>
           <input
@@ -74,6 +85,7 @@ function CreateTask() {
             type="text"
             name="name_field2"
             placeholder="What needs to be completed?."
+            maxLength={250}
           /><label htmlFor="Details">Due Date</label>
           <input
             id="task_due"
