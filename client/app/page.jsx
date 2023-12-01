@@ -52,11 +52,9 @@ export default function Page() {
                     </header>
                     <div id='houseInfo'>
                         {
-                            /*
                             userData.house ? 
                                 <HouseOverview token={bearerToken} houseId={userData.house}/> : 
                                 <h2>no house lol</h2>
-                                */
                         }
                     </div>
                 </>

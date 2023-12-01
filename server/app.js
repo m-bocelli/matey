@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 
 app.post('/createUser', async (req, res) => {
     const { uid, displayName, photoURL, email } = req.body;
@@ -86,6 +87,18 @@ app.get('/houses/:id', validate, (req, res) => {
         .catch(() => {
             res.status(500).send({Error: 'cannot get houses broh'});
         })
+})
+
+app.post('/createHouse', async (req, res) => {
+    const uid = req.query.id;
+    console.log(uid);
+    const houseName = req.body.houseName;
+    
+    const houses = db.ref('houses/');
+    await houses.push({
+        name: houseName,
+        mates: 'bruh2'
+    });
 })
 
 app.listen(port, () => {
