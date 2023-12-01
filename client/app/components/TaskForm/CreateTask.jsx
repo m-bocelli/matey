@@ -6,6 +6,8 @@ function CreateTask() {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [dueDate, setDueDate] = useState('');
   const [selectedFrequency, setSelectedFrequency] = useState('Daily');
+  const [isCompleted, setIsCompleted] = useState(false); 
+
 
 
   const toggleForm = () => {
@@ -26,7 +28,8 @@ function CreateTask() {
     const taskName = document.getElementById('task_name').value;
     const taskDetails = document.getElementById('task_details').value;
     const dueDate = document.getElementById('task_due').value;
-    
+    const [isCompleted, setIsCompleted] = useState(false); 
+
     let pointsValue = 0;
     if (frequency === "weekly") {
       pointsValue = 15; 
@@ -41,7 +44,8 @@ function CreateTask() {
         taskDetails,
         dueDate: dueDate,
         frequency: selectedFrequency,
-        pointsValue
+        pointsValue, 
+        isCompleted // This will be initially false when task form is submitted, later toggled to true if all roomies verify
       };
 
     // COMMENT: this chunk is where we'd put the api endpoint
