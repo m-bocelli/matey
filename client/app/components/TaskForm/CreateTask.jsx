@@ -20,20 +20,18 @@ function CreateTask() {
     setDueDate(event.target.value);
   };
 
+  // COMMENT: This function, handleSubmit, is where the POST request code will go.
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-
     const taskName = document.getElementById('task_name').value;
     const taskDetails = document.getElementById('task_details').value;
     const dueDate = document.getElementById('task_due').value;
-    const frequency = document.getElementById('frequency').value;
 
     const formData = {
         taskName,
         taskDetails,
-        dueDate,
-        frequency
+        dueDate: dueDate,
+        frequency: selectedFrequency,
       };
 
     // COMMENT: this chunk is where we'd put the api endpoint
@@ -59,7 +57,7 @@ function CreateTask() {
   return (
     <>
     <button className={styles.pin_button} onClick={toggleForm}>
-          PIN TASK TO BOARD
+          + CREATE TASK
         </button>
     {isFormVisible && ( <div className={styles.entire_form}>
         <form onSubmit={handleSubmit}>
