@@ -7,12 +7,21 @@ function CreateTask() {
   const [dueDate, setDueDate] = useState('');
   const [selectedFrequency, setSelectedFrequency] = useState('Daily');
   const [isCompleted, setIsCompleted] = useState(false); 
+  //const [isFormMinimized, setIsFormMinimized] = useState(false);
 
 
 
   const openForm = () => {
     setIsFormVisible(!isFormVisible);
   };
+
+  //const minimizeForm = () { 
+
+  //};
+
+  //const expandForm = () { 
+    //setIsFormMinimized(!isFormMinimized);
+  //};
 
   const closeForm = () => { 
     setIsFormVisible(!isFormVisible);
@@ -76,7 +85,7 @@ function CreateTask() {
     <>
     <button className={styles.pin_button} onClick={openForm}>
           + CREATE TASK
-        </button>
+    </button>
     {isFormVisible && ( <div className={styles.entire_form}>
       <button className={styles.close_form} onClick={closeForm}>X</button>
         <form onSubmit={handleSubmit}>
@@ -109,8 +118,8 @@ function CreateTask() {
               <option value="montly">Monthly</option>
               <option value="daily">Daily</option>
             </select>
-          <div className="submit-button">
-            <input type="submit" value="OK" />
+          <div className={styles.submit_button}>
+            <input type="submit" value="+ Create Task" />
           </div>
         </form>
       </div>)}
