@@ -36,6 +36,36 @@
   margin-bottom: 1rem;
 }
 
+.close_form {
+    display: inline-block;
+    border: none;
+    padding: 1rem 2rem;
+    margin: 0;
+    text-decoration: none;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+
+}
+
+.close_form:hover,
+.close_form:focus {
+    color:black;
+}
+
+.close_form:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+
+.close_form:active {
+    transform: scale(0.99);
+}
+
 
 .task_header { 
     color: var(--cherry-blossom);
@@ -77,6 +107,7 @@
     background-color:lightseagreen;
     outline-color: var(--aquamarine);
     border-radius: 10px;
+    border: none;
     padding: 0.5rem;
 }
 

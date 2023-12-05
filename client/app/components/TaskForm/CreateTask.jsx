@@ -10,9 +10,13 @@ function CreateTask() {
 
 
 
-  const toggleForm = () => {
+  const openForm = () => {
     setIsFormVisible(!isFormVisible);
   };
+
+  const closeForm = () => { 
+    setIsFormVisible(!isFormVisible);
+  }
 
   const handleFrequencyChange  = (event) => {
     setSelectedFrequency(event.target.value);
@@ -70,10 +74,11 @@ function CreateTask() {
 
   return (
     <>
-    <button className={styles.pin_button} onClick={toggleForm}>
+    <button className={styles.pin_button} onClick={openForm}>
           + CREATE TASK
         </button>
     {isFormVisible && ( <div className={styles.entire_form}>
+      <button className={styles.close_form} onClick={closeForm}>X</button>
         <form onSubmit={handleSubmit}>
           <label htmlFor="task_name">Enter Task: </label>
           <input
