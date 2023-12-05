@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.post('/createUser', async (req, res) => {
     const { uid, displayName, photoURL, email } = req.body;
@@ -45,23 +45,28 @@ app.get('/users', (req, res) => {
         })
 })
 
-app.get('/users/:id', validate, (req, res) => {
+app.get('/users/:id', async (req, res) => {
     const userId = req.params.id;
+    const houseId = req.query.houseId;
     const userRef = db.ref(`users/${userId}`);
-
-    userRef.once('value')
-        .then((dataSnap) => {
-            const user = dataSnap.val();
-
-            if (user) {
-                res.status(200).send(user);
+    const user = (await userRef.once('value')).val();
+    if (user && houseId) {
+        if (user.house === houseId) {
+            const houseRef = db.ref(`houses/${houseId}`);
+            const house = (await houseRef.once('value')).val();
+            if (house) {
+                res.status(200).send(house);
             } else {
-                res.status(404).send({Error: 'User not found'});
+                res.status(404).send({Error: 'Invalid house ID'});
             }
-        })
-        .catch(() => {
-            res.status(500).send({Error: 'Server error'});
-        })
+        } else {
+            res.status(404).send({Error: 'Invalid house ID'});
+        }
+    } else if (user) {
+        res.status(200).send(user);
+    } else {
+        res.status(404).send({Error: 'User not found'});
+    }    
 })
 
 app.get('/houses', (req, res) => {
@@ -89,16 +94,18 @@ app.get('/houses/:id', validate, (req, res) => {
         })
 })
 
-app.post('/createHouse', async (req, res) => {
+app.put('/createHouse', async (req, res) => {
+    console.log(req);
+    /*
     const uid = req.query.id;
-    console.log(uid);
     const houseName = req.body.houseName;
     
     const houses = db.ref('houses/');
     await houses.push({
         name: houseName,
-        mates: 'bruh2'
+        mates: uid
     });
+    */
 })
 
 app.listen(port, () => {

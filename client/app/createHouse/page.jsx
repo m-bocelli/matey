@@ -1,24 +1,17 @@
 'use client';
 import styles from './page.module.css';
 import { UserAuth } from '../js/AuthContext';
-import { useEffect } from 'react';
-
-function createHouse(e) {
-    e.preventDefault();
-    
-    location.href = '/';
-}
+import { useEffect, useState } from 'react';
 
 export default function CreateHouseUI() {
     const { userData } = UserAuth();
-    let endpoint = '';
+    const [endpoint, setEndpoint] = useState('');
 
     useEffect(() => {
         if (userData) {
-            endpoint = `http://localhost:2001/createHouse?user=${userData.id}`;
+            setEndpoint(`http://localhost:2001/createHouse?user=${userData.id}`);
         }
     }, [userData]);
-    
 
     return (
         <div className={styles.container}>
@@ -38,7 +31,6 @@ export default function CreateHouseUI() {
                     type='submit'
                     placeholder='Create'
                 ></input>
-                {/*Submit button onclick will use a function to genrate a unique House Key*/}
             </form>
         </div>
     );
