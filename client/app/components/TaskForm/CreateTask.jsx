@@ -1,6 +1,12 @@
 "use client";
 import styles from "./CreateTask.module.css";
 import { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWindowMinimize } from '@fortawesome/free-solid-svg-icons';
+import { faX } from "@fortawesome/free-solid-svg-icons";
+
+
+
 
 function CreateTask() {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -87,9 +93,14 @@ function CreateTask() {
           + CREATE TASK
     </button>
     {isFormVisible && ( <div className={styles.entire_form}>
-      <button className={styles.close_form} onClick={closeForm}>X</button>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="task_name">Enter Task: </label>
+      <button className={styles.close_form} onClick={closeForm}>
+      <FontAwesomeIcon icon={faX} size="lg" style={{color:"lightseagreen"}}/>
+      </button>
+      <button className={styles.minimize_form}>
+        <FontAwesomeIcon icon={faWindowMinimize} size="lg" style={{color:"lightseagreen"}}/>
+      </button>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <label htmlFor="task_name">Task Name </label>
           <input
             id="task_name"
             type="text"
@@ -118,6 +129,7 @@ function CreateTask() {
               <option value="montly">Monthly</option>
               <option value="daily">Daily</option>
             </select>
+          
           <div className={styles.submit_button}>
             <input type="submit" value="+ Create Task" />
           </div>

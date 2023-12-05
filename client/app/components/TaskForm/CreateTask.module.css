@@ -14,57 +14,132 @@
     bottom: 10%;
 }
 
+.form { 
+    display: inline-block;
+    padding: 30px;
+}
+
+.form select { 
+    width: 35rem;
+    height:3rem;
+    display: block;
+    margin-bottom: 10px;
+    font-size: larger;
+
+}
+
+.form label,
+.form input,
+.form select {
+    margin-left: 1rem;
+    margin-right: 20rem;
+}
+
+
+
+/*
+this is coloring the text of what the user types in the input area
+*/
+.form input{ 
+    color:rgb(0, 0, 0);
+    width: 35rem;
+    height: 3rem;
+}
+
+
+
+.form input:focus {
+    outline: 2px var(--cherry-blossom)!important; /* Change the color to your preference */
+  }
+
+
+/*
+Task Name, Details, Due Date, Frequency
+*/ 
+.form label {
+    font-weight: bolder;
+    color: darkred;
+    font-size:larger;
+
+}
+
+#task_details {
+    color: rgb(0, 0, 0);
+    width: 35rem;
+    height: 5rem;
+    display: inline-block;
+  }
+
+.form ::placeholder{
+    padding-left: 0.25rem;
+    padding-top:2rem;
+    padding-bottom: 2rem;
+    font-size: large;
+}
+
 .entire_form {
     margin-left: 30rem;
-    margin-right: 10rem;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    margin-right: 12rem;
+    position:absolute;
+    bottom:0%;
+    height:40rem;
     width: 40rem;
-    padding-right: 5rem;
     border-radius: 20px;
-    border-color: var(--acd2ed);
-    background-color: gainsboro;
+    border: 2px solid rgb(225, 225, 225);
+    background-color: rgb(255, 255, 255);
     display: block;
-    bottom: 10%;
+    align-items: center;
 }
 
 .entire_form label,
 .entire_form input {
   display: block;
   margin-bottom: 1rem;
+  padding-left: 0.75rem;
+  font-size: larger;
 }
+
 
 .close_form {
     display: inline-block;
     border: none;
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
     margin: 0;
+    font-weight: bolder;
+    background-color: transparent;
     text-decoration: none;
-    color: #ffffff;
+    color: lightseagreen;
     font-family: sans-serif;
     font-size: 1rem;
     cursor: pointer;
     text-align: center;
-    transition: background 250ms ease-in-out, 
-                transform 150ms ease;
-
 }
 
 .close_form:hover,
 .close_form:focus {
-    color:black;
+    color:rgb(255, 255, 255);
 }
 
-.close_form:focus {
-    outline: 1px solid #fff;
-    outline-offset: -4px;
+.minimize_form {
+    display: inline-block;
+    border: none;
+    margin: 0;
+    padding: 1rem 1rem;
+    font-weight:600;
+    background-color: transparent;
+    text-decoration: none;
+    color: lightseagreen;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
 }
 
-.close_form:active {
-    transform: scale(0.99);
+.minimize_form:hover,
+.minimize_form:focus {
+    color:rgb(255, 255, 255);
 }
+
 
 
 .task_header { 
@@ -112,9 +187,6 @@
 }
 
 .submit_button input[type="submit"] { 
-    margin-left: 1rem;
-    margin-right: 10rem;
-    margin-top: 5rem;
     bottom: 5%;
     color: white;
     font-weight: bold;
@@ -124,7 +196,8 @@
     outline-color: var(--aquamarine);
     border-radius: 10px;
     border: none;
-    padding: 0.5rem;
+    padding-bottom: 0rem;
+    margin-top: 30px;
 }
 
 .task_name { 
