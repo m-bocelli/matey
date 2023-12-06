@@ -4,6 +4,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindowMinimize } from "@fortawesome/free-solid-svg-icons";
 import { faX } from "@fortawesome/free-solid-svg-icons";
+import MinimizedTask from "./MinimizedTask";
 
 function CreateTask() {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -92,66 +93,69 @@ function CreateTask() {
       <button className={styles.pin_button} onClick={openForm}>
         + CREATE TASK
       </button>
-      {isFormVisible && 
+      {isFormVisible ? (
         <div className={styles.entire_form}>
-          <div className={styles.form_buttons}>
-            <button className={styles.close_form} onClick={closeForm}>
-              <FontAwesomeIcon
-                icon={faX}
-                size="lg"
-                style={{ color: "lightseagreen" }}
-              />
-            </button>
-            <button className={styles.minimize_form} onClick={minimizeForm}>
-              <FontAwesomeIcon
-                icon={faWindowMinimize}
-                size="lg"
-                style={{ color: "lightseagreen" }}
-              />
-            </button>
-          </div>
-          <div className={styles.new_task}>New Task</div>
-          <form onSubmit={handleSubmit} className={styles.form}>
-            <label htmlFor="task_name">Task Name </label>
-            <input
-              id="task_name"
-              type="text"
-              name="name_field1"
-              placeholder="Char limit: 30."
-              maxLength={30}
+        <div className={styles.form_buttons}>
+          <button className={styles.close_form} onClick={closeForm}>
+            <FontAwesomeIcon
+              icon={faX}
+              size="lg"
+              style={{ color: "lightseagreen" }}
             />
-            <label htmlFor="Details">Details</label>
-            <input
-              id="task_details"
-              type="text"
-              name="name_field2"
-              placeholder="What needs to be completed?."
-              maxLength={250}
+          </button>
+          <button className={styles.minimize_form} onClick={minimizeForm}>
+            <FontAwesomeIcon
+              icon={faWindowMinimize}
+              size="lg"
+              style={{ color: "lightseagreen" }}
             />
-            <label htmlFor="Details">Due Date</label>
-            <input
-              id="task_due"
-              type="date"
-              name="name_field2"
-              value={dueDate}
-              onChange={handleDueDateChange}
-            />
-            <label htmlFor="Frequency">Frequency</label>
-            <select
-              id="frequency"
-              value={selectedFrequency}
-              onChange={handleFrequencyChange}
-            >
-              <option value="weekly">Weekly</option>
-              <option value="montly">Monthly</option>
-              <option value="daily">Daily</option>
-            </select>
+          </button>
+        </div>
+        <div className={styles.new_task}>New Task</div>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <label htmlFor="task_name">Task Name </label>
+          <input
+            id="task_name"
+            type="text"
+            name="name_field1"
+            placeholder="Char limit: 30."
+            maxLength={30}
+          />
+          <label htmlFor="Details">Details</label>
+          <input
+            id="task_details"
+            type="text"
+            name="name_field2"
+            placeholder="What needs to be completed?."
+            maxLength={250}
+          />
+          <label htmlFor="Details">Due Date</label>
+          <input
+            id="task_due"
+            type="date"
+            name="name_field2"
+            value={dueDate}
+            onChange={handleDueDateChange}
+          />
+          <label htmlFor="Frequency">Frequency</label>
+          <select
+            id="frequency"
+            value={selectedFrequency}
+            onChange={handleFrequencyChange}
+          >
+            <option value="weekly">Weekly</option>
+            <option value="montly">Monthly</option>
+            <option value="daily">Daily</option>
+          </select>
 
-            <div className={styles.submit_button}>
-              <input type="submit" value="+ Create Task" />
-            </div>
-          </form>
-        </div>}
+          <div className={styles.submit_button}>
+            <input type="submit" value="+ Create Task" />
+          </div>
+        </form>
+      </div> ) : 
+      isFormMinimized ? ( 
+        <MinimizedTask></MinimizedTask>
+      ) : null} 
     </>
   );
 }
