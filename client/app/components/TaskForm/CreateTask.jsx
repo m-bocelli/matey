@@ -7,7 +7,7 @@ import { faX } from "@fortawesome/free-solid-svg-icons";
 
 function CreateTask() {
   const [isFormVisible, setIsFormVisible] = useState(false);
-  const [dueDate, setDue] = useState("");
+  const [dueDate, setDueDate] = useState("");
   const [selectedFrequency, setSelectedFrequency] = useState("Daily");
   const [isCompleted, setIsCompleted] = useState(false);
   const [isFormMinimized, setIsFormMinimized] = useState(false);
@@ -143,7 +143,7 @@ function CreateTask() {
               onChange={handleFrequencyChange}
             >
               <option value="weekly">Weekly</option>
-              <option value="montly">Monthly</option>
+              <option value="monthly">Monthly</option>
               <option value="daily">Daily</option>
             </select>
 
