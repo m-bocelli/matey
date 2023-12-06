@@ -73,7 +73,7 @@ function displayButton() {
 export default function ManageHousesUI() {
     return (
         <div className={styles.container}>
-            <h1> Manage Houses </h1>
+            <h1> Manage Houses 🏘 </h1>
             <div>{displayButton()}</div>
             <Button onClick={goToJoin}>Join House</Button>
             <Button onClick={deleteHouse}>Delete House</Button>

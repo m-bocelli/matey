@@ -79,7 +79,7 @@ function TaskForm() {
       <h2 className={styles.to_do}>To Do:</h2>
       {submittedTasks.map((task, index) => (
         <div className={styles.rendered_task} key={index}>
-          <p>{task}</p>
+          <p>{task}</p> 
         </div>
       ))}
     </>

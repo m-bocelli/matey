@@ -10,6 +10,7 @@
 .textInput{
     display: block;
     width: 100%;
+    border-radius: 10px;
 }
 
 .create {

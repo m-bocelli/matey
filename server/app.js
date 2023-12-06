@@ -63,6 +63,31 @@ app.get('/users/:id', validate, (req, res) => {
         })
 })
 
+app.get('/houses', (req, res) => {
+    const housesRef = db.ref('houses/');
+    housesRef.once('value')
+        .then((dataSnap) => {
+            const houses = dataSnap.val();
+            res.status(200).send(houses);
+        })
+        .catch(() => {
+            res.status(500).send({Error: 'cannot get houses broh'});
+        })
+})
+
+app.get('/houses/:id', validate, (req, res) => {
+    const houseId = req.params.id;
+    const houseRef = db.ref(`houses/${houseId}`);
+    houseRef.once('value')
+        .then((dataSnap) => {
+            const house = dataSnap.val();
+            res.status(200).send(house);
+        })
+        .catch(() => {
+            res.status(500).send({Error: 'cannot get houses broh'});
+        })
+})
+
 app.listen(port, () => {
     console.log("Server running on Chris's birthday");
 });
