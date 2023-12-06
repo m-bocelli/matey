@@ -150,18 +150,28 @@ Task Name, Details, Due Date, Frequency
 }
 
 .collapsed_form {
-    padding: 3rem;
+    padding: 1rem;
+    font-size:larger;
+    font-weight: bold;
     margin-left: 30rem;
     margin-right: 12rem;
     position:fixed;
     bottom:0;
     height:auto;
-    width: 40rem;
+    width: auto;
     border-radius: 20px;
-    background-color: lightseagreen;
-    color: white;
+    background-color: var(--uranian-blue);
+    color: var(--space-cadet);
+    border-radius: 5px;
 
 } 
+.expand_button_area { 
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    padding-left: 20rem;
+}
+
 
 
 
