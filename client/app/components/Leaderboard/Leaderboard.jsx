@@ -64,7 +64,7 @@ function Bars({ data, height, scaleX, scaleY }) {
                 const ranColor =
                     '#' + Math.floor(Math.random() * 16777215).toString(16);
                 return (
-                    <>
+                    <div key={name}>
                         <text
                             x={scaleX(name) + scaleX.bandwidth() / 2}
                             y={scaleY(points) - 3}
@@ -91,7 +91,7 @@ function Bars({ data, height, scaleX, scaleY }) {
                         >
                             {name}
                         </text>
-                    </>
+                    </div>
                 );
             })}
         </>

@@ -7,9 +7,14 @@
     padding: 1rem;
 }
 
+.nonFooter {
+    padding-bottom:40%;
+}
+
 .textInput{
     display: block;
     width: 100%;
+    border-radius: 10px;
 }
 
 .join {
@@ -26,4 +31,10 @@
 
 .join:hover {
     font-size: larger;
+}
+
+.footer {
+    width: 100%;
+    display: block;
+    text-align: center;
 }

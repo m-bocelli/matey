@@ -23,13 +23,18 @@ function joinHouse(e) {
 export default function JoinHouseUI() {
     return (
         <div className={styles.container}>
-            <h1> Join House </h1>
-            <form id='joinHouse' onSubmit={joinHouse}>
-                <label>House Key:</label>
-                <input className={styles.textInput} type='text' id='houseKey' name='houseKey'></input>
-                <br></br>
-                <input className={styles.join} type='submit' value='Join House'></input>
-            </form>
+            <div className={styles.nonFooter}>
+                <h1> Join House 🏠 </h1>
+                <form id='joinHouse' onSubmit={joinHouse}>
+                    <label>House Key:</label>
+                    <input className={styles.textInput} type='text' id='houseKey' name='houseKey'></input>
+                    <br></br>
+                    <input className={styles.join} type='submit' value='Join House'></input>
+                </form>
+            </div>
+            <div className={styles.footer}>
+                Budgeteers - Chris Bennett, Michael Bocelli, Jillian Camp, Ethan Stipes
+            </div>
         </div>
     );
 }

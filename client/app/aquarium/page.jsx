@@ -9,7 +9,7 @@ export default function AquariumUI() {
     const { user } = UserAuth();
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}> Aquarium </h1>
+            <h1 className={styles.title}> Aquarium 🐠</h1>
             {SEACREATURES.map((item) => {
                 return (
                     <AquariumPet
