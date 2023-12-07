@@ -25,7 +25,13 @@ weekdayMap.set('Friday', ["Saturday"]);
 weekdayMap.set('Saturday', []);
 
 
-
+export function GetCalendarMonthName(curDate) {
+    if (!(curDate instanceof Date)) {
+        console.error("curDate is not a valid Date object");
+        return;
+    }
+    return monthArray[curDate.getMonth()];
+}
 
 export function GetDaysOfTheWeek(weekDay, date) {
 
@@ -33,7 +39,7 @@ export function GetDaysOfTheWeek(weekDay, date) {
     nextDays = weekdayMap.get(weekDay);
 
     let curDate = new Date(date);
-    console.log(curDate);
+    //console.log(curDate);
 
     //let curDate = new Date();
 
@@ -51,7 +57,7 @@ export function GetDaysOfTheWeek(weekDay, date) {
     //console.log(nextDays[0]);
     if(!nextDays.includes(weekArray[curDayIndex])) {
 
-        console.log("the day given was included");
+        //console.log("the day given was included");
         for(let i = curDayIndex; i < 7; i++) {
             console.log(weekArray[curDayIndex]);
             if(weekArray[curDayIndex]==weekDay) {
