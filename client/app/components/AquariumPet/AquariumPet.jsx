@@ -1,5 +1,4 @@
 import styles from './AquariumPet.module.css';
-import Button from '../Button/Button';
 import {useState, useEffect} from 'react';
 
 function generateRandomNumber(min, max) {
