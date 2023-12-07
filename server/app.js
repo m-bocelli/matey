@@ -94,18 +94,22 @@ app.get('/houses/:id', validate, (req, res) => {
         })
 })
 
-app.put('/createHouse', async (req, res) => {
-    console.log(req);
-    /*
+app.post('/createHouse', (req, res) => {
     const uid = req.query.id;
     const houseName = req.body.houseName;
     
     const houses = db.ref('houses/');
-    await houses.push({
+    houses.push({
         name: houseName,
         mates: uid
+    }, (err) => {
+        if (err) {
+            res.status(500).send({Error: 'Failed to create house'})
+        } else {
+            res.status(200).send({Success: uid});
+        }
     });
-    */
+    
 })
 
 app.listen(port, () => {

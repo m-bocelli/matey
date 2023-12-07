@@ -15,23 +15,27 @@ export default function CreateHouseUI() {
 
     return (
         <div className={styles.container}>
-            <h1> Create House 🏠 </h1>
-            <form id='createHouse' action={endpoint} method='POST'>
-                <label>House Name:</label>
-                <input
-                    className={styles.textInput}
-                    type='text'
-                    id='houseName'
-                    name='houseName'
-                    placeholder='House name'
-                ></input>
-                <br></br>
-                <input
-                    className={styles.create}
-                    type='submit'
-                    placeholder='Create'
-                ></input>
-            </form>
+            <div className={styles.nonFooter}>
+                <h1> Create House 🏠 </h1>
+                <form id='createHouse' onSubmit={createHouse}>
+                    <label>House Name:</label>
+                    <input
+                        className={styles.textInput}
+                        type='text'
+                        id='houseName'
+                        name='houseName'
+                    ></input>
+                    <br></br>
+                    <input
+                        className={styles.create}
+                        type='submit'
+                        value='Create House'
+                    ></input>
+                </form>
+            </div>
+            <div className={styles.footer}>
+                Budgeteers - Chris Bennett, Michael Bocelli, Jillian Camp, Ethan Stipes
+            </div>
         </div>
     );
 }
