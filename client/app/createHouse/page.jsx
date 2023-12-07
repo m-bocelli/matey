@@ -2,6 +2,7 @@
 import styles from './page.module.css';
 import { UserAuth } from '../js/AuthContext';
 import { useEffect, useState } from 'react';
+import Footer from "../components/Footer/Footer";
 
 export default function CreateHouseUI() {
     const { userData } = UserAuth();
@@ -33,9 +34,7 @@ export default function CreateHouseUI() {
                     ></input>
                 </form>
             </div>
-            <div className={styles.footer}>
-                Budgeteers - Chris Bennett, Michael Bocelli, Jillian Camp, Ethan Stipes
-            </div>
+            <Footer></Footer>
         </div>
     );
 }

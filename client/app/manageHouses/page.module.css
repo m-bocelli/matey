@@ -8,10 +8,6 @@
     justify-content: center;
 }
 
-.nonFooter {
-    padding-bottom: 15%;
-}
-
 .button_group {
     display: flex;
     align-items: center;
@@ -27,11 +23,4 @@
     min-width: 7rem;
     width: 50vw;
     margin: 2rem;
-}
-
-.footer {
-    width: 100%;
-    display: block;
-    text-align: center;
-    bottom: 0;
 }

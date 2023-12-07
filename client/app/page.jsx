@@ -4,6 +4,7 @@ import styles from './page.module.css';
 import SignedOut from './components/SignedOut/SignedOut';
 import HouseOverview from './components/HouseOverview/HouseOverview';
 import { UserAuth } from './js/AuthContext';
+import Footer from "../components/Footer/Footer";
 
 export default function Page() {
     const { userData, bearerToken } = UserAuth();
@@ -59,6 +60,7 @@ export default function Page() {
                     </div>
                 </>
             )}
+            <Footer></Footer>
         </main>
     );
 }
