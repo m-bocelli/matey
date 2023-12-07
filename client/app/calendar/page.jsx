@@ -10,13 +10,21 @@ import Button from '../components/Button/Button';
 export default function CalendarmUI() {
     const { user } = UserAuth();
 
-    const [date, setDate] = useState(Date.now());
+    const [date, setDate] = useState(new Date());
 
     function ChangeToNextWeek() {
+        if (!(date instanceof Date)) {
+            console.error("curDate is not a valid Date object");
+            return;
+        }
         setDate(date.getDate()+7);
     }
 
     function ChangeToPrevWeek() {
+        if (!(date instanceof Date)) {
+            console.error("curDate is not a valid Date object");
+            return;
+        }
         setDate(date.getDate()-7);
     }
 

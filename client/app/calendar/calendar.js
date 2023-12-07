@@ -27,14 +27,18 @@ weekdayMap.set('Saturday', []);
 
 
 
-export function GetDaysOfTheWeek(weekDay, date) {
+export function GetDaysOfTheWeek(weekDay, curDate) {
 
     let nextDays = [];
     nextDays = weekdayMap.get(weekDay);
     console.log(nextDays);
 
-    let curDate = new Date();
-    curDate = date;
+    //let curDate = new Date();
+
+    if (!(curDate instanceof Date)) {
+        console.error("curDate is not a valid Date object");
+        return;
+    }
 
     let curDayIndex = curDate.getDay();
     //console.log("curDayIndex: " + curDayIndex);
