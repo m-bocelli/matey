@@ -13,19 +13,25 @@ export default function CalendarmUI() {
     const [date, setDate] = useState(new Date());
 
     function ChangeToNextWeek() {
+        /*
         if (!(date instanceof Date)) {
-            console.error("curDate is not a valid Date object");
+            console.error("date is not a valid Date object");
             return;
         }
-        setDate(date.getDate()+7);
+        */
+        setDate(new Date(date.setDate(date.getDate()+7)));
+       // console.log(date);
     }
 
     function ChangeToPrevWeek() {
+        /*
         if (!(date instanceof Date)) {
-            console.error("curDate is not a valid Date object");
+            console.error("date is not a valid Date object");
             return;
         }
-        setDate(date.getDate()-7);
+        */
+        setDate(new Date(date.setDate(date.getDate()-7)));
+        //console.log(date);
     }
 
 

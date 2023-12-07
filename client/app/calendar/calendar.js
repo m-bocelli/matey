@@ -27,11 +27,13 @@ weekdayMap.set('Saturday', []);
 
 
 
-export function GetDaysOfTheWeek(weekDay, curDate) {
+export function GetDaysOfTheWeek(weekDay, date) {
 
     let nextDays = [];
     nextDays = weekdayMap.get(weekDay);
-    console.log(nextDays);
+
+    let curDate = new Date(date);
+    console.log(curDate);
 
     //let curDate = new Date();
 
