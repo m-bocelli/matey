@@ -30,6 +30,7 @@ export function AuthContextProvider({ children }) {
                 fetch(`http://localhost:2001/users/${user.uid}`, {headers: {Authorization : `Bearer ${token}`}})
                 .then((res) => res.json())
                 .then((data) => {
+                    console.log("setting user data");
                     setUserData(data);
                     setBearerToken(token);
                 });

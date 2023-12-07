@@ -8,14 +8,15 @@ const bodyParser = require('body-parser');
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true})); // body parsers needed for posts
 
+// creates a user object in the database using values from Google's user response (put into request on front-end)
 app.post('/createUser', async (req, res) => {
     const { uid, displayName, photoURL, email } = req.body;
     const userRef = db.ref(`users/${uid}`);
-    const user = await userRef.once('value');
+    const userSnap = await userRef.once('value');
     
-    if (!user.exists()) {
+    if (!userSnap.exists()) {
         await userRef.set({
             date_joined: Date.now(),
             email: email,
@@ -32,12 +33,13 @@ app.post('/createUser', async (req, res) => {
     }
 })
 
+
 app.get('/users', (req, res) => {
     const usersRef = db.ref('users/');
 
     usersRef.once('value')
-        .then((dataSnap) => {
-            const users = dataSnap.val();
+        .then((usersSnap) => {
+            const users = usersSnap.val();
             res.status(200).send(users);
         })
         .catch(() => {
@@ -45,11 +47,14 @@ app.get('/users', (req, res) => {
         })
 })
 
+// using async-await here instead of .then.catch to avoid nested chaining
 app.get('/users/:id', async (req, res) => {
     const userId = req.params.id;
     const houseId = req.query.houseId;
+
     const userRef = db.ref(`users/${userId}`);
-    const user = (await userRef.once('value')).val();
+    const user = (await userRef.once('value')).val(); // skip snap, go straight to user object value
+
     if (user && houseId) {
         if (user.house === houseId) {
             const houseRef = db.ref(`houses/${houseId}`);
@@ -69,6 +74,7 @@ app.get('/users/:id', async (req, res) => {
     }    
 })
 
+// get all houses
 app.get('/houses', (req, res) => {
     const housesRef = db.ref('houses/');
     housesRef.once('value')
@@ -81,6 +87,7 @@ app.get('/houses', (req, res) => {
         })
 })
 
+// get a specific house
 app.get('/houses/:id', validate, (req, res) => {
     const houseId = req.params.id;
     const houseRef = db.ref(`houses/${houseId}`);
@@ -94,12 +101,14 @@ app.get('/houses/:id', validate, (req, res) => {
         })
 })
 
-app.post('/createHouse', (req, res) => {
-    const uid = req.query.id;
+// create house from user's perspective defined in query param
+app.post('/createHouse', async (req, res) => {
+    const uid = req.query.user;
     const houseName = req.body.houseName;
-    
-    const houses = db.ref('houses/');
-    houses.push({
+    const housesRef = db.ref('houses/');
+    let houseID;
+
+    await housesRef.push({
         name: houseName,
         mates: uid
     }, (err) => {
@@ -108,8 +117,11 @@ app.post('/createHouse', (req, res) => {
         } else {
             res.status(200).send({Success: uid});
         }
-    });
-    
+    }).then((snap) => houseID = snap.key);
+
+    const userRef = db.ref(`users/${uid}`);
+    const user = (await userRef.once('value')).val();
+    await userRef.set({...user, house: houseID});
 })
 
 app.listen(port, () => {

@@ -3,11 +3,15 @@ import Leaderboard from "../Leaderboard/Leaderboard";
 
 export default function HouseOverview({token, houseId}) {
     const [house, setHouse] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch(`http://localhost:2001/houses/${houseId}`, {headers: {Authorization : `Bearer ${token}`}})
             .then((res) => res.json())
-            .then((data) => setHouse(data));
+            .then((data) => {
+                setHouse(data);
+                setLoading(false);
+            });
     }, [house]);
 
     const DUMMY_POINTS = [
@@ -17,13 +21,17 @@ export default function HouseOverview({token, houseId}) {
     ];
 
     return (
-        <div>
-                <h2>🏠 House {house.name}</h2>
-                <h3>Mates</h3>
-                <ul>
-                    <li>mates would be mapped here</li>
-                </ul>
-                <Leaderboard data={DUMMY_POINTS} />
-        </div>
+        <>
+            {loading ? <h2>Loading house details...</h2> :
+                <div>
+                    <h2>🏠 House {house.name}</h2>
+                    <h3>Mates</h3>
+                    <ul>
+                        <li>mates would be mapped here</li>
+                    </ul>
+                    <Leaderboard data={DUMMY_POINTS} />
+                </div>
+            }
+        </>
     );
 }

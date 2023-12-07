@@ -17,7 +17,7 @@ export default function CreateHouseUI() {
         <div className={styles.container}>
             <div className={styles.nonFooter}>
                 <h1> Create House 🏠 </h1>
-                <form id='createHouse' onSubmit={createHouse}>
+                <form id='createHouse' action={endpoint} method="POST">
                     <label>House Name:</label>
                     <input
                         className={styles.textInput}
