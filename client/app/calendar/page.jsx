@@ -3,8 +3,9 @@ import styles from './page.module.css';
 import { UserAuth } from '../js/AuthContext';
 import { Col, Row } from "react-bootstrap";
 import {useState, useEffect} from 'react';
-import { GetDaysOfTheWeek } from "./calendar.js";
+import { GetDaysOfTheWeek, GetCalendarMonthName } from "../components/CalendarDays/calendar.js";
 import Button from '../components/Button/Button';
+import CalendarDays from '../components/CalendarDays/CalendarDays';
 
 
 export default function CalendarmUI() {
@@ -12,26 +13,16 @@ export default function CalendarmUI() {
 
     const [date, setDate] = useState(new Date());
 
+    function GetCalendarYear() {
+        return date.getFullYear();
+    }
+
     function ChangeToNextWeek() {
-        /*
-        if (!(date instanceof Date)) {
-            console.error("date is not a valid Date object");
-            return;
-        }
-        */
         setDate(new Date(date.setDate(date.getDate()+7)));
-       // console.log(date);
     }
 
     function ChangeToPrevWeek() {
-        /*
-        if (!(date instanceof Date)) {
-            console.error("date is not a valid Date object");
-            return;
-        }
-        */
         setDate(new Date(date.setDate(date.getDate()-7)));
-        //console.log(date);
     }
 
 
@@ -43,47 +34,19 @@ export default function CalendarmUI() {
         <div className={styles.container}>
             <h1 className={styles.title}> Calendar </h1>
 
-            <h2 className={styles.title}> December 2023</h2>
+            <h2 className={styles.title}> {GetCalendarMonthName(date)} {GetCalendarYear()}</h2>
             <Button onClick={ChangeToNextWeek}>{`>`}</Button>
             <Button onClick={ChangeToPrevWeek}>{`<`}</Button>
 
             <div className="container">
                 <Row className="align-items-start">
-                    <Col>
-                        Sunday
-                        <div>{GetDaysOfTheWeek("Sunday", date)}</div>
-                        <div>{Lorem()}</div>
-                    </Col>
-                    <Col>
-                        Monday
-                        <div>{GetDaysOfTheWeek("Monday", date)}</div>
-                        <div>{Lorem()}</div>
-                    </Col>
-                    <Col>
-                        Tuesday
-                        <div>{GetDaysOfTheWeek("Tuesday", date)}</div>
-                        <div>{Lorem()}</div>
-                    </Col>
-                    <Col>
-                        Wednesday
-                        <div>{GetDaysOfTheWeek("Wednesday", date)}</div>
-                        <div>{Lorem()}</div>
-                    </Col>
-                    <Col>
-                        Thursday
-                        <div>{GetDaysOfTheWeek("Thursday", date)}</div>
-                        <div>{Lorem()}</div>
-                    </Col>
-                    <Col>
-                        Friday
-                        <div>{GetDaysOfTheWeek("Friday", date)}</div>
-                        <div>{Lorem()}</div>
-                    </Col>
-                    <Col>
-                        Saturday
-                        <div>{GetDaysOfTheWeek("Saturday", date)}</div>
-                        <div>{Lorem()}</div>
-                    </Col>
+                    <CalendarDays weekDay="Sunday" date={date}> </CalendarDays>
+                    <CalendarDays weekDay="Monday" date={date}> </CalendarDays>
+                    <CalendarDays weekDay="Tuesday" date={date}> </CalendarDays>
+                    <CalendarDays weekDay="Wednesday" date={date}> </CalendarDays>
+                    <CalendarDays weekDay="Thursday" date={date}> </CalendarDays>
+                    <CalendarDays weekDay="Friday" date={date}> </CalendarDays>
+                    <CalendarDays weekDay="Saturday" date={date}> </CalendarDays>
                 </Row>
             </div>
         </div>
