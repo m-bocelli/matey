@@ -6,6 +6,7 @@ import {useState, useEffect} from 'react';
 import { GetDaysOfTheWeek, GetCalendarMonthName } from "../components/CalendarDays/calendar.js";
 import Button from '../components/Button/Button';
 import CalendarDays from '../components/CalendarDays/CalendarDays';
+import Footer from "../components/Footer/Footer";
 
 
 export default function CalendarmUI() {
@@ -49,6 +50,7 @@ export default function CalendarmUI() {
                     <CalendarDays weekDay="Saturday" date={date}> </CalendarDays>
                 </Row>
             </div>
+            <Footer></Footer>
         </div>
     );
 }

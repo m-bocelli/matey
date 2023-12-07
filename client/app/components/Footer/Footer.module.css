@@ -1,0 +1,10 @@
+.footer {
+    position: absolute;
+    width: 100%;
+    display: block;
+    text-align: center;
+    bottom: 0;
+    font-size: 125%;
+    color: var(--cherry-blossom);
+    padding: 1rem;
+}

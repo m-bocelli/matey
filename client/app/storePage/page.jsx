@@ -6,6 +6,7 @@ import styles from './page.module.css';
 import Button from '../components/Button/Button';
 import { useEffect, useState } from 'react';
 import { UserAuth } from '../js/AuthContext';
+import Footer from "../components/Footer/Footer";
 
 export default function StorePageUI() {
     const { user } = UserAuth();
@@ -38,49 +39,52 @@ export default function StorePageUI() {
     }
 
     return (
-        <Col className={styles.container}>
-            <Row className={styles.row}>
-                <h1>Marketplace</h1>
-            </Row>
-            <Row className={styles.row}>
-                <div className={styles.cart_bar}>
-                    <h2>🛒</h2>
-                    <p>Total: {total}</p>
-                    <Button onClick={dummyBuy}>BUY</Button>
-                </div>
-                <div className={styles.section}>
-                    {selected.map((item) => {
-                        return (
-                            <StoreItem
-                                key={item.id}
-                                name={item.name}
-                                desc={item.desc}
-                                price={item.price}
-                                img={item.img}
-                                isSelected={true}
-                            ></StoreItem>
-                        );
-                    })}
-                </div>
-            </Row>
-            <Row className={styles.row}>
-                <h2>Shop:</h2>
-                <div className={styles.section}>
-                    {shop.map((item) => {
-                        return (
-                            <StoreItem
-                                key={item.id}
-                                name={item.name}
-                                desc={item.desc}
-                                price={item.price}
-                                img={item.img}
-                                onClick={() => select(item.id)}
-                                isSelected={false}
-                            ></StoreItem>
-                        );
-                    })}
-                </div>
-            </Row>
-        </Col>
+        <div>
+            <Col className={styles.container}>
+                <Row className={styles.row}>
+                    <h1>Marketplace</h1>
+                </Row>
+                <Row className={styles.row}>
+                    <div className={styles.cart_bar}>
+                        <h2>🛒</h2>
+                        <p>Total: {total}</p>
+                        <Button onClick={dummyBuy}>BUY</Button>
+                    </div>
+                    <div className={styles.section}>
+                        {selected.map((item) => {
+                            return (
+                                <StoreItem
+                                    key={item.id}
+                                    name={item.name}
+                                    desc={item.desc}
+                                    price={item.price}
+                                    img={item.img}
+                                    isSelected={true}
+                                ></StoreItem>
+                            );
+                        })}
+                    </div>
+                </Row>
+                <Row className={styles.row}>
+                    <h2>Shop:</h2>
+                    <div className={styles.section}>
+                        {shop.map((item) => {
+                            return (
+                                <StoreItem
+                                    key={item.id}
+                                    name={item.name}
+                                    desc={item.desc}
+                                    price={item.price}
+                                    img={item.img}
+                                    onClick={() => select(item.id)}
+                                    isSelected={false}
+                                ></StoreItem>
+                            );
+                        })}
+                    </div>
+                </Row>
+            </Col>
+            <Footer></Footer>
+        </div>
     );
 }
