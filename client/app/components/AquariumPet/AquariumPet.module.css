@@ -1,10 +1,21 @@
 .fishTank {
-    margin: 0 auto; /*No margin on the top and bottom, auto margins on left and right */
-
+    /*margin: 0 auto; /*No margin on the top and bottom, auto margins on left and right */
+    position:absolute;
 }
 
 .left {
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
-    margin: 0 auto; /*No margin on the top and bottom, auto margins on left and right */
+
+    position:absolute;
+    /*margin: 0 auto; /*No margin on the top and bottom, auto margins on left and right */
 }
+
+.fishText {
+    display:none;
+}
+
+.fishText:hover {
+    display: block;
+}
+  
