@@ -1,6 +1,7 @@
 'use client';
 import Button from '../components/Button/Button';
 import styles from './page.module.css';
+import Footer from "../components/Footer/Footer";
 function showKey() {
     let keyStuff = JSON.parse(localStorage.getItem('keyList'));
     let key = keyStuff[0];
@@ -73,20 +74,16 @@ function displayButton() {
 export default function ManageHousesUI() {
     return (
         <div className={styles.container}>
-            <div className={styles.nonFooter}>
-                <h1> Manage Houses 🏘 </h1>
-                <div>{displayButton()}</div>
-                <Button onClick={goToJoin}>Join House</Button>
-                <Button onClick={deleteHouse}>Delete House</Button>
-                <input
-                    className={styles.delete_text}
-                    id='keyDelete'
-                    placeholder='Enter Key of House You Want To Delete'
-                ></input>
-            </div>
-            <div className={styles.footer}>
-                Budgeteers - Chris Bennett, Michael Bocelli, Jillian Camp, Ethan Stipes
-            </div>
+            <h1> Manage Houses 🏘 </h1>
+            <div>{displayButton()}</div>
+            <Button onClick={goToJoin}>Join House</Button>
+            <Button onClick={deleteHouse}>Delete House</Button>
+            <input
+                className={styles.delete_text}
+                id='keyDelete'
+                placeholder='Enter Key of House You Want To Delete'
+            ></input>
+            <Footer></Footer>
         </div>
     );
 }

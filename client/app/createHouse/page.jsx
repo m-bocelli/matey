@@ -1,5 +1,6 @@
 'use client';
 import styles from './page.module.css';
+import Footer from "../components/Footer/Footer";
 
 function createHouse(e) {
     e.preventDefault();
@@ -38,28 +39,24 @@ function createHouse(e) {
 export default function CreateHouseUI() {
     return (
         <div className={styles.container}>
-            <div className={styles.nonFooter}>
-                <h1> Create House 🏠 </h1>
-                <form id='createHouse' onSubmit={createHouse}>
-                    <label>House Name:</label>
-                    <input
-                        className={styles.textInput}
-                        type='text'
-                        id='houseName'
-                        name='houseName'
-                    ></input>
-                    <br></br>
-                    <input
-                        className={styles.create}
-                        type='submit'
-                        value='Create House'
-                    ></input>
-                    {/*Submit button onclick will use a function to genrate a unique House Key*/}
-                </form>
-            </div>
-            <div className={styles.footer}>
-                Budgeteers - Chris Bennett, Michael Bocelli, Jillian Camp, Ethan Stipes
-            </div>
+            <h1> Create House 🏠 </h1>
+            <form id='createHouse' onSubmit={createHouse}>
+                <label>House Name:</label>
+                <input
+                    className={styles.textInput}
+                    type='text'
+                    id='houseName'
+                    name='houseName'
+                ></input>
+                <br></br>
+                <input
+                    className={styles.create}
+                    type='submit'
+                    value='Create House'
+                ></input>
+                {/*Submit button onclick will use a function to genrate a unique House Key*/}
+            </form>
+            <Footer></Footer>
         </div>
     );
 }
