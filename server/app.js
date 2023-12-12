@@ -33,7 +33,6 @@ app.post('/createUser', async (req, res) => {
     }
 })
 
-
 app.get('/users', (req, res) => {
     const usersRef = db.ref('users/');
 
