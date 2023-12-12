@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.alert_buttons {
+    display: flex;
+    justify-content: space-between;
+}

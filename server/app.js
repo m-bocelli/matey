@@ -20,8 +20,6 @@ app.post('/createUser', async (req, res) => {
         await userRef.set({
             date_joined: Date.now(),
             email: email,
-            fish: [],
-            house: null,
             id: uid,
             name: displayName,
             points: 0,
@@ -102,27 +100,45 @@ app.get('/houses/:id', validate, (req, res) => {
 
 // create house from user's perspective defined in query param
 app.post('/createHouse', async (req, res) => {
-    const uid = req.query.user;
+    const userId = req.query.user;
     const houseName = req.body.houseName;
     const housesRef = db.ref('houses/');
     let houseID;
 
     await housesRef.push({
         name: houseName,
-        mates: uid
+        mates: [userId]
     }, (err) => {
         if (err) {
             res.status(500).send({Error: 'Failed to create house'})
         } else {
-            res.status(200).send({Success: uid});
+            res.status(200).send({Success: userId});
         }
     }).then((snap) => houseID = snap.key);
 
-    const userRef = db.ref(`users/${uid}`);
+    const userRef = db.ref(`users/${userId}`);
     const user = (await userRef.once('value')).val();
     await userRef.set({...user, house: houseID});
-})
+});
 
 app.listen(port, () => {
     console.log("Server running on Chris's birthday");
+});
+
+app.delete('/leaveHouse', async(req,res) => {
+    const userId = req.query.userId;
+    // Remove house reference from user
+    const userRef = db.ref(`users/${userId}`);
+    const user = (await userRef.once('value')).val();
+    await userRef.set({...user, house: null});
+    
+
+    // Remove user reference from house
+    const houseId = req.query.houseId;
+    const matesRef = db.ref(`houses/${houseId}/mates`);
+    const mates = (await matesRef.once('value')).val()
+    mates.splice(mates.indexOf(userId), 1);
+    // If user is the last to leave, delete house, else just remove the user
+    mates.length === 0 ? await db.ref(`houses/${houseId}`).set(null) : await matesRef.set(mates);
+    res.status(200).send({mates: mates});
 });

@@ -1,28 +1,35 @@
 'use client';
 import styles from './page.module.css';
 import { UserAuth } from '../js/AuthContext';
-import { useEffect, useState } from 'react';
 import Footer from "../components/Footer/Footer";
 import CreeateHouseForm from '../components/CreateHouseForm/CreateHouseForm';
-import LeaveHouseForm from '../components/'
+import LeaveHouseForm from '../components/LeaveHouseForm/LeaveHouseForm';
+import JoinHouseForm from '../components/JoinHouseForm/JoinHouseForm';
+import InviteHouseForm from '../components/InviteHouseForm/InviteHouseForm';
 
 export default function ManageHouse() {
     const { userData } = UserAuth();
 
     const displayForms = () => {
-        return (
-            userData.house ? 
-                <><LeaveHouseForm/><InviteHouseForm/></> : 
-                <>
-                    <CreeateHouseForm/>     
-                    <JoinHouseForm/>
-                </>)
+        if (userData && userData.house) {
+            return <>
+                        <LeaveHouseForm userData={userData}/>
+                        <InviteHouseForm/>
+                    </> 
+        } else if (userData) {
+            return <>
+                        <CreeateHouseForm userData={userData}/>     
+                        <JoinHouseForm userData={userData}/>
+                    </>
+        } else {
+            return <h2>Loading</h2>
+        }
     };
 
     return (
         <div className={styles.container}>
-            <h1> Manage Houses 🏘 </h1>
-            <Footer></Footer>
+            <h1> Manage House 🏘 </h1>
+            {displayForms()}
         </div>
     );
 }
