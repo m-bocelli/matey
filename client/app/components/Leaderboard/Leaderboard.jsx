@@ -75,7 +75,7 @@ function Bars({ data, height, scaleX, scaleY }) {
                         </text>
                         <rect
                             key={`bar-${id}`}
-                            x={scaleX(name)}
+                            x={scaleX(id)}
                             y={scaleY(points)}
                             width={scaleX.bandwidth()}
                             height={height - scaleY(points)}
