@@ -26,15 +26,19 @@ export default function StorePage() {
     }, [userData]);
 
     const select = (_id) => {
-        const selectedItem = shop.find((item) => item.id === _id);
-        const selectedCopy = [...selected];
-        selectedCopy.splice(selected.length, 0, selectedItem);
-
-        if (selected.includes(selectedItem)) {
-            console.log('duplicate');
+        if (userData.fish && userData.fish.includes(_id)) {
+            alert('You already own this fish.');
         } else {
-            setSelected(selectedCopy);
-            updateTotal(selectedCopy);
+            const selectedItem = shop.find((item) => item.id === _id);
+            const selectedCopy = [...selected];
+            selectedCopy.splice(selected.length, 0, selectedItem);
+
+            if (selected.includes(selectedItem)) {
+                console.log('duplicate');
+            } else {
+                setSelected(selectedCopy);
+                updateTotal(selectedCopy);
+            }
         }
     }
 

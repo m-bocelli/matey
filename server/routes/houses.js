@@ -132,4 +132,34 @@ router.get('/:id/mates', validate, async (req, res) => {
     }
 })
 
+// Get all fish objects in house
+router.get('/:id/fish', async (req, res) => {
+    try {
+        const houseId = req.params.id;
+        const matesRef = db.ref(`houses/${houseId}/mates`);
+        const mates = (await matesRef.once('value')).val();
+        let fishIds = [];
+        
+        for (const userId of mates) {
+            const userRef = db.ref(`users/${userId}`);
+            const user = (await userRef.once('value')).val();
+            
+            if (user.fish) {
+                user.fish.forEach((fishId) => fishIds.push(fishId));
+            }
+        }
+
+        let fishes = [];
+        for (const fishId of fishIds) {
+            const fishRef = db.ref(`fish/${fishId}`);
+            const fish = (await fishRef.once('value')).val();
+            fishes.push(fish);
+        }
+
+        res.status(200).send(fishes);
+    } catch(err) {
+        res.status(500).send(err);
+    }
+})
+
 module.exports = router;
