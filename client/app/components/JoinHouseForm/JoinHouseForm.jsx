@@ -2,6 +2,7 @@ import styles from './JoinHouseForm.module.css';
 import Button from '../Button/Button';
 import { useState } from 'react';
 
+//Used to allow users to join a house with a house key
 export default function JoinHouseForm({userData, bearerToken}) {
     const [showError, setShowError] = useState(false);
     

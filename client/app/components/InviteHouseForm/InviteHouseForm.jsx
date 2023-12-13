@@ -1,6 +1,7 @@
 import styles from './InviteHouseForm.module.css';
 import Button from '../Button/Button';
 
+//Used to invite users to a house via email, sending them the house key
 export default function InviteHouseForm({userData, bearerToken}) {
 
     const handleSubmit = () => {

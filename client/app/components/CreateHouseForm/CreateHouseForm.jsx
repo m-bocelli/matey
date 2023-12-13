@@ -2,6 +2,7 @@ import Button from "../Button/Button";
 import { useEffect, useState } from 'react';
 import styles from './CreateHouseForm.module.css';
 
+//Used to create a house that you can invite people to
 export default function CreeateHouseForm({userData}) {
 
     const handleSubmit = () => {
