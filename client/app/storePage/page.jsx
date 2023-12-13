@@ -1,6 +1,5 @@
 'use client';
 import { Col, Row } from 'react-bootstrap';
-import { SEACREATURES } from '../constants/seacreatures';
 import StoreItem from '../components/StoreItem/StoreItem';
 import styles from './page.module.css';
 import Button from '../components/Button/Button';
@@ -126,7 +125,6 @@ export default function StorePage() {
                     </div>
                 </Row>
             </Col>
-            <Footer></Footer>
         </div>
     );
 }
