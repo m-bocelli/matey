@@ -3,6 +3,7 @@ import Leaderboard from "../Leaderboard/Leaderboard";
 
 export default function HouseOverview({token, houseId}) {
     const [house, setHouse] = useState(null);
+    const [mates, setMates] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -10,6 +11,15 @@ export default function HouseOverview({token, houseId}) {
             .then((res) => res.json())
             .then((data) => {
                 setHouse(data);
+                setLoading(false);
+            });
+    }, [house]);
+
+    useEffect(() => {
+        fetch(`http://localhost:2001/houses/${houseId}/mates`, {headers: {Authorization : `Bearer ${token}`}})
+            .then((res) => res.json())
+            .then((data) => {
+                setMates(data);
                 setLoading(false);
             });
     }, [house]);

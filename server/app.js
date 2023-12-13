@@ -133,7 +133,6 @@ app.delete('/leaveHouse', async(req,res) => {
     const user = (await userRef.once('value')).val();
     await userRef.set({...user, house: null});
     
-
     // Remove user reference from house
     const houseId = req.query.houseId;
     const matesRef = db.ref(`houses/${houseId}/mates`);
@@ -185,3 +184,22 @@ app.post('/inviteToHouse', async (req,res) => {
         .then(() => res.status(200).send({Success: 'Invite sent.'}))
         .catch(() => res.status(500).send({Error: 'Failed to send invite.'}));
 });
+
+app.get('/houses/:id/mates', validate, async (req, res) => {
+    try {
+        const houseId = req.params.id;
+        const matesRef = db.ref(`houses/${houseId}/mates`);
+        const mates = (await matesRef.once('value')).val();
+        let users = [];
+        
+        for (const userId of mates) {
+            const userRef = db.ref(`users/${userId}`);
+            const user = (await userRef.once('value')).val();
+            users.push(user);
+        }
+
+        res.status(200).send(users);
+    } catch(err) {
+        res.status(500).send(err);
+    }
+})
