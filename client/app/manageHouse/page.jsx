@@ -5,6 +5,7 @@ import CreeateHouseForm from '../components/CreateHouseForm/CreateHouseForm';
 import LeaveHouseForm from '../components/LeaveHouseForm/LeaveHouseForm';
 import JoinHouseForm from '../components/JoinHouseForm/JoinHouseForm';
 import InviteHouseForm from '../components/InviteHouseForm/InviteHouseForm';
+import Footer from '../components/Footer/Footer';
 
 export default function ManageHouse() {
     const { userData } = UserAuth();
