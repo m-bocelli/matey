@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-    const {name, img, size, speed, depth, desc} = req.body;
+    const {name, img, size, speed, depth, desc, price} = req.body;
     const fishRef = db.ref('fish/');
     let fishId;
     await fishRef.push({
@@ -28,7 +28,8 @@ router.post('/', async (req, res) => {
         size: size,
         speed: speed,
         depth: depth,
-        desc: desc
+        desc: desc,
+        price: price
     }, (err) => {
         if (err) {
             res.status(500).send({Error: 'Failed to create fish'})
@@ -36,6 +37,10 @@ router.post('/', async (req, res) => {
             res.status(200).send({Success: 'Created fish'});
         }
     }).then((snap) => fishId = snap.key);
+
+    const singleFishRef = db.ref(`fish/${fishId}`);
+    const singleFish = (await singleFishRef.once('value')).val();
+    await singleFishRef.set({...singleFish, id: fishId});
 });
 
 module.exports = router;
