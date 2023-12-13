@@ -7,7 +7,9 @@
     background: linear-gradient(-45deg, #2e5ce3, #3c72e7, #23a6d5, #57c8ae);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
-	height: 100vh;
+    background-color:black;
+	height: 200vh;
+    width: 200vh;
 }
 
 .button_group {
