@@ -9,7 +9,7 @@ export default function HouseOverview({token, houseId}) {
     const [points, setPoints] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:2001/houses/${houseId}`, {headers: {Authorization : `Bearer ${token}`}})
+        fetch(`https://matey.onrender.com/houses/${houseId}`, {headers: {Authorization : `Bearer ${token}`}})
             .then((res) => res.json())
             .then((data) => {
                 setHouse(data);
@@ -18,7 +18,7 @@ export default function HouseOverview({token, houseId}) {
     }, []);
 
     useEffect(() => {
-        fetch(`http://localhost:2001/houses/${houseId}/mates`, {headers: {Authorization : `Bearer ${token}`}})
+        fetch(`https://matey.onrender.com/houses/${houseId}/mates`, {headers: {Authorization : `Bearer ${token}`}})
             .then((res) => res.json())
             .then((data) => {
                 setMates(data);
