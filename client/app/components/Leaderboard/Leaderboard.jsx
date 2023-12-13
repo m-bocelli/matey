@@ -9,7 +9,7 @@ export default function Leaderboard({ data }) {
     const height = 500 - margin.top - margin.bottom;
 
     const scaleX = scaleBand()
-        .domain(data.map(({ name }) => name))
+        .domain(data.map(({ id }) => id))
         .range([0, width])
         .paddingInner(0.35);
 
@@ -60,13 +60,13 @@ function XAxis({ scale, transform }) {
 function Bars({ data, height, scaleX, scaleY }) {
     return (
         <>
-            {data.map(({ name, points }) => {
+            {data.map(({ id, name, points }) => {
                 const ranColor =
                     '#' + Math.floor(Math.random() * 16777215).toString(16);
                 return (
-                    <div key={name}>
+                    <>
                         <text
-                            x={scaleX(name) + scaleX.bandwidth() / 2}
+                            x={scaleX(id) + scaleX.bandwidth() / 2}
                             y={scaleY(points) - 3}
                             textAnchor='middle'
                             fill={ranColor}
@@ -74,8 +74,8 @@ function Bars({ data, height, scaleX, scaleY }) {
                             {points} points
                         </text>
                         <rect
-                            key={`bar-${name}`}
-                            x={scaleX(name)}
+                            key={`bar-${id}`}
+                            x={scaleX(id)}
                             y={scaleY(points)}
                             width={scaleX.bandwidth()}
                             height={height - scaleY(points)}
@@ -83,7 +83,7 @@ function Bars({ data, height, scaleX, scaleY }) {
                             ry={10}
                         />
                         <text
-                            x={scaleX(name) + scaleX.bandwidth() / 2}
+                            x={scaleX(id) + scaleX.bandwidth() / 2}
                             y={height + 20}
                             textAnchor='middle'
                             fill={ranColor}
@@ -91,7 +91,7 @@ function Bars({ data, height, scaleX, scaleY }) {
                         >
                             {name}
                         </text>
-                    </div>
+                    </>
                 );
             })}
         </>

@@ -1,41 +1,86 @@
 'use client';
-import { Card, Col, Row } from 'react-bootstrap';
-import { SEACREATURES } from '../constants/seacreatures';
+import { Col, Row } from 'react-bootstrap';
 import StoreItem from '../components/StoreItem/StoreItem';
 import styles from './page.module.css';
 import Button from '../components/Button/Button';
 import { useEffect, useState } from 'react';
 import { UserAuth } from '../js/AuthContext';
-import Footer from "../components/Footer/Footer";
 
-export default function StorePageUI() {
-    const { user } = UserAuth();
+export default function StorePage() {
+    const { userData } = UserAuth();
     const [selected, setSelected] = useState([]);
-    const [shop, setShop] = useState(SEACREATURES);
+    const [shop, setShop] = useState([]);
     const [total, setTotal] = useState(0);
+    const [points, setPoints] = useState(0);
 
-    function select(_id) {
-        const selectedItem = shop.find((item) => item.id === _id);
-        const selectedCopy = [...selected];
-        selectedCopy.splice(selected.length, 0, selectedItem);
+    useEffect(() => {
+        fetch('http://localhost:2001/fish')
+        .then((res) => res.json())
+        .then((data) => setShop(Object.keys(data).map((key) => data[key])));
+    }, []);
 
-        if (selected.includes(selectedItem)) {
-            console.log('dup');
+    useEffect(() => {
+        if (userData) {
+            setPoints(userData.points);
+        }
+    }, [userData]);
+
+    const select = (_id) => {
+        if (userData.fish && userData.fish.includes(_id)) {
+            alert('You already own this fish.');
         } else {
-            setSelected(selectedCopy);
-            updateTotal(selectedCopy);
+            const selectedItem = shop.find((item) => item.id === _id);
+            const selectedCopy = [...selected];
+            selectedCopy.splice(selected.length, 0, selectedItem);
+
+            if (selected.includes(selectedItem)) {
+                console.log('duplicate');
+            } else {
+                setSelected(selectedCopy);
+                updateTotal(selectedCopy);
+            }
         }
     }
 
-    function updateTotal(items) {
+    const unselect = (_id) => {
+        const itemIdx = selected.findIndex((item) => item.id === _id);
+        const selectedCopy = [...selected];
+        selectedCopy.splice(itemIdx, 1);
+        setSelected(selectedCopy);
+        updateTotal(selectedCopy);
+    }
+
+    const updateTotal = (items) => {
         const sum = items.reduce((sum, item) => sum + item.price, 0);
         setTotal(sum);
     }
 
-    function dummyBuy() {
-        const newSelected = [];
-        setSelected(newSelected);
-        updateTotal(newSelected);
+    const purchase = async () => {
+        if (points >= total) {
+            try {
+                const res = await fetch(`http://localhost:2001/users/${userData.id}/fish`, {
+                    method: 'POST',
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify(selected)
+                });
+                if (res.status === 200) {
+                    fetch(`http://localhost:2001/users/${userData.id}/points?lost=${total}`, {
+                        method: 'POST'
+                    })
+                    .then(() => {
+                        const newSelected = [];
+                        setSelected(newSelected);
+                        setPoints(points-total);
+                        updateTotal(newSelected);
+                    });
+                }
+            } catch (err) {
+                alert('Failed to purchase fish.');
+                console.error('Failed to purchase fish', err);
+            }
+        } else {
+            alert('Not enough points.');
+        }
     }
 
     return (
@@ -45,8 +90,9 @@ export default function StorePageUI() {
                 </Row>
                 <Row className={styles.row}>
                     <div className={styles.cart_bar}>
+                        <p>Points: {points}</p>
                         <p>Total: {total}</p>
-                        <Button onClick={dummyBuy}>BUY</Button>
+                        <Button onClick={purchase}>BUY</Button>
                     </div>
                     <div className={styles.section}>
                         {selected.map((item) => {
@@ -58,6 +104,7 @@ export default function StorePageUI() {
                                     price={item.price}
                                     img={item.img}
                                     isSelected={true}
+                                    onClick={() => unselect(item.id)}
                                 ></StoreItem>
                             );
                         })}
@@ -82,7 +129,6 @@ export default function StorePageUI() {
                     </div>
                 </Row>
             </Col>
-            <Footer></Footer>
         </div>
     );
 }

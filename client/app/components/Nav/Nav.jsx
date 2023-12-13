@@ -41,8 +41,7 @@ export default function Nav() {
                 <NavLink href='/'>DASHBOARD</NavLink>
                 {!user ? null : (
                     <>
-                        <NavLink href='createHouse'>CREATE HOUSE</NavLink>
-                        <NavLink href='manageHouses'>MANAGE HOUSES</NavLink>
+                        <NavLink href='manageHouse'>MANAGE HOUSE</NavLink>
                         <NavLink href='calendar'>CALENDAR</NavLink>
                         <NavLink href='tasksPage'>TASKS</NavLink>
                         <NavLink href='storePage'>FISH MARKET</NavLink>

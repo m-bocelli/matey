@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--cherry-blossom);
+    padding: 2rem;
+    background-color: white;
+    transition: background-color 0.3s;
+    border-radius: 30px;
+}
+
+.container:hover {
+    background-color: antiquewhite;
+}
+
+.alert_buttons {
+    display: flex;
+    justify-content: space-between;
+}
