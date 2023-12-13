@@ -7,7 +7,7 @@ export default function LeaveHouseForm({userData}) {
     const [showAlert, setShowAlert] = useState(false);
 
     const leaveHouse =  () => {
-        fetch(`http://localhost:2001/leaveHouse?userId=${userData.id}&houseId=${userData.house}`, {method: "DELETE"})
+        fetch(`http://localhost:2001/houses?userId=${userData.id}&houseId=${userData.house}`, {method: "DELETE"})
         .then(() => console.log('Left house successfully.'))
         .catch((err) => console.err('Failed to leave house.', err));
         window.location.href = '/manageHouse';

@@ -9,7 +9,7 @@ export default function InviteHouseForm({userData}) {
             toEmail: document.getElementById("toEmail").value
         }
 
-        fetch(`http://localhost:2001/inviteToHouse?fromName=${userData.name}&houseId=${userData.house}`, {
+        fetch(`http://localhost:2001/houses/invite?fromName=${userData.name}&houseId=${userData.house}`, {
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(formBody)

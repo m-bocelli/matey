@@ -9,10 +9,15 @@ import { UserAuth } from '../js/AuthContext';
 import Footer from "../components/Footer/Footer";
 
 export default function StorePageUI() {
-    const { user } = UserAuth();
     const [selected, setSelected] = useState([]);
     const [shop, setShop] = useState(SEACREATURES);
     const [total, setTotal] = useState(0);
+
+    useEffect(() => {
+        fetch('http://localhost:2001/fish')
+        .then((res) => res.json())
+        .then((data) => setShop(Object.keys(data).map((key) => data[key])));
+    }, []);
 
     function select(_id) {
         const selectedItem = shop.find((item) => item.id === _id);
