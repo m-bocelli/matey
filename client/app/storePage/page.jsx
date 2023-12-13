@@ -126,6 +126,7 @@ export default function StorePage() {
                     </div>
                 </Row>
             </Col>
+            <Footer></Footer>
         </div>
     );
 }
