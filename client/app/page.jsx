@@ -31,10 +31,6 @@ export default function Page() {
         })();
     }, [userData]);
 
-    async function getUserPoints() {
-        // func that will grab all points of all users in house
-    }
-
     return (
         <main className={styles.container}>
             {loading ? (
@@ -60,7 +56,6 @@ export default function Page() {
                     </div>
                 </>
             )}
-            <Footer></Footer>
         </main>
     );
 }
