@@ -1,0 +1,146 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    color: var(--cherry-blossom);
+    margin-left: 12rem;
+
+}
+
+.button_group {
+    display: flex;
+    align-items: center;
+}
+
+.container button {
+    margin: 2rem;
+    width: 50vw;
+}
+
+.delete_text {
+    border-radius: 10px;
+    height: 3rem;
+    min-width: 7rem;
+    width: 50vw;
+    margin: 2rem;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.title {
+    padding: 1rem;
+}
+
+.fishTank {
+    margin: 0 auto; /*No margin on the top and bottom, auto margins on left and right */
+
+}
+
+
+.calendarContainer {
+    height: auto;
+    width: 400px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4);
+    padding: 20px 20px;
+}
+
+.calendarWeek {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    padding-inline-start: 0px;
+}
+
+.calendarWeekDay {
+max-width: 57.1px;
+width: 100%;
+text-align: center;
+color: #525659;
+}
+
+.calendarDays {
+margin-top: 30px;
+list-style: none;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+gap: 20px;
+padding-inline-start: 0px;
+}
+
+.calendarDay {
+text-align: center;
+color: #525659;
+padding: 10px;
+}
+
+.calendarMonthArrowContainer {
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.calendarMonthYearContainer {
+padding: 10px 10px 20px 10px;
+color: #525659;
+cursor: pointer;
+}
+
+.calendarArrowContainer {
+margin-top: -5px;
+}
+
+.calendarLeftArrow,
+.calendarRightArrow {
+height: 30px;
+width: 30px;
+border: none;
+border-radius: 50%;
+cursor: pointer;
+color: #525659;
+}
+
+.calendarTodayButton {
+margin-top: -10px;
+border-radius: 10px;
+border: none;
+border-radius: 10px;
+cursor: pointer;
+color: #525659;
+padding: 5px 10px;
+}
+
+.calendarTodayButton {
+height: 27px;
+margin-right: 10px;
+background-color: #ec7625;
+color: white;
+}
+
+.calendarMonths,
+.calendarYears {
+flex: 1;
+border-radius: 10px;
+height: 30px;
+border: none;
+cursor: pointer;
+outline: none;
+color: #525659;
+font-size: 15px;
+}
+
+.calendarDayActive {
+background-color: #ec7625;
+color: white;
+border-radius: 50%;
+}

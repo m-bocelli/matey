@@ -1,5 +1,6 @@
 'use client';
 import styles from './page.module.css';
+import Footer from "../components/Footer/Footer";
 
 function joinHouse(e) {
     e.preventDefault();
@@ -30,6 +31,7 @@ export default function JoinHouseUI() {
                 <br></br>
                 <input className={styles.join} type='submit' value='Join House'></input>
             </form>
+            <Footer></Footer>
         </div>
     );
 }

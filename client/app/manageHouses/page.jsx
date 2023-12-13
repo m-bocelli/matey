@@ -1,6 +1,7 @@
 'use client';
 import Button from '../components/Button/Button';
 import styles from './page.module.css';
+import Footer from "../components/Footer/Footer";
 function showKey() {
     let keyStuff = JSON.parse(localStorage.getItem('keyList'));
     let key = keyStuff[0];
@@ -82,6 +83,7 @@ export default function ManageHousesUI() {
                 id='keyDelete'
                 placeholder='Enter Key of House You Want To Delete'
             ></input>
+            <Footer></Footer>
         </div>
     );
 }

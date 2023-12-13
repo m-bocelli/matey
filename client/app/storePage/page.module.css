@@ -1,6 +1,6 @@
 .container {
-    margin-left: 15rem;
-    margin-right: 3rem;
+    margin-left: 19rem;
+    margin-right: 4rem;
     padding-top: 1rem;
     color: var(--cherry-blossom);
 }
@@ -19,4 +19,8 @@
 
 .row {
     margin-bottom: 1rem;
+}
+
+.shop { 
+    font-size: 50px;
 }

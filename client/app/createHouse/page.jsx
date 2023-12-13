@@ -1,5 +1,6 @@
 'use client';
 import styles from './page.module.css';
+import Footer from "../components/Footer/Footer";
 
 function createHouse(e) {
     e.preventDefault();
@@ -55,6 +56,7 @@ export default function CreateHouseUI() {
                 ></input>
                 {/*Submit button onclick will use a function to genrate a unique House Key*/}
             </form>
+            <Footer></Footer>
         </div>
     );
 }

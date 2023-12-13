@@ -4,7 +4,8 @@
     justify-content: space-between;
     color: var(--cherry-blossom);
     margin-left: 12rem;
-    padding: 1rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
 }
 
 .textInput{
@@ -17,12 +18,12 @@
     border-radius: 10px;
     height: 3rem;
     min-width: 7rem;
-    background-color: var(--space-cadet);
-    box-shadow: 2px 2px 2px black;
+    border: none;
+    background-color: lightseagreen;
     font-weight: bold;
     color: white;
     transition: font-size 0.3s;
-    width: 100%;
+    width: 25%
 }
 
 .create:hover {
