@@ -41,7 +41,11 @@
 }
 
 .title {
-    padding: 1rem;
+    padding-left: 8rem;
+    padding-top: 3rem;
+    color:azure;
+    font-size: 50px;
+    font-weight: bold;
 }
 
 .fishTank {

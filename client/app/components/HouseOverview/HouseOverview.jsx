@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import Leaderboard from "../Leaderboard/Leaderboard";
+import styles from './HouseOverview.module.css';
 
 export default function HouseOverview({token, houseId}) {
     const [house, setHouse] = useState(null);
     const [mates, setMates] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [points, setPoints] = useState([]);
 
     useEffect(() => {
         fetch(`http://localhost:2001/houses/${houseId}`, {headers: {Authorization : `Bearer ${token}`}})
@@ -13,22 +15,21 @@ export default function HouseOverview({token, houseId}) {
                 setHouse(data);
                 setLoading(false);
             });
-    }, [house]);
+    }, []);
 
     useEffect(() => {
         fetch(`http://localhost:2001/houses/${houseId}/mates`, {headers: {Authorization : `Bearer ${token}`}})
             .then((res) => res.json())
             .then((data) => {
                 setMates(data);
-                setLoading(false);
             });
-    }, [house]);
+    }, []);
 
-    const DUMMY_POINTS = [
-        { name: 'bruh', points: 200 },
-        { name: 'Sebastien', points: 800 },
-        { name: 'Ariel', points: 600 },
-    ];
+    useEffect(() => {
+        if (mates.length > 0) {
+            setPoints(mates.map((mate) => ({name: mate.name, points: mate.points})));
+        }
+    }, [mates])
 
     return (
         <>
@@ -37,9 +38,14 @@ export default function HouseOverview({token, houseId}) {
                     <h2>🏠 House {house.name}</h2>
                     <h3>Mates</h3>
                     <ul>
-                        <li>mates would be mapped here</li>
+                        {mates.map((mate) => {
+                            return (<div key={mate.id} className={styles.mate}>
+                                        <img src={mate.icon} className={styles.mate_icon}></img>
+                                        <div>{mate.name}</div>
+                                    </div>)
+                        })}
                     </ul>
-                    <Leaderboard data={DUMMY_POINTS} />
+                    <Leaderboard data={points} />
                 </div>
             }
         </>

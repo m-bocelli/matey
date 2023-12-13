@@ -1,0 +1,15 @@
+.mate {
+    display: flex;
+    align-items: center;
+    background-color: var(--cherry-blossom);
+    color: white;
+    width: fit-content;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.mate_icon {
+    width: 2rem;
+    border-radius: 5px;
+    padding-right: 3px;
+}
