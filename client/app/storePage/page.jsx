@@ -42,11 +42,9 @@ export default function StorePageUI() {
         <div>
             <Col className={styles.container}>
                 <Row className={styles.row}>
-                    <h1>Marketplace</h1>
                 </Row>
                 <Row className={styles.row}>
                     <div className={styles.cart_bar}>
-                        <h2>🛒</h2>
                         <p>Total: {total}</p>
                         <Button onClick={dummyBuy}>BUY</Button>
                     </div>
@@ -66,7 +64,7 @@ export default function StorePageUI() {
                     </div>
                 </Row>
                 <Row className={styles.row}>
-                    <h2>Shop:</h2>
+                    <h2 className={styles.shop}>Shop🛒</h2>
                     <div className={styles.section}>
                         {shop.map((item) => {
                             return (
