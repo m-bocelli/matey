@@ -1,7 +1,7 @@
 import styles from './InviteHouseForm.module.css';
 import Button from '../Button/Button';
 
-export default function InviteHouseForm({userData}) {
+export default function InviteHouseForm({userData, bearerToken}) {
 
     const handleSubmit = () => {
         const formBody = {
@@ -11,7 +11,7 @@ export default function InviteHouseForm({userData}) {
 
         fetch(`http://localhost:2001/houses/invite?fromName=${userData.name}&houseId=${userData.house}`, {
             method: 'POST',
-            headers: {'Content-Type' : 'application/json'},
+            headers: {'Content-Type' : 'application/json', Authorization: `Bearer ${bearerToken}`},
             body: JSON.stringify(formBody)
         })
         .then(() => window.location.href = '/manageHouse')

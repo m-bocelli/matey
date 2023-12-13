@@ -4,7 +4,7 @@ const router = express.Router();
 const db = require('../config/db-config');
 const validate = require('../middleware');
  
-router.get('/', (req, res) => {
+router.get('/',  validate, (req, res) => {
     const usersRef = db.ref('users/');
 
     usersRef.once('value')
@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 })
 
 // creates a user object in the database using values from Google's user response (put into request on front-end)
-router.post('/', async (req, res) => {
+router.post('/', validate, async (req, res) => {
     const { uid, displayName, photoURL, email } = req.body;
     const userRef = db.ref(`users/${uid}`);
     const userSnap = await userRef.once('value');
@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
 })
 
 // using async-await here instead of .then.catch to avoid nested chaining
-router.get('/:id', async (req, res) => {
+router.get('/:id', validate, async (req, res) => {
     const userId = req.params.id;
     const houseId = req.query.houseId;
 
@@ -65,7 +65,7 @@ router.get('/:id', async (req, res) => {
     }    
 })
 
-router.get('/:id/fish',  (req, res) => {
+router.get('/:id/fish', validate, (req, res) => {
     const userId = req.params.id;
     const userFishRef = db.ref(`users/${userId}/fish`);
     userFishRef.once('value')
@@ -78,7 +78,7 @@ router.get('/:id/fish',  (req, res) => {
     })
 })
 
-router.post('/:id/fish',  async (req, res) => {
+router.post('/:id/fish',  validate, async (req, res) => {
     const newFish = req.body;
     const userId = req.params.id;
     const userFishRef = db.ref(`users/${userId}/fish`);
@@ -99,7 +99,7 @@ router.post('/:id/fish',  async (req, res) => {
     );
 })
 
-router.post('/:id/points',  async (req, res) => {
+router.post('/:id/points',  validate, async (req, res) => {
     const lost = req.query.lost;
     const gained = req.query.gained;
 

@@ -7,18 +7,18 @@ import JoinHouseForm from '../components/JoinHouseForm/JoinHouseForm';
 import InviteHouseForm from '../components/InviteHouseForm/InviteHouseForm';
 
 export default function ManageHouse() {
-    const { userData } = UserAuth();
+    const { userData, bearerToken } = UserAuth();
 
     const displayForms = () => {
         if (userData && userData.house) {
             return <>
-                        <LeaveHouseForm userData={userData}/>
-                        <InviteHouseForm userData={userData}/>
+                        <LeaveHouseForm userData={userData} bearerToken={bearerToken}/>
+                        <InviteHouseForm userData={userData} bearerToken={bearerToken}/>
                     </> 
         } else if (userData) {
             return <>
                         <CreeateHouseForm userData={userData}/>     
-                        <JoinHouseForm userData={userData}/>
+                        <JoinHouseForm userData={userData} bearerToken={bearerToken}/>
                     </>
         } else {
             return <h2>Loading</h2>
