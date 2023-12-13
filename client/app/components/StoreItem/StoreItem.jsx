@@ -13,6 +13,7 @@ export default function StoreItem({
         <div className={styles.item_container} onClick={onClick}>
             <img className={styles.item_img} src={img}></img>
             <p className={styles.name}>{name}</p>
+            <p className={styles.desc}>{desc}</p>
             <div className={styles.item_buy_sect}>{price}</div>
         </div>
     );
