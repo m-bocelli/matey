@@ -3,9 +3,24 @@ import { useEffect, useState } from 'react';
 import styles from './CreateHouseForm.module.css';
 
 export default function CreeateHouseForm({userData}) {
+
+    const handleSubmit = () => {
+        const formBody = {
+            houseName:  document.getElementById("houseName").value
+        }
+
+        fetch(`http://localhost:2001/createHouse?user=${userData.id}`, {
+            method: 'POST',
+            headers: {'Content-Type' : 'application/json'},
+            body: JSON.stringify(formBody)
+        })
+        .then(() => window.location.href = '/manageHouse')
+        .catch((err) => console.err('Failed to create house.', err));
+    }
+
     return (
             <div className={styles.container}>
-                <form id='createHouse' action={`http://localhost:2001/createHouse?user=${userData.id}`} method="POST">
+                <form id='createHouse' onSubmit={handleSubmit}>
                     <div className={styles.input_area}>
                         <h2> Create House <div className={styles.icon}>🏠</div></h2>
                         <label>House Name</label>

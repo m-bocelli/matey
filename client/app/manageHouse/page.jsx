@@ -1,7 +1,6 @@
 'use client';
 import styles from './page.module.css';
 import { UserAuth } from '../js/AuthContext';
-import Footer from "../components/Footer/Footer";
 import CreeateHouseForm from '../components/CreateHouseForm/CreateHouseForm';
 import LeaveHouseForm from '../components/LeaveHouseForm/LeaveHouseForm';
 import JoinHouseForm from '../components/JoinHouseForm/JoinHouseForm';
@@ -14,7 +13,7 @@ export default function ManageHouse() {
         if (userData && userData.house) {
             return <>
                         <LeaveHouseForm userData={userData}/>
-                        <InviteHouseForm/>
+                        <InviteHouseForm userData={userData}/>
                     </> 
         } else if (userData) {
             return <>
