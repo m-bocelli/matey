@@ -4,11 +4,12 @@ import { useState } from "react";
 import styles from './LeaveHouseForm.module.css';
 
 //Used to leave a house you have joined
-export default function LeaveHouseForm({userData}) {
+export default function LeaveHouseForm({userData, bearerToken}) {
     const [showAlert, setShowAlert] = useState(false);
 
     const leaveHouse =  () => {
-        fetch(`http://localhost:2001/houses?userId=${userData.id}&houseId=${userData.house}`, {method: "DELETE"})
+        fetch(`http://localhost:2001/houses?userId=${userData.id}&houseId=${userData.house}`, {method: "DELETE",
+        headers: {Authorization : `Bearer ${bearerToken}`}})
         .then(() => console.log('Left house successfully.'))
         .catch((err) => console.err('Failed to leave house.', err));
         window.location.href = '/manageHouse';

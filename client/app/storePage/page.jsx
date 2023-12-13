@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { UserAuth } from '../js/AuthContext';
 
 export default function StorePage() {
-    const { userData } = UserAuth();
+    const { userData, bearerToken } = UserAuth();
     const [selected, setSelected] = useState([]);
     const [shop, setShop] = useState([]);
     const [total, setTotal] = useState(0);
@@ -60,12 +60,13 @@ export default function StorePage() {
             try {
                 const res = await fetch(`http://localhost:2001/users/${userData.id}/fish`, {
                     method: 'POST',
-                    headers: {"Content-Type": "application/json"},
+                    headers: {"Content-Type": "application/json", Authorization : `Bearer ${bearerToken}`},
                     body: JSON.stringify(selected)
                 });
                 if (res.status === 200) {
                     fetch(`http://localhost:2001/users/${userData.id}/points?lost=${total}`, {
-                        method: 'POST'
+                        method: 'POST',
+                        headers: {Authorization : `Bearer ${bearerToken}`}
                     })
                     .then(() => {
                         const newSelected = [];

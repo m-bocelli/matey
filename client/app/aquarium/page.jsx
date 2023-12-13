@@ -5,12 +5,14 @@ import { UserAuth } from '../js/AuthContext';
 import { useEffect, useState } from 'react';
 
 export default function AquariumUI() {
-    const { userData } = UserAuth();
+    const { userData, bearerToken } = UserAuth();
     const [fish, setFish] = useState([]);
 
     useEffect(() => {
         if (userData) {
-            fetch(`http://localhost:2001/houses/${userData.house}/fish`)
+            fetch(`http://localhost:2001/houses/${userData.house}/fish`, {
+                headers: {Authorization : `Bearer ${bearerToken}`}
+            })
             .then((res) => res.json())
             .then((data) => setFish(data));
         }
