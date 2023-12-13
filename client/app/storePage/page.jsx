@@ -87,6 +87,7 @@ export default function StorePageUI() {
                     </div>
                 </Row>
             </Col>
+            <Footer></Footer>
         </div>
     );
 }
