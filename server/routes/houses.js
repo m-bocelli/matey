@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 })
 
 // get a specific house
-router.get('/:id', (req, res) => {
+router.get('/:id', validate, (req, res) => {
     const houseId = req.params.id;
     const houseRef = db.ref(`houses/${houseId}`);
     houseRef.once('value')
@@ -54,7 +54,7 @@ router.post('/', async (req, res) => {
     await userRef.set({...user, house: houseID});
 });
 
-router.delete('/', async (req,res) => {
+router.delete('/', validate, async (req,res) => {
     const userId = req.query.userId;
     // Remove house reference from user
     const userRef = db.ref(`users/${userId}`);
@@ -71,7 +71,7 @@ router.delete('/', async (req,res) => {
     res.status(200).send({mates: mates});
 });
 
-router.post('/join', async(req,res) => {
+router.post('/join', validate, async(req,res) => {
     const houseId = req.body.houseId;
     const houseRef = db.ref(`houses/${houseId}`);
     const house = (await houseRef.once('value')).val();
@@ -91,7 +91,7 @@ router.post('/join', async(req,res) => {
     }
 });
 
-router.post('/invite', async (req,res) => {
+router.post('/invite', validate, async (req,res) => {
     const emailData = {
         service_id: 'matey_service',
         template_id: 'matey_invite',
@@ -133,7 +133,7 @@ router.get('/:id/mates', validate, async (req, res) => {
 })
 
 // Get all fish objects in house
-router.get('/:id/fish', async (req, res) => {
+router.get('/:id/fish',validate, async (req, res) => {
     try {
         const houseId = req.params.id;
         const matesRef = db.ref(`houses/${houseId}/mates`);
