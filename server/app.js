@@ -8,6 +8,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true})); // body parsers needed for posts
 
+// Endpoint routes
 const usersRoutes = require('./routes/users');
 const housesRoutes = require('./routes/houses');
 const fishRoutes = require('./routes/fish');

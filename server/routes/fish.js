@@ -2,9 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 const db = require('../config/db-config');
-const validate = require('../middleware');
  
-// get all fish
+// GET all fish
 router.get('/', (req, res) => {
     const fishRef = db.ref('fish/');
 
@@ -18,6 +17,7 @@ router.get('/', (req, res) => {
         })
 })
 
+// POST a new fish object (only accessible from cURL or Postman, has not access on front-end)
 router.post('/', async (req, res) => {
     const {name, img, size, speed, depth, desc, price} = req.body;
     const fishRef = db.ref('fish/');

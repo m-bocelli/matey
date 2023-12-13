@@ -4,7 +4,7 @@ const router = express.Router();
 const db = require('../config/db-config');
 const validate = require('../middleware');
  
-// get all houses
+// GET all houses
 router.get('/', (req, res) => {
     const housesRef = db.ref('houses/');
     housesRef.once('value')
@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
         })
 })
 
-// get a specific house
+// GET a specific house
 router.get('/:id', validate, (req, res) => {
     const houseId = req.params.id;
     const houseRef = db.ref(`houses/${houseId}`);
@@ -31,7 +31,7 @@ router.get('/:id', validate, (req, res) => {
         })
 })
 
-// create house from user's perspective defined in query param
+// POST a house from user's perspective defined in query param
 router.post('/', async (req, res) => {
     const userId = req.query.user;
     const houseName = req.body.houseName;
@@ -54,6 +54,7 @@ router.post('/', async (req, res) => {
     await userRef.set({...user, house: houseID});
 });
 
+// DELETE a user reference from inside house OR delete entire house if it would be left empty
 router.delete('/', validate, async (req,res) => {
     const userId = req.query.userId;
     // Remove house reference from user
@@ -71,6 +72,7 @@ router.delete('/', validate, async (req,res) => {
     res.status(200).send({mates: mates});
 });
 
+// POST a user reference to a house via the given house ID
 router.post('/join', validate, async(req,res) => {
     const houseId = req.body.houseId;
     const houseRef = db.ref(`houses/${houseId}`);
@@ -91,6 +93,7 @@ router.post('/join', validate, async(req,res) => {
     }
 });
 
+// Send an invite to the specified email via emailjs to the email specified in form POST request
 router.post('/invite', validate, async (req,res) => {
     const emailData = {
         service_id: 'matey_service',
@@ -113,26 +116,26 @@ router.post('/invite', validate, async (req,res) => {
         .catch(() => res.status(500).send({Error: 'Failed to send invite.'}));
 });
 
+// GET a list of all user objects belonging to house via ID references
 router.get('/:id/mates', validate, async (req, res) => {
     try {
         const houseId = req.params.id;
         const matesRef = db.ref(`houses/${houseId}/mates`);
         const mates = (await matesRef.once('value')).val();
         let users = [];
-        
+        // For each ID in the list, grab the object from its data snapshot
         for (const userId of mates) {
             const userRef = db.ref(`users/${userId}`);
             const user = (await userRef.once('value')).val();
             users.push(user);
         }
-
         res.status(200).send(users);
     } catch(err) {
         res.status(500).send(err);
     }
 })
 
-// Get all fish objects in house
+// GET all fish objects from users in house
 router.get('/:id/fish',validate, async (req, res) => {
     try {
         const houseId = req.params.id;
@@ -143,13 +146,14 @@ router.get('/:id/fish',validate, async (req, res) => {
         for (const userId of mates) {
             const userRef = db.ref(`users/${userId}`);
             const user = (await userRef.once('value')).val();
-            
+            // If the user has a list of fish IDs, push them into a new list
             if (user.fish) {
                 user.fish.forEach((fishId) => fishIds.push(fishId));
             }
         }
 
         let fishes = [];
+        // For each of the collected fishIds, grab all related fish objects
         for (const fishId of fishIds) {
             const fishRef = db.ref(`fish/${fishId}`);
             const fish = (await fishRef.once('value')).val();
