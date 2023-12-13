@@ -9,7 +9,7 @@ export default function Leaderboard({ data }) {
     const height = 500 - margin.top - margin.bottom;
 
     const scaleX = scaleBand()
-        .domain(data.map(({ name }) => name))
+        .domain(data.map(({ id }) => id))
         .range([0, width])
         .paddingInner(0.35);
 
@@ -66,7 +66,7 @@ function Bars({ data, height, scaleX, scaleY }) {
                 return (
                     <>
                         <text
-                            x={scaleX(name) + scaleX.bandwidth() / 2}
+                            x={scaleX(id) + scaleX.bandwidth() / 2}
                             y={scaleY(points) - 3}
                             textAnchor='middle'
                             fill={ranColor}
@@ -83,7 +83,7 @@ function Bars({ data, height, scaleX, scaleY }) {
                             ry={10}
                         />
                         <text
-                            x={scaleX(name) + scaleX.bandwidth() / 2}
+                            x={scaleX(id) + scaleX.bandwidth() / 2}
                             y={height + 20}
                             textAnchor='middle'
                             fill={ranColor}
