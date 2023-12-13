@@ -2,8 +2,6 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const port = 2001;
-const db = require('./config/db-config');
-const validate = require('./middleware');
 const bodyParser = require('body-parser');
 
 app.use(cors());
