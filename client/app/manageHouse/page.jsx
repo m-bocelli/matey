@@ -29,6 +29,7 @@ export default function ManageHouse() {
         <div className={styles.container}>
             <h1> Manage House 🏘 </h1>
             {displayForms()}
+            <Footer></Footer>
         </div>
     );
 }
