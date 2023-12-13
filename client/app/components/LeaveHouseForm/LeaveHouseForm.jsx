@@ -3,6 +3,7 @@ import Button from "../Button/Button";
 import { useState } from "react";
 import styles from './LeaveHouseForm.module.css';
 
+//Used to leave a house you have joined
 export default function LeaveHouseForm({userData}) {
     const [showAlert, setShowAlert] = useState(false);
 

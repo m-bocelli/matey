@@ -8,7 +8,7 @@ import InviteHouseForm from '../components/InviteHouseForm/InviteHouseForm';
 
 export default function ManageHouse() {
     const { userData } = UserAuth();
-
+    //Used to display sections based on if you're already in a house or not
     const displayForms = () => {
         if (userData && userData.house) {
             return <>
