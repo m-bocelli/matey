@@ -24,10 +24,10 @@ export function AuthContextProvider({ children }) {
     useEffect(() => {
         if (user) {
             // create user in database if they are not already there
-            fetch('http://localhost:2001/users', {method: 'POST', headers: {"Content-Type": "application/json"},
+            fetch('https://matey.onrender.com/users', {method: 'POST', headers: {"Content-Type": "application/json"},
             body: JSON.stringify(user)})
             .then(() => user.getIdToken().then((token) => {
-                fetch(`http://localhost:2001/users/${user.uid}`, {headers: {Authorization : `Bearer ${token}`}})
+                fetch(`https://matey.onrender.com/users/${user.uid}`, {headers: {Authorization : `Bearer ${token}`}})
                 .then((res) => res.json())
                 .then((data) => {
                     console.log("setting user data");

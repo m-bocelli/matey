@@ -9,7 +9,7 @@ export default function CreeateHouseForm({userData}) {
             houseName:  document.getElementById("houseName").value
         }
 
-        fetch(`http://localhost:2001/houses?user=${userData.id}`, {
+        fetch(`https://matey.onrender.com/houses?user=${userData.id}`, {
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(formBody)
