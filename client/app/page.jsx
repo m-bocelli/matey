@@ -4,7 +4,8 @@ import styles from './page.module.css';
 import SignedOut from './components/SignedOut/SignedOut';
 import HouseOverview from './components/HouseOverview/HouseOverview';
 import { UserAuth } from './js/AuthContext';
-import Footer from "./components/Footer/Footer";
+import Button from './components/Button/Button';
+import Footer from './components/Footer/Footer';
 
 export default function Page() {
     const { userData, bearerToken } = UserAuth();
@@ -31,10 +32,6 @@ export default function Page() {
         })();
     }, [userData]);
 
-    async function getUserPoints() {
-        // func that will grab all points of all users in house
-    }
-
     return (
         <main className={styles.container}>
             {loading ? (
@@ -51,13 +48,11 @@ export default function Page() {
                             {userData.name}{' '}
                         </h1>
                     </header>
-                    <div id='houseInfo'>
+                    <div className={styles.house_info_container}>
                         {
-                            /*
                             userData.house ? 
                                 <HouseOverview token={bearerToken} houseId={userData.house}/> : 
-                                <h2>no house lol</h2>
-                                */
+                                <Button onClick={() => window.location.href = '/manageHouse'}>Manage House</Button>
                         }
                     </div>
                 </>

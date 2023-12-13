@@ -44,8 +44,17 @@ export default function CalendarmUI() {
         <FontAwesomeIcon icon={faChevronRight} size="2x" />
         </button>
         <div className={styles.container}>
+<<<<<<< HEAD
             <h2 className={styles.title}> {GetCalendarMonthName(date)} {GetCalendarYear()}</h2>
+=======
+            <div className={styles.mainStuff}>
+                <h1 className={styles.title}> Calendar </h1>
+>>>>>>> 508c56e3573605793ccbc35ec2216667f2c29c52
 
+                <h2 className={styles.title}> {GetCalendarMonthName(date)} {GetCalendarYear()}</h2>
+                <Button onClick={ChangeToNextWeek}>{`>`}</Button>
+                <Button onClick={ChangeToPrevWeek}>{`<`}</Button>
+            </div>
             <div className="container">
                 <Row className="align-items-start">
                     <CalendarDays weekDay="Sunday" date={date}> </CalendarDays>

@@ -6,7 +6,7 @@ import AquariumPet from '../components/AquariumPet/AquariumPet';
 import { UserAuth } from '../js/AuthContext';
 
 export default function AquariumUI() {
-    const { user } = UserAuth();
+    const { userData } = UserAuth();
     return (
         <div className={styles.container}>
             <h1 className={styles.title}> Aquarium 🐠</h1>
@@ -16,7 +16,7 @@ export default function AquariumUI() {
                         key={item.id}
                         name={item.name}
                         img={item.img}
-                        user={user ? user.displayName : '??? ???'}
+                        user={userData ? userData.name : '??? ???'}
                         size={item.size}
                         speed={item.speed}
                         dpeth={item.depth}

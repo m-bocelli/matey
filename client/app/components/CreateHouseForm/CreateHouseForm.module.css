@@ -1,0 +1,47 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--cherry-blossom);
+    padding: 2rem;
+    background-color: white;
+    transition: background-color 0.3s;
+    border-radius: 30px;
+}
+
+.container:hover {
+    background-color: antiquewhite;
+}
+
+.container:hover .icon {
+    animation: 2s ease-in-out infinite spin;
+}
+
+.icon {
+    text-align: center;
+    transform-origin: center;
+}
+
+.input_area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.text_input {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 1rem;
+    border-color: var(--cherry-blossom);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
