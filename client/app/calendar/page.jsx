@@ -7,6 +7,7 @@ import { GetDaysOfTheWeek, GetCalendarMonthName } from "../components/CalendarDa
 import Button from '../components/Button/Button';
 import CalendarDays from '../components/CalendarDays/CalendarDays';
 import Footer from "../components/Footer/Footer";
+import CreateTask from "../components/TaskForm/CreateTask";
 
 
 export default function CalendarmUI() {
@@ -32,7 +33,7 @@ export default function CalendarmUI() {
     }
 
     return (
-        <div className={styles.container}>
+        <><div className={styles.container}>
             <h1 className={styles.title}> Calendar </h1>
 
             <h2 className={styles.title}> {GetCalendarMonthName(date)} {GetCalendarYear()}</h2>
@@ -51,6 +52,8 @@ export default function CalendarmUI() {
                 </Row>
             </div>
             <Footer></Footer>
-        </div>
+        </div><div>
+                <CreateTask></CreateTask>
+            </div></>
     );
 }
