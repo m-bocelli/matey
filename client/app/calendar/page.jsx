@@ -8,6 +8,9 @@ import Button from '../components/Button/Button';
 import CalendarDays from '../components/CalendarDays/CalendarDays';
 import Footer from "../components/Footer/Footer";
 import CreateTask from "../components/TaskForm/CreateTask";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function CalendarmUI() {
@@ -33,12 +36,15 @@ export default function CalendarmUI() {
     }
 
     return (
-        <><div className={styles.container}>
-            <h1 className={styles.title}> Calendar </h1>
-
+        <>
+        <button className={styles.leftarrow} onClick={ChangeToPrevWeek}>
+        <FontAwesomeIcon icon={faChevronLeft} size="2x" />
+        </button>
+        <button className={styles.rightarrow} onClick={ChangeToNextWeek}>
+        <FontAwesomeIcon icon={faChevronRight} size="2x" />
+        </button>
+        <div className={styles.container}>
             <h2 className={styles.title}> {GetCalendarMonthName(date)} {GetCalendarYear()}</h2>
-            <Button onClick={ChangeToNextWeek}>{`>`}</Button>
-            <Button onClick={ChangeToPrevWeek}>{`<`}</Button>
 
             <div className="container">
                 <Row className="align-items-start">

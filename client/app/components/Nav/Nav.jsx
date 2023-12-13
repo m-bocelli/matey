@@ -43,8 +43,7 @@ export default function Nav() {
                     <>
                         <NavLink href='createHouse'>CREATE HOUSE</NavLink>
                         <NavLink href='manageHouses'>MANAGE HOUSES</NavLink>
-                        <NavLink href='calendar'>CALENDAR</NavLink>
-                        <NavLink href='tasksPage'>TASKS</NavLink>
+                        <NavLink href='calendar'>TASKS</NavLink>
                         <NavLink href='storePage'>FISH MARKET</NavLink>
                         <NavLink href='aquarium'>AQUARIUM</NavLink>
                     </>
