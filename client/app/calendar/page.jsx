@@ -33,12 +33,13 @@ export default function CalendarmUI() {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}> Calendar </h1>
+            <div className={styles.mainStuff}>
+                <h1 className={styles.title}> Calendar </h1>
 
-            <h2 className={styles.title}> {GetCalendarMonthName(date)} {GetCalendarYear()}</h2>
-            <Button onClick={ChangeToNextWeek}>{`>`}</Button>
-            <Button onClick={ChangeToPrevWeek}>{`<`}</Button>
-
+                <h2 className={styles.title}> {GetCalendarMonthName(date)} {GetCalendarYear()}</h2>
+                <Button onClick={ChangeToNextWeek}>{`>`}</Button>
+                <Button onClick={ChangeToPrevWeek}>{`<`}</Button>
+            </div>
             <div className="container">
                 <Row className="align-items-start">
                     <CalendarDays weekDay="Sunday" date={date}> </CalendarDays>
