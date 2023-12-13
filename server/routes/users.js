@@ -65,4 +65,56 @@ router.get('/:id', async (req, res) => {
     }    
 })
 
+router.get('/:id/fish',  (req, res) => {
+    const userId = req.params.id;
+    const userFishRef = db.ref(`users/${userId}/fish`);
+    userFishRef.once('value')
+    .then((snap) => {
+        const userFish = snap.val();
+        res.status(200).send(userFish);
+    })
+    .catch((err) => {
+        res.status(500).send(err);
+    })
+})
+
+router.post('/:id/fish',  async (req, res) => {
+    const newFish = req.body;
+    const userId = req.params.id;
+    const userFishRef = db.ref(`users/${userId}/fish`);
+    let userFish = (await userFishRef.once('value')).val();
+    const newIds = newFish.map((fish) => fish.id);
+
+    if (userFish) {
+        newIds.forEach((fishId) => userFish.push(fishId));
+    } else {
+        userFish = [...newIds];
+    }
+
+    await userFishRef.set(userFish,
+        ((err) =>
+            err ? res.status(500).send(err) 
+                : res.status(200).send({Success: 'Added fish.'})
+        )
+    );
+})
+
+router.post('/:id/points',  async (req, res) => {
+    const lost = req.query.lost;
+    const gained = req.query.gained;
+
+    const userId = req.params.id;
+    const userRef = db.ref(`users/${userId}`);
+    const user = (await userRef.once('value')).val();
+    let newPoints = user.points;
+
+    lost ? newPoints -= lost : newPoints += gained || 0;
+     
+    await userRef.set({...user, points: newPoints},
+        (err) => 
+            err ? res.status(500).send(err)
+                : res.status(200).send({Success: 'Points altered.'})
+    );
+})
+
 module.exports = router;
