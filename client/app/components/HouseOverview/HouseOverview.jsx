@@ -27,7 +27,7 @@ export default function HouseOverview({token, houseId}) {
 
     useEffect(() => {
         if (mates.length > 0) {
-            setPoints(mates.map((mate) => ({name: mate.name, points: mate.points})));
+            setPoints(mates.map((mate) => ({id: mate.id, name: mate.name, points: mate.points})));
         }
     }, [mates])
 
@@ -35,16 +35,16 @@ export default function HouseOverview({token, houseId}) {
         <>
             {loading ? <h2>Loading house details...</h2> :
                 <div>
-                    <h2>🏠 House {house.name}</h2>
+                    <h2>🏠 {house.name}</h2>
                     <h3>Mates</h3>
-                    <ul>
+                    <div className={styles.mate_list}>
                         {mates.map((mate) => {
                             return (<div key={mate.id} className={styles.mate}>
                                         <img src={mate.icon} className={styles.mate_icon}></img>
                                         <div>{mate.name}</div>
                                     </div>)
                         })}
-                    </ul>
+                    </div>
                     <Leaderboard data={points} />
                 </div>
             }

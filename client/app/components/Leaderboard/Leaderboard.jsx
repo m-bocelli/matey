@@ -60,7 +60,7 @@ function XAxis({ scale, transform }) {
 function Bars({ data, height, scaleX, scaleY }) {
     return (
         <>
-            {data.map(({ name, points }) => {
+            {data.map(({ id, name, points }) => {
                 const ranColor =
                     '#' + Math.floor(Math.random() * 16777215).toString(16);
                 return (
@@ -74,7 +74,7 @@ function Bars({ data, height, scaleX, scaleY }) {
                             {points} points
                         </text>
                         <rect
-                            key={`bar-${name}`}
+                            key={`bar-${id}`}
                             x={scaleX(name)}
                             y={scaleY(points)}
                             width={scaleX.bandwidth()}

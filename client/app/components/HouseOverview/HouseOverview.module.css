@@ -6,10 +6,15 @@
     width: fit-content;
     padding: 5px;
     border-radius: 5px;
+    margin: 5px;
 }
 
 .mate_icon {
     width: 2rem;
     border-radius: 5px;
     padding-right: 3px;
+}
+
+.mate_list {
+    display: flex;
 }

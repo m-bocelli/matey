@@ -24,6 +24,11 @@
     margin: 1rem;
 }
 
+.house_info_container {
+    display: flex;
+    justify-content: center;
+}
+
 @keyframes pop-in {
     0% {
         opacity: 0;
