@@ -4,6 +4,7 @@ const router = express.Router();
 const db = require('../config/db-config');
 const validate = require('../middleware');
  
+// GET all users
 router.get('/',  validate, (req, res) => {
     const usersRef = db.ref('users/');
 
@@ -17,7 +18,7 @@ router.get('/',  validate, (req, res) => {
         })
 })
 
-// creates a user object in the database using values from Google's user response (put into request on front-end)
+// POST a user object in the database using values from Google's user response (put into request on front-end)
 router.post('/', validate, async (req, res) => {
     const { uid, displayName, photoURL, email } = req.body;
     const userRef = db.ref(`users/${uid}`);
@@ -38,6 +39,7 @@ router.post('/', validate, async (req, res) => {
     }
 })
 
+// GET a user by ID
 // using async-await here instead of .then.catch to avoid nested chaining
 router.get('/:id', validate, async (req, res) => {
     const userId = req.params.id;
@@ -65,6 +67,7 @@ router.get('/:id', validate, async (req, res) => {
     }    
 })
 
+// GET a list of fish IDs that the user owns
 router.get('/:id/fish', validate, (req, res) => {
     const userId = req.params.id;
     const userFishRef = db.ref(`users/${userId}/fish`);
@@ -78,6 +81,7 @@ router.get('/:id/fish', validate, (req, res) => {
     })
 })
 
+// POST a new fish to the user's list of fish
 router.post('/:id/fish',  validate, async (req, res) => {
     const newFish = req.body;
     const userId = req.params.id;
@@ -99,6 +103,7 @@ router.post('/:id/fish',  validate, async (req, res) => {
     );
 })
 
+// POST a change to the user's point field, substraction or addition specified by query params
 router.post('/:id/points',  validate, async (req, res) => {
     const lost = req.query.lost;
     const gained = req.query.gained;
