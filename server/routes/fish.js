@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 
 const db = require('../config/db-config');
-const validate = require('../middleware');
  
 // GET all fish
 router.get('/', (req, res) => {

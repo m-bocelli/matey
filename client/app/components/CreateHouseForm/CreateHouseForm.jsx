@@ -9,7 +9,7 @@ export default function CreeateHouseForm({userData}) {
         const formBody = {
             houseName:  document.getElementById("houseName").value
         }
-
+        // Make HTTP request to create house object with given name
         fetch(`http://localhost:2001/houses?user=${userData.id}`, {
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},
