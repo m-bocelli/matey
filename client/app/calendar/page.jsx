@@ -6,7 +6,6 @@ import {useState, useEffect} from 'react';
 import { GetDaysOfTheWeek, GetCalendarMonthName } from "../components/CalendarDays/calendar.js";
 import Button from '../components/Button/Button';
 import CalendarDays from '../components/CalendarDays/CalendarDays';
-import Footer from "../components/Footer/Footer";
 import CreateTask from "../components/TaskForm/CreateTask";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
@@ -57,7 +56,6 @@ export default function CalendarmUI() {
                     <CalendarDays weekDay="Saturday" date={date}> </CalendarDays>
                 </Row>
             </div>
-            <Footer></Footer>
         </div><div>
                 <CreateTask></CreateTask>
             </div></>
