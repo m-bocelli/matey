@@ -16,6 +16,8 @@ const monthArray = [
 
 const weekdayMap = new Map();
 
+//WeekDayMap gets all of the days of the week as a key and gets all of the days of the week following the day as a value.
+//For example if I pass in the key Thursday, then the days of the week after Thursday would be ["Friday","Saturday"]
 weekdayMap.set('Sunday', ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]);
 weekdayMap.set('Monday', ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]);
 weekdayMap.set('Tuesday', ["Wednesday", "Thursday", "Friday", "Saturday"]);
@@ -24,7 +26,7 @@ weekdayMap.set('Thursday', ["Friday", "Saturday"]);
 weekdayMap.set('Friday', ["Saturday"]);
 weekdayMap.set('Saturday', []);
 
-
+//Gets the current month by passing in the current Day of the year.
 export function GetCalendarMonthName(curDate) {
     if (!(curDate instanceof Date)) {
         console.error("curDate is not a valid Date object");
@@ -33,15 +35,17 @@ export function GetCalendarMonthName(curDate) {
     return monthArray[curDate.getMonth()];
 }
 
+//When given a weekDay (i.e. Sunday) and the current Day today. 
+//it calculautes what exact date should be returned to a component that calls it.
+//i.e. if weekDay==Sunday and the date given was 12/13/2023. 
+//Then it would return 12/10/2023, as that was Sunday's exact date.
 export function GetDaysOfTheWeek(weekDay, date) {
 
+    //Initialize the nextDays array to be the weekDays after the weekDay given
     let nextDays = [];
     nextDays = weekdayMap.get(weekDay);
 
     let curDate = new Date(date);
-    //console.log(curDate);
-
-    //let curDate = new Date();
 
     if (!(curDate instanceof Date)) {
         console.error("curDate is not a valid Date object");
@@ -49,12 +53,10 @@ export function GetDaysOfTheWeek(weekDay, date) {
     }
 
     let curDayIndex = curDate.getDay();
-    //console.log("curDayIndex: " + curDayIndex);
-
-    //console.log("weekArrayValue: " + weekArray[curDayIndex]);
-    //console.log("weekDayParam: " + weekDay);
-    //console.log(nextDays.includes(weekArray[curDayIndex]));
-    //console.log(nextDays[0]);
+    
+    //Check if the nextDays includes the target currentDay of the week.
+    //Then move forward with curDayIndex until we reach the target currentDay. 
+    //Else, go backwards until we reach the target currentDay.
     if(!nextDays.includes(weekArray[curDayIndex])) {
 
         //console.log("the day given was included");

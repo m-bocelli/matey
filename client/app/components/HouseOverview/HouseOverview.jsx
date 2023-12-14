@@ -9,6 +9,7 @@ export default function HouseOverview({token, houseId}) {
     const [points, setPoints] = useState([]);
 
     useEffect(() => {
+        // Fetch house object to get name
         fetch(`https://matey.onrender.com/houses/${houseId}`, {headers: {Authorization : `Bearer ${token}`}})
             .then((res) => res.json())
             .then((data) => {
@@ -18,6 +19,7 @@ export default function HouseOverview({token, houseId}) {
     }, []);
 
     useEffect(() => {
+        // Fetch a list of user objects corresponding to all members in this house
         fetch(`https://matey.onrender.com/houses/${houseId}/mates`, {headers: {Authorization : `Bearer ${token}`}})
             .then((res) => res.json())
             .then((data) => {
@@ -27,6 +29,7 @@ export default function HouseOverview({token, houseId}) {
 
     useEffect(() => {
         if (mates.length > 0) {
+            // Get data for leaderboard
             setPoints(mates.map((mate) => ({id: mate.id, name: mate.name, points: mate.points})));
         }
     }, [mates])

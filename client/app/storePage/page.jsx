@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { UserAuth } from '../js/AuthContext';
 
 export default function StorePage() {
-    const { userData } = UserAuth();
+    const { userData, bearerToken } = UserAuth();
     const [selected, setSelected] = useState([]);
     const [shop, setShop] = useState([]);
     const [total, setTotal] = useState(0);
@@ -60,18 +60,16 @@ export default function StorePage() {
             try {
                 const res = await fetch(`https://matey.onrender.com/users/${userData.id}/fish`, {
                     method: 'POST',
-                    headers: {"Content-Type": "application/json"},
+                    headers: {"Content-Type": "application/json", Authorization : `Bearer ${bearerToken}`},
                     body: JSON.stringify(selected)
                 });
                 if (res.status === 200) {
-                    fetch(`hhttps://matey.onrender.com/users/${userData.id}/points?lost=${total}`, {
-                        method: 'POST'
+                    fetch(`https://matey.onrender.com/users/${userData.id}/points?lost=${total}`, {
+                        method: 'POST',
+                        headers: {Authorization : `Bearer ${bearerToken}`}
                     })
                     .then(() => {
-                        const newSelected = [];
-                        setSelected(newSelected);
-                        setPoints(points-total);
-                        updateTotal(newSelected);
+                        window.location.href = '/storePage';
                     });
                 }
             } catch (err) {
@@ -111,7 +109,7 @@ export default function StorePage() {
                     </div>
                 </Row>
                 <Row className={styles.row}>
-                    <h2 className={styles.shop}>Shop🛒</h2>
+                    <h2 className={styles.shop}>Shop 🛒</h2>
                     <div className={styles.section}>
                         {shop.map((item) => {
                             return (

@@ -2,7 +2,8 @@ import styles from './JoinHouseForm.module.css';
 import Button from '../Button/Button';
 import { useState } from 'react';
 
-export default function JoinHouseForm({userData}) {
+//Used to allow users to join a house with a house key
+export default function JoinHouseForm({userData, bearerToken}) {
     const [showError, setShowError] = useState(false);
     
     const handleSubmit = (e) => {
@@ -13,7 +14,7 @@ export default function JoinHouseForm({userData}) {
 
         fetch(`https://matey.onrender.com/houses/join?userId=${userData.id}`, {
             method: 'POST',
-            headers: {'Content-Type' : 'application/json'},
+            headers: {'Content-Type' : 'application/json', Authorization : `Bearer ${bearerToken}`},
             body: JSON.stringify(formBody)
         })
         .then((res) => res.status !== 200 ? setShowError(true) : window.location.href = '/manageHouse')

@@ -1,0 +1,12 @@
+.container {
+    margin-left: 15rem;
+    padding: 1rem;
+}
+
+.selected_container {
+    background-color: var(--cherry-blossom);
+    color: white;
+    width: max-content;
+    border-radius: 5px;
+    padding: 1rem;
+}

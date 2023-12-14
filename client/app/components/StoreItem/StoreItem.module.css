@@ -13,7 +13,9 @@
 
 .item_img {
     width: 10rem;
+    height: 8rem;
     pointer-events: none;
+    transition: opacity 0.2s;
 }
 
 .item_buy_sect {
@@ -31,7 +33,24 @@
     opacity: 1;
 }
 
+.item_container:hover .desc {
+    opacity: 1;
+}
+
+.item_container:hover .item_img {
+    opacity: 0;
+}
+
+.desc {
+    position: absolute;
+    top: 20%;
+    opacity: 0;
+    transition: opacity 0.2;
+    text-align: center;
+}
+
 .name {
+    font-weight: bolder;
     position: absolute;
     opacity: 0;
     transition: opacity 0.2;

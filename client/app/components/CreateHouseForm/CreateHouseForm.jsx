@@ -2,13 +2,14 @@ import Button from "../Button/Button";
 import { useEffect, useState } from 'react';
 import styles from './CreateHouseForm.module.css';
 
+//Used to create a house that you can invite people to
 export default function CreeateHouseForm({userData}) {
 
     const handleSubmit = () => {
         const formBody = {
             houseName:  document.getElementById("houseName").value
         }
-
+        // Make HTTP request to create house object with given name
         fetch(`https://matey.onrender.com/houses?user=${userData.id}`, {
             method: 'POST',
             headers: {'Content-Type' : 'application/json'},

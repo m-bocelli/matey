@@ -3,11 +3,13 @@ import Button from "../Button/Button";
 import { useState } from "react";
 import styles from './LeaveHouseForm.module.css';
 
-export default function LeaveHouseForm({userData}) {
+//Used to leave a house you have joined
+export default function LeaveHouseForm({userData, bearerToken}) {
     const [showAlert, setShowAlert] = useState(false);
 
     const leaveHouse =  () => {
-        fetch(`https://matey.onrender.com/houses?userId=${userData.id}&houseId=${userData.house}`, {method: "DELETE"})
+        fetch(`https://matey.onrender.com/houses?userId=${userData.id}&houseId=${userData.house}`, {method: "DELETE",
+        headers: {Authorization : `Bearer ${bearerToken}`}})
         .then(() => console.log('Left house successfully.'))
         .catch((err) => console.err('Failed to leave house.', err));
         window.location.href = '/manageHouse';
