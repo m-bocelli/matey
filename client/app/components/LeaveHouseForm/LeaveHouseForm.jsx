@@ -7,12 +7,12 @@ import styles from './LeaveHouseForm.module.css';
 export default function LeaveHouseForm({userData, bearerToken}) {
     const [showAlert, setShowAlert] = useState(false);
 
-    const leaveHouse =  () => {
-        fetch(`https://matey.onrender.com/houses?userId=${userData.id}&houseId=${userData.house}`, {method: "DELETE",
+    const leaveHouse = () => {
+        fetch(`https://matey.onrender.com/houses?userId=${userData.id}&houseId=${userData.house}`, {
+        method: "DELETE",
         headers: {Authorization : `Bearer ${bearerToken}`}})
-        .then(() => console.log('Left house successfully.'))
+        .then(() => window.location.href = '/manageHouse')
         .catch((err) => console.err('Failed to leave house.', err));
-        window.location.href = '/manageHouse';
     };
 
     return (
@@ -21,7 +21,7 @@ export default function LeaveHouseForm({userData, bearerToken}) {
             <Alert>
                 <AlertHeading>Are you sure?</AlertHeading>
                 <div className={styles.alert_buttons}>
-                    <AlertLink type="submit" onClick={leaveHouse}>yes</AlertLink>
+                    <AlertLink onClick={leaveHouse}>yes</AlertLink>
                     <AlertLink onClick={()=>setShowAlert(false)} >no</AlertLink>
                 </div>
             </Alert>:
