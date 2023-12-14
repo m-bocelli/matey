@@ -47,7 +47,7 @@ export default function CreateTask({houseId}) {
     };
 
       try {
-          const response = await fetch(`http://localhost:2001/tasks?houseId=${houseId}`, {
+          const response = await fetch(`https://matey.onrender.com/tasks?houseId=${houseId}`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
