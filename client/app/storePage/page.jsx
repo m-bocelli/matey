@@ -69,10 +69,7 @@ export default function StorePage() {
                         headers: {Authorization : `Bearer ${bearerToken}`}
                     })
                     .then(() => {
-                        const newSelected = [];
-                        setSelected(newSelected);
-                        setPoints(points-total);
-                        updateTotal(newSelected);
+                        window.location.href = '/storePage';
                     });
                 }
             } catch (err) {
@@ -112,7 +109,7 @@ export default function StorePage() {
                     </div>
                 </Row>
                 <Row className={styles.row}>
-                    <h2 className={styles.shop}>Shop🛒</h2>
+                    <h2 className={styles.shop}>Shop 🛒</h2>
                     <div className={styles.section}>
                         {shop.map((item) => {
                             return (

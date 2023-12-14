@@ -6,7 +6,7 @@ import {useState, useEffect} from 'react';
 import { GetDaysOfTheWeek, GetCalendarMonthName } from "../components/CalendarDays/calendar.js";
 import Button from '../components/Button/Button';
 import CalendarDays from '../components/CalendarDays/CalendarDays';
-import CreateTask from "../components/TaskForm/CreateTask";
+import CreateTask from "../components/CreateTaskForm/CreateTask";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';

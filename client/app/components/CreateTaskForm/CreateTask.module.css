@@ -9,11 +9,10 @@
     border-radius: 20px;
     border-color: var(--acd2ed);
     background-color: var(--uranian-blue);
-    position: absolute;
+    position: relative;
     display: inline-block;
     bottom: 10%;
 }
-
 .new_task { 
     font-size: 40px; 
     color: var(--space-cadet);
@@ -26,7 +25,6 @@
     padding: 20px;
 
 }
-
 .form select { 
     width: 35rem;
     height:3rem;
@@ -34,17 +32,12 @@
     font-size: larger;
 
 }
-
 .form label,
 .form input,
 .form select {
     margin-left: 1rem;
     margin-right: 20rem;
-
 }
-
-
-
 /*
 this is coloring the text of what the user types in the input area
 */
@@ -52,15 +45,11 @@ this is coloring the text of what the user types in the input area
     color:rgb(0, 0, 0);
     width: 35rem;
     height: 3rem;
+    border-radius: 5px;
 }
-
-
-
 .form input:focus {
     outline: 2px var(--cherry-blossom)!important; /* Change the color to your preference */
-  }
-
-
+}
 /*
 Task Name, Details, Due Date, Frequency
 */ 
@@ -70,21 +59,18 @@ Task Name, Details, Due Date, Frequency
     font-size:larger;
 
 }
-
-#task_details {
+#task_desc {
     color: rgb(0, 0, 0);
     width: 35rem;
     height: 5rem;
     display: inline-block;
-  }
-
+}
 .form ::placeholder{
     padding-left: 0.25rem;
     padding-top:2rem;
     padding-bottom: 2rem;
     font-size: large;
 }
-
 .entire_form {
     margin-left: 30rem;
     margin-right: 12rem;
@@ -98,7 +84,6 @@ Task Name, Details, Due Date, Frequency
     display: block;
     align-items: center;
 }
-
 .entire_form label,
 .entire_form input {
   display: block;
@@ -106,8 +91,6 @@ Task Name, Details, Due Date, Frequency
   padding-left: 0.75rem;
   font-size: larger;
 }
-
-
 .close_form {
     display: inline-block;
     border: none;
@@ -206,7 +189,7 @@ Task Name, Details, Due Date, Frequency
 .pin_button { 
     margin-left: 20rem;
     margin-right: 10rem;
-    position: fixed;
+    position: relative;
     top: 4%;
     color: white;
     font-weight: bold;

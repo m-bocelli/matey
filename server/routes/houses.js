@@ -166,4 +166,24 @@ router.get('/:id/fish',validate, async (req, res) => {
     }
 })
 
+router.get('/:id/tasks', validate, async (req, res) => {
+    try {
+        const houseId = req.params.id;
+        const tasksRef = db.ref(`houses/${houseId}/tasks`);
+        const taskIds = (await tasksRef.once('value')).val();
+        let tasks = [];
+        // For each ID in the list, grab the object from its data snapshot
+        if (taskIds) {
+            for (const taskId of taskIds) {
+                const taskRef = db.ref(`tasks/${taskId}`);
+                const task = (await taskRef.once('value')).val();
+                tasks.push(task);
+            }
+        }
+        res.status(200).send(tasks);
+    } catch(err) {
+        res.status(500).send(err);
+    }
+})
+
 module.exports = router;
