@@ -47,13 +47,15 @@ export default function TasksPage() {
     return (
         <div className={styles.container}>
             {renderView()}
-            <h2>Selected task</h2>
             {selectedTask &&
-                <div>
-                    <h3>{selectedTask.name}</h3>
-                    <p>{selectedTask.desc}</p>
-                    <p>Points: {selectedTask.points}</p>
-                    <Button onClick={completeTask}>Complete</Button>
+                <div className={styles.selected_container}>
+                    <h2>Selected task</h2>
+                    <div>
+                        <h3>{selectedTask.name}</h3>
+                        <p>{selectedTask.desc}</p>
+                        <p>Points: {selectedTask.points}</p>
+                        <Button onClick={completeTask}>Complete</Button>
+                    </div>
                 </div>
             }
         </div>
