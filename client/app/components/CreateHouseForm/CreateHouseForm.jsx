@@ -5,7 +5,8 @@ import styles from './CreateHouseForm.module.css';
 //Used to create a house that you can invite people to
 export default function CreeateHouseForm({userData}) {
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         const formBody = {
             houseName:  document.getElementById("houseName").value
         }
@@ -21,7 +22,7 @@ export default function CreeateHouseForm({userData}) {
 
     return (
             <div className={styles.container}>
-                <form id='createHouse' onSubmit={handleSubmit}>
+                <form id='createHouse' onSubmit={(e) => handleSubmit(e)}>
                     <div className={styles.input_area}>
                         <h2> Create House <div className={styles.icon}>🏠</div></h2>
                         <label>House Name</label>
