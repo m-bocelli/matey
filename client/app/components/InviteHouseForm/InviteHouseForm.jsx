@@ -4,7 +4,8 @@ import Button from '../Button/Button';
 //Used to invite users to a house via email, sending them the house key
 export default function InviteHouseForm({userData, bearerToken}) {
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         const formBody = {
             toName:  document.getElementById("toName").value,
             toEmail: document.getElementById("toEmail").value
@@ -21,7 +22,7 @@ export default function InviteHouseForm({userData, bearerToken}) {
 
     return (
         <div className={styles.container}>
-            <form id='inviteToHouse' onSubmit={handleSubmit}>
+            <form id='inviteToHouse' onSubmit={(e) => handleSubmit(e)}>
                 <div className={styles.input_area}>
                     <h2>Invite to House <div className={styles.icon}>🏠</div></h2>
                     <label>Name</label>

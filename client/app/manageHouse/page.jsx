@@ -21,7 +21,7 @@ export default function ManageHouse() {
                         <JoinHouseForm userData={userData} bearerToken={bearerToken}/>
                     </>
         } else {
-            return <h2>Loading</h2>
+            return <h2>Loading...</h2>
         }
     };
 
