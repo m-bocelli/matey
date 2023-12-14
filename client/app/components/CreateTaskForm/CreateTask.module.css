@@ -1,102 +1,72 @@
-.Form_Group { 
-    margin-left: 30rem;
-    margin-right: 10rem;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    padding-left: 5rem;
-    width: 40rem;
-    padding-right: 5rem;
-    border-radius: 20px;
-    border-color: var(--acd2ed);
-    background-color: var(--uranian-blue);
-    position: relative;
+.new_task {
+    font-size:25px;
     display: inline-block;
-    bottom: 10%;
-}
-.new_task { 
-    font-size: 40px; 
     color: var(--space-cadet);
     font-weight: bolder;
-    padding-top: 1rem;
-    padding-left: 3rem;
-}
-.form { 
-    display: inline-block;
-    padding: 20px;
+    padding-left: 0.5rem;
+ }
 
-}
-.form select { 
+ .form {
+    display: inline-block;
+    padding: 25px;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(225, 225, 225);
+    border-radius: 20px;
+    bottom: 0;
+    position: fixed;
+    max-width: 40rem;
+    width: auto;
+    height: auto;
+    margin: 2rem;
+ }
+ 
+ .form select {
     width: 35rem;
-    height:3rem;
+    height:2.5rem;
     display: block;
     font-size: larger;
-
-}
-.form label,
-.form input,
-.form select {
-    margin-left: 1rem;
-    margin-right: 20rem;
-}
-/*
-this is coloring the text of what the user types in the input area
-*/
-.form input{ 
+ }
+ 
+ /*
+ this is coloring the text of what the user types in the input area
+ */
+ .form input{
     color:rgb(0, 0, 0);
+    height: 2.5rem;
     width: 35rem;
-    height: 3rem;
-    border-radius: 5px;
-}
-.form input:focus {
-    outline: 2px var(--cherry-blossom)!important; /* Change the color to your preference */
-}
-/*
-Task Name, Details, Due Date, Frequency
-*/ 
-.form label {
+    padding-left: 0.5rem;
+ }
+ 
+ /*
+ Task Name, Details, Due Date, 
+ */
+ .form label {
     font-weight: bolder;
     color: darkred;
     font-size:larger;
+    padding:1rem;
+    display: block;
 
-}
-#task_desc {
-    color: rgb(0, 0, 0);
-    width: 35rem;
-    height: 5rem;
-    display: inline-block;
-}
-.form ::placeholder{
+ }
+ 
+ .form ::placeholder{
     padding-left: 0.25rem;
     padding-top:2rem;
     padding-bottom: 2rem;
     font-size: large;
+ }
+ 
+.form_buttons {
+    display: flex;
+    justify-content: space-between;
 }
-.entire_form {
-    margin-left: 30rem;
-    margin-right: 12rem;
-    position:fixed;
-    bottom:0;
-    height:auto;
-    width: 40rem;
-    border-radius: 20px;
-    border: 2px solid rgb(225, 225, 225);
-    background-color: rgb(255, 255, 255);
-    display: block;
-    align-items: center;
-}
-.entire_form label,
-.entire_form input {
-  display: block;
-  margin-bottom: 1rem;
-  padding-left: 0.75rem;
-  font-size: larger;
-}
-.close_form {
+
+ .close_form {
     display: inline-block;
     border: none;
-    padding-left: 2rem;
-    padding-top:2rem;
-    padding-right: 1.5rem;
+    padding-right: 0;
+    padding-top:1rem;
+    padding-bottom: 1rem;
     margin: 0;
     font-weight: bolder;
     background-color: transparent;
@@ -106,17 +76,12 @@ Task Name, Details, Due Date, Frequency
     font-size: 1rem;
     cursor: pointer;
     text-align: center;
-}
-
-.close_form:hover,
-.close_form:focus {
-    color:rgb(255, 255, 255);
-}
-
-.minimize_form {
+ }
+ 
+ .minimize_form {
     display: inline-block;
     border: none;
-    margin: 0;
+    margin-bottom: 1rem;
     font-weight:600;
     background-color: transparent;
     text-decoration: none;
@@ -125,19 +90,12 @@ Task Name, Details, Due Date, Frequency
     font-size: 1rem;
     cursor: pointer;
     text-align: center;
-}
+ }
 
-.minimize_form:hover,
-.minimize_form:focus {
-    color:rgb(255, 255, 255);
-}
-
-.collapsed_form {
+ .collapsed_form {
     padding: 1rem;
     font-size:larger;
     font-weight: bold;
-    margin-left: 30rem;
-    margin-right: 12rem;
     position:fixed;
     bottom:0;
     height:auto;
@@ -146,51 +104,21 @@ Task Name, Details, Due Date, Frequency
     background-color: var(--uranian-blue);
     color: var(--space-cadet);
     border-radius: 5px;
+ }
 
-} 
-.expand_button_area { 
+ .expand_button_area {
     background-color: transparent;
     text-decoration: none;
     border: none;
     padding-left: 20rem;
-}
-
-
-
-
-.task_header { 
+ }
+ 
+ .task_header {
     color: var(--cherry-blossom);
     font-size:xx-large;
-}
-
-.rendered_task { 
-    margin-left: 20rem;
-    margin-right: 10rem;
-    font-size: x-large;
-    font-weight: bold;
-    text-decoration: underline;
-    color: var(--myrtle-green)
-}
-
-.to_do { 
-    color: var(--space-cadet);
-    margin-left: 20rem;
-    margin-right: 10rem;
-    margin-top: 5rem;
-}
-
-.component-area { 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-
-.pin_button { 
-    margin-left: 20rem;
-    margin-right: 10rem;
-    position: relative;
-    top: 4%;
+ }
+ 
+ .create_task_button {
     color: white;
     font-weight: bold;
     font-size: larger;
@@ -200,44 +128,30 @@ Task Name, Details, Due Date, Frequency
     border-radius: 30px;
     border: none;
     padding: 0.5rem;
-}
+    float: right;
+ }
+ 
 
-.submit_button input[type="submit"] { 
-    bottom: 5%;
+ .form input[type="submit"] {
     color: white;
     font-weight: bold;
-    font-size: larger;
-    width: 10rem;
-    background-color:lightseagreen;
-    outline-color: var(--aquamarine);
+    font-size: medium;
+    background-color: lightseagreen;
     border-radius: 10px;
     border: none;
-    padding-bottom: 0rem;
-    margin-top: 30px;
-}
-
-.task_name { 
+    width: auto;
+ }
+ 
+ .submit_button_area {
+    border-radius: 10px;
+    border: none;
+    padding: 0.5rem;
+    margin-top: 2rem;
+ }
+ 
+ .task_name {
     display: grid;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-}
-
-.checkboxes { 
-    display: flex;
-    justify-content: space-between;
-    column-gap:1rem;
-
-}
-
-
-.task {
-    display: flex;
-    align-items: center; /* Vertically center-align label and input */
-  }
-  
-  /* Optional: To add some space between label and input */
-  .col {
-    margin-right: 10px;
-  }
-  
+ }

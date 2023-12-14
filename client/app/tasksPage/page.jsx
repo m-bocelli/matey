@@ -31,14 +31,26 @@ export default function TasksPage() {
     }
 
     const renderView = () => {
-        if (userData && tasks.length > 0) {
+        if (userData && userData.house && tasks.length > 0) {
             return (<> 
                         <WeekView tasks={tasks} setSelectedTask={setSelectedTask}/>
                         <CreateTask houseId={userData.house} />
+                        {selectedTask &&
+                        <div className={styles.selected_container}>
+                            <h2>Selected task</h2>
+                            <div>
+                                <h3>{selectedTask.name}</h3>
+                                <p>{selectedTask.desc}</p>
+                                <p>Points: {selectedTask.points}</p>
+                                <Button onClick={completeTask}>Complete</Button>
+                            </div>
+                        </div>}
                     </>
             );
-        } else if (userData) {
+        } else if (userData && userData.house) {
             return <CreateTask houseId={userData.house}/>
+        } else if (userData) {
+            return <Button onClick={() => window.location.href = '/manageHouse'}>Manage House</Button>
         } else {
             return <h2>Loading...</h2>
         }
@@ -47,17 +59,6 @@ export default function TasksPage() {
     return (
         <div className={styles.container}>
             {renderView()}
-            {selectedTask &&
-                <div className={styles.selected_container}>
-                    <h2>Selected task</h2>
-                    <div>
-                        <h3>{selectedTask.name}</h3>
-                        <p>{selectedTask.desc}</p>
-                        <p>Points: {selectedTask.points}</p>
-                        <Button onClick={completeTask}>Complete</Button>
-                    </div>
-                </div>
-            }
         </div>
         );
 }
