@@ -13,7 +13,7 @@ export default function TasksPage() {
 
     useEffect(() => {
         if (userData) {
-            fetch(`http://localhost:2001/houses/${userData.house}/tasks`, {
+            fetch(`https://matey.onrender.com/houses/${userData.house}/tasks`, {
                 headers: {Authorization: `Bearer ${bearerToken}`}
             })
             .then((res) => res.json())
@@ -23,7 +23,7 @@ export default function TasksPage() {
     }, [userData]);
 
     const completeTask = () => {
-        fetch(`http://localhost:2001/tasks/${selectedTask.id}?houseId=${userData.house}&userId=${userData.id}`, {
+        fetch(`https://matey.onrender.com/tasks/${selectedTask.id}?houseId=${userData.house}&userId=${userData.id}`, {
             method: 'DELETE',
             headers: {Authorization: `Bearer ${bearerToken}`}
         })
