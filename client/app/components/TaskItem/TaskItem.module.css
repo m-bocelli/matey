@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    background-color: lightseagreen;
+    border-radius: 5px;
+    margin: 2rem 1rem 2rem 1rem;
+    cursor: pointer;
+    color: white;
+    height: 3rem;
+    justify-content: center;
+    align-items: center;
+    transition: font-size 0.5s;
+}
+
+.container:hover {
+    font-size: 2rem;
+}
