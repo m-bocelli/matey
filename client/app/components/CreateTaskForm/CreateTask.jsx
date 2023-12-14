@@ -65,80 +65,82 @@ export default function CreateTask({houseId}) {
 
   return (
     <>
-      <button className={styles.pin_button} onClick={openForm}>
+      <button className={styles.create_task_button} onClick={openForm}>
         + CREATE TASK
       </button>
       {isFormVisible ? (
+      <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.entire_form}>
-        <div className={styles.form_buttons}>
-          <button className={styles.close_form} onClick={closeForm}>
-            <FontAwesomeIcon
-              icon={faX}
-              size="lg"
-              style={{ color: "lightseagreen" }}
+          <div className={styles.form_buttons}>
+            <button className={styles.close_form} onClick={closeForm}>
+              <FontAwesomeIcon
+                icon={faX}
+                size="lg"
+                style={{ color: "lightseagreen" }}
+              />
+            </button>
+            <button className={styles.minimize_form} onClick={minimizeForm}>
+              <FontAwesomeIcon
+                icon={faWindowMinimize}
+                size="lg"
+                style={{ color: "lightseagreen" }}
+              />
+            </button>
+          </div>
+          <div className={styles.new_task}>New Task</div>
+          
+            <label htmlFor="task_name">Task Name </label>
+            <input
+              id="task_name"
+              type="text"
+              placeholder="Char limit: 30."
+              maxLength={30}
+              required
+              value={taskName}
+              onChange={(e) => setTaskName(e.target.value)}
             />
-          </button>
-          <button className={styles.minimize_form} onClick={minimizeForm}>
-            <FontAwesomeIcon
-              icon={faWindowMinimize}
-              size="lg"
-              style={{ color: "lightseagreen" }}
+            <label htmlFor="task_desc">Description</label>
+            <input
+              id="task_desc"
+              type="text"
+              placeholder="What needs to be completed?"
+              maxLength={250}
+              required
+              value={taskDesc}
+              onChange={(e) => setTaskDesc(e.target.value)}
             />
-          </button>
-        </div>
-        <div className={styles.new_task}>New Task</div>
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <label htmlFor="task_name">Task Name </label>
-          <input
-            id="task_name"
-            type="text"
-            placeholder="Char limit: 30."
-            maxLength={30}
-            required
-            value={taskName}
-            onChange={(e) => setTaskName(e.target.value)}
-          />
-          <label htmlFor="task_desc">Description</label>
-          <input
-            id="task_desc"
-            type="text"
-            placeholder="What needs to be completed?"
-            maxLength={250}
-            required
-            value={taskDesc}
-            onChange={(e) => setTaskDesc(e.target.value)}
-          />
-          <label htmlFor="task_points">Points</label>
-          <input
-            id="task_points"
-            type="number"
-            placeholder="How much is this task worth?"
-            maxLength={10}
-            required
-            value={points}
-            onChange={(e) => setPoints(e.target.value)}
-          />
-          <label htmlFor="task_day">Due Day</label>
-          <select
-            id="task_day"
-            value={dueDay}
-            onChange={handleDayChange}
-            required
-          >
-            <option value="monday">Monday</option>
-            <option value="tuesday">Tuesday</option>
-            <option value="wednesday">Wednesday</option>
-            <option value="thursday">Thursday</option>
-            <option value="friday">Friday</option>
-            <option value="saturday">Saturday</option>
-            <option value="sunday">sunday</option>
-          </select>
+            <label htmlFor="task_points">Points</label>
+            <input
+              id="task_points"
+              type="number"
+              placeholder="How much is this task worth?"
+              maxLength={10}
+              required
+              value={points}
+              onChange={(e) => setPoints(e.target.value)}
+            />
+            <label htmlFor="task_day">Due Day</label>
+            <select
+              id="task_day"
+              value={dueDay}
+              onChange={handleDayChange}
+              required
+            >
+              <option value="monday">Monday</option>
+              <option value="tuesday">Tuesday</option>
+              <option value="wednesday">Wednesday</option>
+              <option value="thursday">Thursday</option>
+              <option value="friday">Friday</option>
+              <option value="saturday">Saturday</option>
+              <option value="sunday">sunday</option>
+            </select>
 
-          <div className={styles.submit_button}>
-            <input type="submit" value="+ Create Task" />
+            <div className={styles.submit_button_area}>
+              <input type="submit" value="+ Create Task" />
+            </div>
           </div>
         </form>
-      </div> ) : 
+       ) : 
       isFormMinimized ? ( 
         <MinimizedTask setIsFormMinimized={setIsFormMinimized} setIsFormVisible={setIsFormVisible}></MinimizedTask>
       ) : null} 
