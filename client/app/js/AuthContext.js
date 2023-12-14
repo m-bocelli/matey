@@ -28,7 +28,7 @@ export function AuthContextProvider({ children }) {
                 fetch('https://matey.onrender.com/users', {method: 'POST', headers: {"Content-Type": "application/json", Authorization: `Bearer ${token}`},
                     body: JSON.stringify(user)})
                     .then(() => {
-                        fetch(`http://localhost:2001/users/${user.uid}`, {headers: {Authorization : `Bearer ${token}`}})
+                        fetch(`https://matey.onrender.com/users/${user.uid}`, {headers: {Authorization : `Bearer ${token}`}})
                         .then((res) => res.json())
                         .then((data) => {
                             console.log("setting user data");
