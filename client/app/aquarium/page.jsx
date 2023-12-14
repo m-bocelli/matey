@@ -10,7 +10,7 @@ export default function AquariumUI() {
 
     useEffect(() => {
         if (userData) {
-            fetch(`http://localhost:2001/houses/${userData.house}/fish`, {
+            fetch(`https://matey.onrender.com/houses/${userData.house}/fish`, {
                 headers: {Authorization : `Bearer ${bearerToken}`}
             })
             .then((res) => res.json())

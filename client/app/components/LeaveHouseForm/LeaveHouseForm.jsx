@@ -8,7 +8,7 @@ export default function LeaveHouseForm({userData, bearerToken}) {
     const [showAlert, setShowAlert] = useState(false);
 
     const leaveHouse =  () => {
-        fetch(`http://localhost:2001/houses?userId=${userData.id}&houseId=${userData.house}`, {method: "DELETE",
+        fetch(`https://matey.onrender.com/houses?userId=${userData.id}&houseId=${userData.house}`, {method: "DELETE",
         headers: {Authorization : `Bearer ${bearerToken}`}})
         .then(() => console.log('Left house successfully.'))
         .catch((err) => console.err('Failed to leave house.', err));

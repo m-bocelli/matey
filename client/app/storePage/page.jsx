@@ -14,7 +14,7 @@ export default function StorePage() {
     const [points, setPoints] = useState(0);
 
     useEffect(() => {
-        fetch('http://localhost:2001/fish')
+        fetch('https://matey.onrender.com/fish')
         .then((res) => res.json())
         .then((data) => setShop(Object.keys(data).map((key) => data[key])));
     }, []);
@@ -58,13 +58,13 @@ export default function StorePage() {
     const purchase = async () => {
         if (points >= total) {
             try {
-                const res = await fetch(`http://localhost:2001/users/${userData.id}/fish`, {
+                const res = await fetch(`https://matey.onrender.com/users/${userData.id}/fish`, {
                     method: 'POST',
                     headers: {"Content-Type": "application/json", Authorization : `Bearer ${bearerToken}`},
                     body: JSON.stringify(selected)
                 });
                 if (res.status === 200) {
-                    fetch(`http://localhost:2001/users/${userData.id}/points?lost=${total}`, {
+                    fetch(`https://matey.onrender.com/users/${userData.id}/points?lost=${total}`, {
                         method: 'POST',
                         headers: {Authorization : `Bearer ${bearerToken}`}
                     })

@@ -10,7 +10,7 @@ export default function InviteHouseForm({userData, bearerToken}) {
             toEmail: document.getElementById("toEmail").value
         }
 
-        fetch(`http://localhost:2001/houses/invite?fromName=${userData.name}&houseId=${userData.house}`, {
+        fetch(`https://matey.onrender.com/houses/invite?fromName=${userData.name}&houseId=${userData.house}`, {
             method: 'POST',
             headers: {'Content-Type' : 'application/json', Authorization: `Bearer ${bearerToken}`},
             body: JSON.stringify(formBody)

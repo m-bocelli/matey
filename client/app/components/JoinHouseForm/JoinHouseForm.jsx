@@ -12,7 +12,7 @@ export default function JoinHouseForm({userData, bearerToken}) {
             houseId:  document.getElementById("houseId").value,
         }
 
-        fetch(`http://localhost:2001/houses/join?userId=${userData.id}`, {
+        fetch(`https://matey.onrender.com/houses/join?userId=${userData.id}`, {
             method: 'POST',
             headers: {'Content-Type' : 'application/json', Authorization : `Bearer ${bearerToken}`},
             body: JSON.stringify(formBody)

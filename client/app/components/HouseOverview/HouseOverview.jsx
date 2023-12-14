@@ -10,7 +10,7 @@ export default function HouseOverview({token, houseId}) {
 
     useEffect(() => {
         // Fetch house object to get name
-        fetch(`http://localhost:2001/houses/${houseId}`, {headers: {Authorization : `Bearer ${token}`}})
+        fetch(`https://matey.onrender.com/houses/${houseId}`, {headers: {Authorization : `Bearer ${token}`}})
             .then((res) => res.json())
             .then((data) => {
                 setHouse(data);
@@ -20,7 +20,7 @@ export default function HouseOverview({token, houseId}) {
 
     useEffect(() => {
         // Fetch a list of user objects corresponding to all members in this house
-        fetch(`http://localhost:2001/houses/${houseId}/mates`, {headers: {Authorization : `Bearer ${token}`}})
+        fetch(`https://matey.onrender.com/houses/${houseId}/mates`, {headers: {Authorization : `Bearer ${token}`}})
             .then((res) => res.json())
             .then((data) => {
                 setMates(data);
