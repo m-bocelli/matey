@@ -21,6 +21,37 @@ A full-stack, easy-to-use, web app for managing shared household tasks with a gr
 * Front-end Hosting: Vercel to host the front-end pages of our site
 * Database: - We used Firebase to store things like user accounts, different houses that can hold any amount of users, tasks, tons of fish from the marketplace, and an inventory for each user
 
+## Running the project locally
+1. Clone the repository.
+   ```bash
+    git clone <repository_url>
+   ```
+3. CD into the project directory. If you cloned into your root directory, simply:
+   ```bash
+   cd budgeteers
+   ```
+5. CD into client.
+   ```bash
+   cd client
+   ```
+7. Install dependencies using npm.
+   ```bash
+   npm i
+   ```
+9. Run the client.
+    ```bash
+   npm run dev
+   ```
+11. Run the server.
+    1. Open another terminal window and navigate back to the project, this time cd'ing into server.
+    2. Install dependencies again, but in server.
+    3. Obtain the ServiceAccount.json file from firebase. Ensure that it is located under server and not under its child directories.
+    4. Run the server:
+      ```bash
+         npm run dev
+      ```
+12. Open the localhost port on your browser with both client and server running, and begin logging into the application using your google account.
+
 ### Pages 
 The following are short descriptions of the utility of each page and their purpose in the greater context of our app.
 
