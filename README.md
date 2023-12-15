@@ -13,6 +13,14 @@ A full-stack, easy-to-use, web app for managing shared household tasks with a gr
 </ul>
 <p>Most endpoints also offer optional, query parameters to streamline the data extraction process.</p>
 
+## Technologies Used
+* Front-end: - React
+* Routing:  - NextJS for better page routing
+* Back-end: - NodeJS Server with ExpressJS Framework was used for server and middleware
+* Server Hosting: Render to host our server, which connects to the database
+* Front-end Hosting: Vercel to host the front-end pages of our site
+* Database: - We used Firebase to store things like user accounts, different houses that can hold any amount of users, tasks, tons of fish from the marketplace, and an inventory for each user
+
 ### Pages 
 The following are short descriptions of the utility of each page and their purpose in the greater context of our app.
 
