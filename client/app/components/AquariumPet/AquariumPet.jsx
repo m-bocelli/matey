@@ -34,7 +34,7 @@ export default function AquariumPet({ name, img, user, size, speed, depth }) {
     useEffect(() => {
     const interval = setInterval(() => setTime(Date.now()), 10);
     return () => {
-        console.log("fish is: " + x + " , " + y);
+        //console.log("fish is: " + x + " , " + y);
         clearInterval(interval);
 
         if(up) {
