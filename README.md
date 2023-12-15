@@ -48,7 +48,7 @@ A full-stack, easy-to-use, web app for managing shared household tasks with a gr
     3. Obtain the ServiceAccount.json file from firebase. Ensure that it is located under server and not under its child directories.
     4. Run the server:
       ```bash
-         npm run dev
+         npm run serve
       ```
 12. Open the localhost port on your browser with both client and server running, and begin logging into the application using your google account.
 
